@@ -1,0 +1,372 @@
+/* CSS Document */
+/* General Styles*/
+
+/* General
+---------------------------------- */
+
+body {
+	margin: 0;
+	padding: 0;
+	font: .625em Arial, Helvetica, sans-serif;
+	background: #b4b4a6 url(../images/bg-header.gif) repeat-x 0 0;
+}
+
+#wrap {
+	margin: auto;
+	padding: 0;
+	width: 96%;
+	background-color: transparent;
+	text-align: left;
+	font-size: 1.2em;
+	min-height: 550px;
+}
+
+/* Headers
+---------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: .5em 0;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+
+h1 {
+	
+	font-weight: normal;
+	font-size: 2.25em;
+	color: #333; 
+} 
+
+#logo h1 {
+	margin: 10px 0 0 0;
+	padding: 0;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 2em;
+	color: #696969;
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 1.5em;
+	font-style: italic;
+	color: #333;
+}  
+
+h4 {
+	font-weight: bold;
+	font-size: 1.25em;
+} 
+
+h5 {
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.2em;
+	font-style: italic;
+	color: #696969;
+}
+
+/* Common
+---------------------------------- */
+
+p {
+	margin: 1em 0;
+	padding: 0;
+	line-height: 1em;
+	color: #231f20;
+}
+
+img {
+	border: 0;
+}
+
+hr {
+	display: none;
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+	color: #929284;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #231f20;
+}
+
+/* Header
+---------------------------------- */
+
+#header {
+	margin: 0;
+	padding: 0;
+	height: 112px;
+}
+
+#header #masthead {
+	margin: 0 10px;
+	padding: 0;
+	color: #fff;
+	float: right;
+}
+
+#header #masthead a {
+	color: #fff;
+}
+
+/* Menu
+---------------------------------- */
+
+#menu {
+	margin: 10px 0 0 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	font-size: 1.2em;
+	line-height: normal;
+	border-bottom: 1px solid #231f20;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#menu a {
+	float: left;
+	background: transparent url(../images/tableft.gif) no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 4px;
+	text-decoration: none;
+}
+
+#menu a span {
+	float: left;
+	display: block;
+	background: transparent url(../images/tabright.gif) no-repeat right top;
+	padding: 5px 15px 4px 6px;
+	color: #fff;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#menu a span {
+	float:none;
+}
+/* End IE5-Mac hack */
+
+#menu a:hover span {
+	color:#fff;
+	background-position: 100% -42px;
+}
+
+#menu a:hover {
+	background-position: 0% -42px;
+}
+
+#menu a:hover span {
+	background-position: 100% -42px;
+}
+
+/* Container
+---------------------------------- */
+
+#container {
+	font-size: 1.2em;
+	background-color: #fff;
+	padding: 0 20px;
+}
+
+/* Sidebar
+---------------------------------- */
+
+#sidebar {
+	float: right;
+	font-size: .9em;
+	padding: 0 0 0 10px;
+	border-left: 1px dotted #b4b4a6;
+}
+
+/* Calendar
+---------------------------------- */
+
+#calendars li a,
+#calendars table {
+	display: inline;
+}
+
+/* Content
+---------------------------------- */
+
+#content {
+	float: left;
+	padding: 0;
+	width: 100%;
+}
+
+/* Forms
+---------------------------------- */
+
+form {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+fieldset {
+	margin: 0;
+	padding: 10px;
+	border: 0;
+}
+
+form br {
+	clear: left;
+}
+
+legend {
+	line-height: 2em;
+}
+
+legend,
+label {
+	color: #231f20;
+}
+
+fieldset fieldset {
+	padding: 0;
+}
+
+label { /* IE 6 fix */
+	display: block;
+	margin: 0 10px 0 0;
+	padding: 0 0 12px 0;
+	line-height: 1.2em;
+	float: left;
+}
+
+label.full {
+	width: 600px;
+}
+
+label.x-large {
+	width: 450px;
+}
+
+label.large { /* IE 6 fix */
+	width: 295px;
+}
+
+label.small { /* IE 6 fix */
+	width: 142px;
+}
+
+
+label.x-small { /* IE 6 fix */
+	width: 66px;
+}
+
+
+.textfield,
+.select,
+.text,
+.file {
+	padding: 2px;
+	border: 1px solid #929284;
+	background-color: #fff;
+	display: block;
+	width: 100%;
+}
+
+.button {
+	width: 100%;
+	color: #231f20;
+}
+
+.lblbutton {
+	margin: 0;
+	padding: 0 0 0 8px;
+	background: #fff url(../images/bg-button.gif) no-repeat 0 0;
+}
+
+.lblbutton .button {
+	border: 0;
+	padding: 0 8px 0 0;
+	background: #fff url(../images/bg-button.gif) no-repeat top right;
+	height: 24px;
+}
+
+/* Footer
+---------------------------------- */
+
+#copy {
+	float: right;
+	margin: 40px;
+}
+
+#footer {
+	margin: 0;
+	padding: 0 0 0 20px;
+	background: transparent url(../images/bg-footer-left.png) no-repeat -1px -10px;
+	font-size: .9em;
+	clear: both;
+}
+
+#footer .vcard {
+	margin: 0 -1px 0 0;
+	padding: 30px 0 0 0;
+	background: transparent url(../images/bg-footer-right.png) no-repeat right -10px;
+}
+
+#footer a {
+	color: #231f20;
+}
+
+#by {
+	font-size: .9em;
+	margin: 10px 20px;
+}
+
+#by a {
+	color: #231f20;
+}
+
+/* Clearfix
+--------------------------------- */
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+.clearfix {
+	display: block;
+}
+/* End hide from IE-mac */
+
+
+
+/* End
+---------------------------------- */

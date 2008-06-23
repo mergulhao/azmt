@@ -1,0 +1,14 @@
+/* CSS Document */
+/* IE 7 FIX */
+
+#logo h1 {
+	margin: 20px 0 0 0;
+}
+
+#header {
+	height: 126px;
+}
+
+#header #masthead {
+	margin: 10px;
+}
