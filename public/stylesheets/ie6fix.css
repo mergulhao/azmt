@@ -1,0 +1,22 @@
+/* CSS Document */
+/* IE 6 FIX */
+
+#sidebar {
+	width: 36%;
+}
+
+label {
+	margin: 0 4px 0 0;
+}
+
+label.large {
+	width: 294px;
+}
+
+label.small {
+	width: 141px;
+}
+
+label.x-small {
+	width: 64px;
+}

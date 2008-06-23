@@ -1,0 +1,7 @@
+/* CSS Document */
+/* IE 8 FIX */
+
+#calendars li a,
+#calendars table {
+	display: inline;
+}
