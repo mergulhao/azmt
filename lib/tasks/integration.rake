@@ -1,3 +1,5 @@
+ENV['SCM'] = 'git_with_svn'
+
 ENV['SKIP_TASKS'] = %w( 
                          spec:lib
                          spec:models
