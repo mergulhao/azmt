@@ -4,7 +4,7 @@ development:
 
 test:
   adapter: mysql
-  database: azmt
+  database: azmt_test
 
 production:
   adapter: mysql
