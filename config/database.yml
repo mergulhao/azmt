@@ -8,4 +8,7 @@ test:
 
 production:
   adapter: mysql
-  database: azmt
+  database: azmt_en21_org
+  username: azmt
+  password: azmtehnois2002.1
+  socket: /var/run/mysqld/mysqld.sock
