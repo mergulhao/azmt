@@ -1,17 +1,15 @@
 ENV['SCM'] = 'git_with_svn'
 
 ENV['SKIP_TASKS'] = %w( 
-                         spec:lib
-                         spec:models
-                         spec:helpers
-                         spec:controllers
-                         spec:views
+                         test:units
+                         test:functionals
+                         test:integration
                          test:rcov:units
                          test:rcov:units:verify
                          test:rcov:functionals
                          test:rcov:functionals:verify
-                         spec:rcov
-                         spec:rcov:verify
+                         test:plugins:selected
+                         spec:plugins:selected
                          test:selenium:server:start
                          test_acceptance
                          test:selenium:server:stop
