@@ -6,7 +6,7 @@ describe "/disciplines/show.html.erb" do
   before(:each) do
     @discipline = mock_model(Discipline)
     @discipline.stub!(:name).and_return("MyString")
-    @discipline.stub!(:teacher_id).and_return("1")
+    @discipline.stub!(:teacher).and_return("A Teacher")
 
     assigns[:discipline] = @discipline
 
@@ -17,6 +17,7 @@ describe "/disciplines/show.html.erb" do
   it "should render attributes in <p>" do
     render "/disciplines/show.html.erb"
     response.should have_text(/MyString/)
+    response.should have_text(/A Teacher/)
   end
 end
 
