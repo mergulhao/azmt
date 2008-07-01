@@ -6,10 +6,10 @@ describe "/disciplines/index.html.erb" do
   before(:each) do
     discipline_98 = mock_model(Discipline)
     discipline_98.should_receive(:name).and_return("MyString")
-    discipline_98.should_receive(:teacher_id).and_return("1")
+    discipline_98.should_receive(:teacher).and_return("Teacher 1")
     discipline_99 = mock_model(Discipline)
     discipline_99.should_receive(:name).and_return("MyString")
-    discipline_99.should_receive(:teacher_id).and_return("1")
+    discipline_99.should_receive(:teacher).and_return("Teacher 2")
 
     assigns[:disciplines] = [discipline_98, discipline_99]
 
