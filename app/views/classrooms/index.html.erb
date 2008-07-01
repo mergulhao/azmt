@@ -1,0 +1,19 @@
+<h1>Listing Classrooms</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <%- @classrooms.each do |classroom|%>
+    <tr>
+      <td><%=h classroom.name %></td>
+    
+      <td><%=link_to 'Show', object_url(classroom) %></td>
+      <td><%=link_to 'Edit', edit_object_url(classroom) %></td>
+      <td><%=link_to 'Destroy', object_url(classroom), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Classroom', new_object_url %>

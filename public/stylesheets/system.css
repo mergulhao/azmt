@@ -8,7 +8,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font: .625em Arial, Helvetica, sans-serif;
-	background: #b4b4a6 url(../images/bg-header.gif) repeat-x 0 0;
+	background: #b4b4a6 url(/images/bg-header.gif) repeat-x 0 0;
 }
 
 #wrap {
@@ -150,7 +150,7 @@ a:hover {
 
 #menu a {
 	float: left;
-	background: transparent url(../images/tableft.gif) no-repeat left top;
+	background: transparent url(/images/tableft.gif) no-repeat left top;
 	margin: 0;
 	padding: 0 0 0 4px;
 	text-decoration: none;
@@ -159,7 +159,7 @@ a:hover {
 #menu a span {
 	float: left;
 	display: block;
-	background: transparent url(../images/tabright.gif) no-repeat right top;
+	background: transparent url(/images/tabright.gif) no-repeat right top;
 	padding: 5px 15px 4px 6px;
 	color: #fff;
 }
@@ -300,13 +300,13 @@ label.x-small { /* IE 6 fix */
 .lblbutton {
 	margin: 0;
 	padding: 0 0 0 8px;
-	background: #fff url(../images/bg-button.gif) no-repeat 0 0;
+	background: #fff url(/images/bg-button.gif) no-repeat 0 0;
 }
 
 .lblbutton .button {
 	border: 0;
 	padding: 0 8px 0 0;
-	background: #fff url(../images/bg-button.gif) no-repeat top right;
+	background: #fff url(/images/bg-button.gif) no-repeat top right;
 	height: 24px;
 }
 
@@ -321,7 +321,7 @@ label.x-small { /* IE 6 fix */
 #footer {
 	margin: 0;
 	padding: 0 0 0 20px;
-	background: transparent url(../images/bg-footer-left.png) no-repeat -1px -10px;
+	background: transparent url(/images/bg-footer-left.png) no-repeat -1px -10px;
 	font-size: .9em;
 	clear: both;
 }
@@ -329,7 +329,7 @@ label.x-small { /* IE 6 fix */
 #footer .vcard {
 	margin: 0 -1px 0 0;
 	padding: 30px 0 0 0;
-	background: transparent url(../images/bg-footer-right.png) no-repeat right -10px;
+	background: transparent url(/images/bg-footer-right.png) no-repeat right -10px;
 }
 
 #footer a {
