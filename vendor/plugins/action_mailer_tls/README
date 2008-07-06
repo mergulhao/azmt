@@ -1,0 +1,13 @@
+FROM http://www.stephenchu.com/2006/06/how-to-use-gmail-smtp-server-to-send.html
+
+Add to your enviroment.rb:
+
+ActionMailer::Base.server_settings = {
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :domain => "mycompany.com",
+  :authentication => :plain,
+  :user_name => "username",
+  :password => "password"
+}
+
