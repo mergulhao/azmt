@@ -55,7 +55,7 @@
  <div id="sidebar">
   <h2>Calendário</h2>
   	<div id="calendars"></div>
-      <% form_tag collection_url, :method => :get do -%>
+      <% form_tag((collection_url rescue ''), :method => :get) do -%>
 	   <fieldset>
 	    <legend><img src="/images/icons/calendar.png" alt="" /> Datas selecionadas (<a href="javascript:void(0);" id="reset">limpar</a>)</legend>
 	    <label class="x-small">Início <input type="text" name="start_date" value="<%= @start_date.to_s_br %>" id="start" class="textfield" /></label>
