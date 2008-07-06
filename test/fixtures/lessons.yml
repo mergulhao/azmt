@@ -1,7 +1,29 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+number_theory:
+  name: Number theory
+  discipline: math
+  datetime_start: "2008-07-05 09:00:00"
+  datetime_end: "2008-07-05 12:00:00"
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+geometry:
+  name: Geometry
+  discipline: math
+  datetime_start: "2008-07-05 13:00:00"
+  datetime_end: "2008-07-05 17:00:00"
+
+trigonometry:
+  name: Trigonometry
+  discipline: math
+  datetime_start: "2008-07-05 18:00:00"
+  datetime_end: "2008-07-05 22:00:00"
+
+algebra:
+  name: Algebra
+  discipline: math
+  datetime_start: "2008-08-10 18:00:00"
+  datetime_end: "2008-08-10 22:00:00"
+
+calculus:
+  name: Calculus
+  discipline: math
+  datetime_start: "2008-08-10 13:00:00"
+  datetime_end: "2008-08-10 17:00:00"
