@@ -1,6 +1,46 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe LessonsController do
+  fixtures :disciplines, :lessons
+
+  before(:each) do
+    Date.stub!(:today).and_return(Date.new(2008,07,04))
+  end
+  
+  describe "handling GET /lessons with parameters" do
+    def do_get(params = {})
+      get :index, params
+    end
+
+    it "should return only lessons on requested period" do
+      do_get :start_date => '05/08/2008', :end_date => '25/08/2008'
+      assigns[:lessons].should == lessons(:calculus, :algebra)
+      assigns[:start_date].should eql(Date.new(2008,8,5))
+      assigns[:end_date].should eql(Date.new(2008,8,25))
+    end
+    
+    it "should ignore if end_date is not passed" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions => ["datetime_start >= ? and datetime_end <= ?", Date.new(2008,8,5), Date.today.end_of_month], :order => "datetime_start"}).
+        and_return([@lesson])
+      do_get :start_date => '05/08/2008'
+    end
+    
+    it "should ignore if start_date is not passed" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions => ["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.new(2008,8,5)], :order => "datetime_start"}).
+        and_return([@lesson])
+      do_get :end_date => '05/08/2008'
+    end
+
+    it "should not break if start_date or end_date are truncated" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions=>["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "datetime_start"}).
+        and_return([@lesson])
+      do_get :start_date => 'Ab/08/2008', :end_date => '05/Cd/2008'
+    end
+  end
+  
   describe "handling GET /lessons" do
 
     before(:each) do
@@ -12,9 +52,11 @@ describe LessonsController do
       get :index
     end
   
-    it "should be successful" do
+    it "should be successful and assigns @start_date and @end_date" do
       do_get
       response.should be_success
+      assigns(:start_date).should eql(Date.new(2008,7,1))
+      assigns(:end_date).should eql(Date.new(2008,7,31))
     end
 
     it "should render index template" do
@@ -23,7 +65,7 @@ describe LessonsController do
     end
   
     it "should find all lessons" do
-      Lesson.should_receive(:find).with(:all).and_return([@lesson])
+      Lesson.should_receive(:find).with(:all, {:conditions=>["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "datetime_start"}).and_return([@lesson])
       do_get
     end
   

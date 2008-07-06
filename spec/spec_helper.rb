@@ -13,7 +13,7 @@ Spec::Runner.configure do |config|
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/test/fixtures/'
 
-  config.global_fixtures = :classrooms, :teachers, :disciplines, :lessons
+#  config.global_fixtures = :classrooms, :teachers, :disciplines, :lessons
   # == Fixtures
   #
   # You can declare fixtures for each example_group like this:

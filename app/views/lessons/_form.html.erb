@@ -2,7 +2,20 @@
   <label for="lesson_name">Name:</label>
   <%= f.text_field :name %>
 </p>
+
+<% unless parent_object -%>
 <p>
   <label for="lesson_discipline_id">Discipline:</label>
   <%= f.collection_select :discipline_id, Discipline.find(:all), :id, :name %>
+</p>
+<% end -%>
+
+<p>
+  <label for="lesson_datetime_start">Datetime start:</label>
+  <%= f.datetime_select :datetime_start %>
+</p>
+
+<p>
+  <label for="lesson_datetime_end">Datetime end:</label>
+  <%= f.datetime_select :datetime_end %>
 </p>
