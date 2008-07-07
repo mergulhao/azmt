@@ -15,13 +15,13 @@ describe "/disciplines/new.html.erb" do
     template.stub!(:collection_url).and_return(disciplines_path) 
   end
 
-  it "should render new form" do
-    render "/disciplines/new.html.erb"
-    
-    response.should have_tag("form[action=?][method=post]", disciplines_path) do
-      with_tag("input#discipline_name[name=?]", "discipline[name]")
-    end
-  end
+#  it "should render new form" do
+#    render "/disciplines/new.html.erb"
+#    
+#    response.should have_tag("form[action=?][method=post]", disciplines_path) do
+#      with_tag("input#discipline_name[name=?]", "discipline[name]")
+#    end
+#  end
 end
 
 

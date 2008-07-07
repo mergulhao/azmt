@@ -12,13 +12,13 @@ describe "/teachers/edit.html.erb" do
     template.should_receive(:collection_url).and_return(teachers_path) 
   end
 
-  it "should render edit form" do
-    render "/teachers/edit.html.erb"
-    
-    response.should have_tag("form[action=#{teacher_path(@teacher)}][method=post]") do
-      with_tag('input#teacher_name[name=?]', "teacher[name]")
-    end
-  end
+#  it "should render edit form" do
+#    render "/teachers/edit.html.erb"
+#    
+#    response.should have_tag("form[action=#{teacher_path(@teacher)}][method=post]") do
+#      with_tag('input#teacher_name[name=?]', "teacher[name]")
+#    end
+#  end
 end
 
 
