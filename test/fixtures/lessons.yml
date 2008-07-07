@@ -4,6 +4,12 @@ number_theory:
   datetime_start: "2008-07-05 09:00:00"
   datetime_end: "2008-07-05 12:00:00"
 
+penis_measurement:
+  name: Penis Measurement
+  discipline: sexology
+  datetime_start: "2008-07-04 09:00:00"
+  datetime_end: "2008-07-04 12:00:00"
+
 geometry:
   name: Geometry
   discipline: math

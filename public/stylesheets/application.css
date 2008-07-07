@@ -1,0 +1,18 @@
+.calendar {
+    font: .6em Arial, Helvetica, sans-serif;
+}
+
+.calendar tr.lesson td div {
+    width: 100px;
+    height: 100px; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.calendar tr.lesson td div.empty {
+    background-color: #666;
+}
+
+.calendar tr.lesson td div span {
+    display: block;
+}

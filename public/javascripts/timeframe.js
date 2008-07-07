@@ -104,6 +104,7 @@ var Timeframe = Class.create({
     calendar.insert(this.buildHead());
     calendar.insert(this.buildBody());
     this.container.insert(calendar);
+    this.container.insert(new Element('br')); /* Adicionado para exibir um calendario abaixo do outro */
     this.calendars.push(calendar);
   },
   

@@ -1,21 +1,21 @@
-<h1>Listing Disciplines</h1>
+<h2>Disciplinas</h2>
+
+<p><%= link_to image_tag('icons/file_add.png') + " Adicionar", new_object_url %></p>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Teacher</th>
+    <th>Nome</th>
+    <th>Professor</th>
+    <th>Sala</th>
   </tr>
   <%- @disciplines.each do |discipline|%>
     <tr>
       <td><%=h discipline.name %></td>
       <td><%=h discipline.teacher %></td>
+      <td><%=h discipline.classroom %></td>
     
-      <td><%=link_to 'Show', object_url(discipline) %></td>
-      <td><%=link_to 'Edit', edit_object_url(discipline) %></td>
-      <td><%=link_to 'Destroy', object_url(discipline), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%=link_to image_tag('icons/file_edit.png'), edit_object_url(discipline) %></td>
+      <td><%=link_to image_tag('icons/file_delete.png'), object_url(discipline), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-<br/>
-
-<%= link_to 'New Discipline', new_object_url %>

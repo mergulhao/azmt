@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe LessonsController do
-  fixtures :disciplines, :lessons
+  fixtures :disciplines, :teachers, :classrooms, :disciplines, :lessons
 
   before(:each) do
     Date.stub!(:today).and_return(Date.new(2008,07,04))
@@ -17,6 +17,22 @@ describe LessonsController do
       assigns[:lessons].should == lessons(:calculus, :algebra)
       assigns[:start_date].should eql(Date.new(2008,8,5))
       assigns[:end_date].should eql(Date.new(2008,8,25))
+    end
+    
+    it "should return only lessons with selected teacher" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:homer).id
+      assigns[:lessons].should == [lessons(:penis_measurement)]
+      
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:marge).id
+      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
+    end
+    
+    it "should return only lessons with selected classroom" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:pantanal).id
+      assigns[:lessons].should == [lessons(:penis_measurement)]
+      
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:amazonia).id
+      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
     end
     
     it "should ignore if end_date is not passed" do
