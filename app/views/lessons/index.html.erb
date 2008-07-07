@@ -1,61 +1,87 @@
-<h1>Listing Lessons</h1>
-
-<!-- table>
-  <tr>
-    <th>Name</th>
-    <th>Discipline</th>
-    <th>Datetime start</th>
-    <th>Datetime end</th>
-  </tr>
-  <%- @lessons.each do |lesson|%>
-    <tr>
-      <td><%=h lesson.name %></td>
-      <td><%=h lesson.discipline %></td>
-      <td><%=h lesson.datetime_start %></td>
-      <td><%=h lesson.datetime_end %></td>
-    
-      <td><%=link_to 'Show', object_url(lesson) %></td>
-      <td><%=link_to 'Edit', edit_object_url(lesson) %></td>
-      <td><%=link_to 'Destroy', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table -->
+<h2>Aulas</h2>
 
 <p>
-<%= link_to 'New Lesson', new_object_url %>
+<%= link_to_function image_tag('icons/arrow_down.png') + 'Escolher Sala' do |page|
+  page.visual_effect :toggle_appear, 'classroom_filter'
+  page.visual_effect :toggle_appear, 'submit_filter_1'
+  #page.visual_effect :toggle_appear, 'submit_filter_2'
+end %>
 |
-<%= link_to_if parent_object, 'Back', parent_object %>
+<%= link_to_function image_tag('icons/arrow_down.png') + 'Escolher Professor' do |page|
+  page.visual_effect :toggle_appear, 'teacher_filter'
+  #page.visual_effect :toggle_appear, 'submit_filter_1'
+  page.visual_effect :toggle_appear, 'submit_filter_2'
+end %>
 </p>
 
-<table style="border: 1px solid gray" border="1">
+  <% form_tag collection_url, :method => :get do -%>
+    <fieldset>
+      <label id="classroom_filter" style="display: none;">
+        <%= select_tag :classroom_id, 
+          "<option value="">Selecione</option>" +
+          options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i) %>
+      </label>
 
+      <label id="teacher_filter" style="display: none;">
+        <%= select_tag :teacher_id, 
+          "<option value="">Selecione</option>" +
+          options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i) %>
+      </label>
+
+      <label class="x-small lblbutton" id="submit_filter_1" style="display: none;"><input type="submit" class="button" value="Filtrar" /></label>
+      <label class="x-small lblbutton" id="submit_filter_2" style="display: none;"><input type="submit" class="button" value="Filtrar" /></label>
+    </fieldset>
+  <% end %>
+  
+<h5>Período de <%= @start_date.to_s_br %> a <%= @end_date.to_s_br %></h5>
+
+<% unless params[:classroom_id].blank? %>
+  <h5>Sala: <%= Classroom.find params[:classroom_id] %></h5>
+<% end %>
+
+<% unless params[:teacher_id].blank? %>
+  <h5>Professor: <%= Teacher.find params[:teacher_id] %></h5>
+<% end %>
+
+<table border="1" class="calendar">
+  
   <tr>
     <% ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"].each do |day| -%>
       <th><%= day %></th>
     <% end -%>
   </tr>
+  
+  <% ((@start_date.beginning_of_week - 1.day)..@end_date).to_a.in_groups_of(7) do |week| -%>
+    <tr>
+      <% week.each do |date| -%>
+        <th><%= date.to_s_br if date && (date >= @start_date) %></th>
+      <% end -%>
+    </tr>
+  
+    <tr class="lesson">
+      <% week.each do |date| -%>
+        <td>
+          <% if date.blank? || date && (date < @start_date) %>
+            <div class="empty">&nbsp;</div>
+          <% else %>
+            <div>
+              <% lessons = @lessons.select {|lesson| lesson.datetime_start.to_date == date } %>
+              <% lessons.each do |lesson| %>
+                <span>
+                  <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
+                  - 
+                  <%=link_to 'X', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %>
+                </span>
+              <% end %>
+              <span>
+                <% #= link_to 'Nova Aula', new_object_url.merge(:lesson => {:datetime_start => @start_date}) %>
+                <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:datetime_start => date, :datetime_end => date}) %>
+              </span>
+            </div>      
+          <% end %>
+        </td>
+      <% end -%>
+    </tr>
+  <% end -%>
 
-<% ((@start_date.beginning_of_week - 1.day)..@end_date).to_a.in_groups_of(7) do |week| -%>
-  <tr>
-    <% week.each do |date| -%>
-      <th><%= date.to_s_br if date && (date >= @start_date) %></th>
-    <% end -%>
-  </tr>
-
-  <tr>
-    <% week.each do |date| -%>
-      <td style="height: 100px;">
-
-    <% lessons = @lessons.select {|lesson| lesson.datetime_start.to_date == date }%>
-    <% lessons.each do |lesson| %>
-      <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
-       - 
-      <%=link_to 'X', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %>
-      <br/>
-    <% end %>
-    
-      </td>
-    <% end -%>
-  </tr>
-<% end -%>
 </table>

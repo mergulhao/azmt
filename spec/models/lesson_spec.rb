@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Lesson do
-  fixtures :lessons
+  fixtures :classrooms, :teachers, :disciplines, :lessons
   
   before(:each) do
     @lesson = Lesson.new
@@ -9,6 +9,20 @@ describe Lesson do
 
   it "should be valid" do
     @lesson.should be_valid
+  end
+  
+  it "should respond to teacher" do
+    lessons(:trigonometry).teacher.should eql(teachers(:marge))
+  end
+  
+  it "should respond to classroom" do
+    lessons(:trigonometry).classroom.should eql(classrooms(:amazonia))
+  end
+  
+  it "should validates datetime_start day/month/year must be the same as datetime_end" do
+    lesson = Lesson.new :datetime_start => Time.now - 1.day, :datetime_end => Time.now
+    lesson.valid?.should be(false)
+    lesson.errors.full_messages.should eql(["Aulas devem começar e acabar no mesmo dia"])
   end
   
   describe ".to_s" do
