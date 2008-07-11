@@ -1,3 +1,24 @@
+<% content_for :sidebar do %>
+  <h2>Calendário</h2>
+  	<div id="calendars"></div>
+      <% form_tag((collection_url rescue ''), :method => :get) do -%>
+	   <fieldset>
+	        <legend><img src="/images/icons/calendar.png" alt="" />Datas selecionadas (<a href="javascript:void(0);" id="reset">limpar</a>)</legend>
+	        <label class="x-small">Início <input type="text" name="start_date" value="<%#= @start_date.to_s_br -%>" id="start" class="textfield" /></label>
+		<label class="x-small">Fim <input type="text" name="end_date" value="<%#= @end_date.to_s_br -%>" id="end" class="textfield" /></label><br />
+		<label class="small lblbutton"><input type="submit" class="button" value="Filtrar" /></label>
+	   </fieldset>
+      <% end -%>
+  <script type="text/javascript">
+      new Timeframe('calendars', {
+        startfield: 'start',
+        endfield: 'end',
+		format: '%d/%m/%Y',
+        earliest: new Date(2008,1,1),
+        resetbutton: 'reset' });
+  </script>
+<% end %>
+
 <h2>Aulas</h2>
 
 <p>
