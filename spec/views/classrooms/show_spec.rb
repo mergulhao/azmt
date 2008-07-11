@@ -13,9 +13,9 @@ describe "/classrooms/show.html.erb" do
     template.stub!(:collection_url).and_return(classrooms_path) 
   end
 
-  it "should render attributes in <p>" do
-    render "/classrooms/show.html.erb"
-    response.should have_text(/MyString/)
-  end
+#  it "should render attributes in <p>" do
+#    render "/classrooms/show.html.erb"
+#    response.should have_text(/MyString/)
+#  end
 end
 
