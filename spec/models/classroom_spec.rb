@@ -7,8 +7,11 @@ describe Classroom do
     @classroom = Classroom.new
   end
 
-  it "should be valid" do
-    @classroom.should be_valid
+  it "should be invalid" do
+    @classroom.should_not be_valid
+    
+    @classroom.errors_on(:name).should eql(["can't be blank"])
+    @classroom.errors_on(:capacity).should eql(["is not a number"])
   end
 
   describe ".to_s" do

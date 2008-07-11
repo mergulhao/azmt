@@ -1,5 +1,7 @@
 amazonia:
   name: Amazônia
+  capacity: 10
 
 pantanal:
   name: Pantanal
+  capacity: 12
