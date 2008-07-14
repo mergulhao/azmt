@@ -13,7 +13,7 @@ module ActionView
           html_options.delete("method")
           html_options["onclick"] = modal_box_js
         else
-          convert_options_to_javascript_without_model_box!(html_options, url = '')
+          convert_options_to_javascript_without_model_box!(html_options, url)
         end
       end
       
