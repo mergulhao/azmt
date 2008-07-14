@@ -54,11 +54,11 @@
 	background: transparent;
 }
 
-#MB_loading {
+/*#MB_loading {
 	padding: 1.5em;
 	text-indent: -10000px;
 	background: transparent url(/images/spinner.gif) 50% 0 no-repeat;
-}
+}*/
 
 /* Color scheme */
 #MB_frame {
@@ -92,4 +92,13 @@
 .MB_alert {
 	margin: 10px 0;
 	text-align: center;
+}
+
+/* Para confirmation box */
+#MB_content div {
+    text-align: center;
+}
+
+.button-to, .button-to div{
+    display: inline;
 }

@@ -1,10 +1,10 @@
 <h2>Salas de Aula</h2>
 
+<% if flash[:notice] -%>
 <p><%= flash[:notice] %></p>
+<% end -%>
 
 <p><%= link_to_remote image_tag('icons/file_add.png') + " Adicionar", :update => "sidebar", :url => new_object_url, :method => :get %></p>
-
-<div class="warning" id="domexample" style="border: 1px solid #CCC; display:none;"><p>Are you sure to delete this item?</p><input type='button' value='Yes, delete!' onclick='Modalbox.hide()' /> or <input type='button' value='No, leave it!' onclick='Modalbox.hide()' /></div>
 
 <table>
   <tr>
@@ -17,9 +17,7 @@
       <td><%=h classroom.capacity %></td>
     
       <td><%=link_to image_tag('icons/file_edit.png'), edit_object_url(classroom) %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => 'Are you sure?', :method => :delete %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :onclick => "Modalbox.show($('domexample'), {title: 'vai apagar mesmo?', width: 300}); return false;" %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :onclick => "Modalbox.alert('minha mensagem!!!'); return false;" %></td>
-        </tr>
+      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => 'Tem certeza?', :method => :delete %></td>
+    </tr>
   <% end %>
 </table>
