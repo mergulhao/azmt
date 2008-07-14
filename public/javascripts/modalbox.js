@@ -20,16 +20,16 @@ Modalbox.Methods = {
 	options: {
 		title: "ModalBox Window", // Title of the ModalBox window
 		overlayClose: true, // Close modal box by clicking on overlay
-		width: 500, // Default width in px
-		height: 90, // Default height in px
-		overlayOpacity: .65, // Default overlay opacity
-		overlayDuration: .25, // Default overlay fade in/out duration in seconds
-		slideDownDuration: .25, // Default Modalbox appear slide down effect in seconds
-		slideUpDuration: .25, // Default Modalbox hiding slide up effect in seconds
-		resizeDuration: .25, // Default resize duration seconds
+		width: 800, // Default width in px
+		height: 100, // Default height in px
+		overlayOpacity: .75, // Default overlay opacity
+		overlayDuration: .05, // Default overlay fade in/out duration in seconds
+		slideDownDuration: .20, // Default Modalbox appear slide down effect in seconds
+		slideUpDuration: .20, // Default Modalbox hiding slide up effect in seconds
+		resizeDuration: .05, // Default resize duration seconds
 		inactiveFade: true, // Fades MB window on inactive state
 		transitions: true, // Toggles transition effects. Transitions are enabled by default
-		loadingString: "Please wait. Loading...", // Default loading string message
+		loadingString: "", // Default loading string message
 		closeString: "Close window", // Default title attribute for close window link
 		closeValue: "&times;", // Default string for close link in the header
 		params: {},
