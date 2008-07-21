@@ -202,6 +202,19 @@ a:hover {
 	border-left: 1px dotted #b4b4a6;
 }
 
+/* Tables
+---------------------------------- */
+
+table.tbldata {
+	border: 1px solid #e9e9e9;
+	padding: 2px;
+}
+
+table.tbldata tr td {
+	padding: 2px;
+	border-bottom:1px solid #e9e9e9;
+}
+
 /* Calendar
 ---------------------------------- */
 
