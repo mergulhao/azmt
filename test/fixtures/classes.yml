@@ -1,0 +1,9 @@
+first_semester_math:
+  classroom: amazonia
+  teacher: marge
+  discipline: math
+
+first_semester_sexology:
+  classroom: pantanal
+  teacher: homer
+  discipline: sexology

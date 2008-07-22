@@ -1,0 +1,12 @@
+<p>
+  <label for="classe_classroom_id">Sala:</label>
+  <%= f.collection_select :classroom_id, Classroom.find(:all), :id, :name %>
+</p>
+<p>
+  <label for="classe_discipline_id">Disciplina:</label>
+  <%= f.collection_select :discipline_id, Discipline.find(:all), :id, :name %>
+</p>
+<p>
+  <label for="classe_teacher_id">Professor:</label>
+  <%= f.collection_select :teacher_id, Teacher.find(:all), :id, :name %>
+</p>
