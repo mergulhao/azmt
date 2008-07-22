@@ -1,35 +1,47 @@
 number_theory:
   name: Number theory
-  discipline: math
-  datetime_start: "2008-07-05 09:00:00"
-  datetime_end: "2008-07-05 12:00:00"
+  classe: first_semester_math
+  date: "2008-07-05"
+  start_time: "09:00:00"
+  end_time: "12:00:00"
+  classroom: amazonia
 
 penis_measurement:
   name: Penis Measurement
-  discipline: sexology
-  datetime_start: "2008-07-04 09:00:00"
-  datetime_end: "2008-07-04 12:00:00"
+  classe: first_semester_sexology
+  date: "2008-07-04"
+  start_time: "09:00:00"
+  end_time: "12:00:00"
+  classroom: pantanal
 
 geometry:
   name: Geometry
-  discipline: math
-  datetime_start: "2008-07-05 13:00:00"
-  datetime_end: "2008-07-05 17:00:00"
+  classe: first_semester_math
+  date: "2008-07-05"
+  start_time: "13:00:00"
+  end_time: "17:00:00"
+  classroom: amazonia
 
 trigonometry:
   name: Trigonometry
-  discipline: math
-  datetime_start: "2008-07-05 18:00:00"
-  datetime_end: "2008-07-05 22:00:00"
+  classe: first_semester_math
+  date: "2008-07-05"
+  start_time: "18:00:00"
+  end_time: "22:00:00"
+  classroom: amazonia
 
 algebra:
   name: Algebra
-  discipline: math
-  datetime_start: "2008-08-10 18:00:00"
-  datetime_end: "2008-08-10 22:00:00"
+  classe: first_semester_math
+  date: "2008-08-10"
+  start_time: "18:00:00"
+  end_time: "22:00:00"
+  classroom: amazonia
 
 calculus:
   name: Calculus
-  discipline: math
-  datetime_start: "2008-08-10 13:00:00"
-  datetime_end: "2008-08-10 17:00:00"
+  classe: first_semester_math
+  date: "2008-08-10"
+  start_time: "13:00:00"
+  end_time: "17:00:00"
+  classroom: amazonia

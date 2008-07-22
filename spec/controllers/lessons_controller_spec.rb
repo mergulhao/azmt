@@ -37,21 +37,21 @@ describe LessonsController do
     
     it "should ignore if end_date is not passed" do
       Lesson.should_receive(:find).
-        with(:all, {:conditions => ["datetime_start >= ? and datetime_end <= ?", Date.new(2008,8,5), Date.today.end_of_month], :order => "datetime_start"}).
+        with(:all, {:conditions => ["date >= ? and date <= ?", Date.new(2008,8,5), Date.today.end_of_month], :order => "date, start_time"}).
         and_return([@lesson])
       do_get :start_date => '05/08/2008'
     end
     
     it "should ignore if start_date is not passed" do
       Lesson.should_receive(:find).
-        with(:all, {:conditions => ["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.new(2008,8,5)], :order => "datetime_start"}).
+        with(:all, {:conditions => ["date >= ? and date <= ?", Date.today.beginning_of_month, Date.new(2008,8,5)], :order => "date, start_time"}).
         and_return([@lesson])
       do_get :end_date => '05/08/2008'
     end
 
     it "should not break if start_date or end_date are truncated" do
       Lesson.should_receive(:find).
-        with(:all, {:conditions=>["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "datetime_start"}).
+        with(:all, {:conditions=>["date >= ? and date <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "date, start_time"}).
         and_return([@lesson])
       do_get :start_date => 'Ab/08/2008', :end_date => '05/Cd/2008'
     end
@@ -81,7 +81,7 @@ describe LessonsController do
     end
   
     it "should find all lessons" do
-      Lesson.should_receive(:find).with(:all, {:conditions=>["datetime_start >= ? and datetime_end <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "datetime_start"}).and_return([@lesson])
+      Lesson.should_receive(:find).with(:all, {:conditions=>["date >= ? and date <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "date, start_time"}).and_return([@lesson])
       do_get
     end
   

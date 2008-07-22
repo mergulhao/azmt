@@ -1,0 +1,23 @@
+<h1>Listing Classes</h1>
+
+<table>
+  <tr>
+    <th>Sala</th>
+    <th>Disciplina</th>
+    <th>Professor</th>
+  </tr>
+  <%- @classes.each do |classe|%>
+    <tr>
+      <td><%=h classe.classroom %></td>
+      <td><%=h classe.discipline %></td>
+      <td><%=h classe.teacher %></td>
+
+      <td><%=link_to 'Show', object_url(classe) %></td>
+      <td><%=link_to 'Edit', edit_object_url(classe) %></td>
+      <td><%=link_to 'Destroy', object_url(classe), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Classe', new_object_url %>

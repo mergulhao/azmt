@@ -86,7 +86,7 @@ end %>
             <div class="empty">&nbsp;</div>
           <% else %>
             <div>
-              <% lessons = @lessons.select {|lesson| lesson.datetime_start.to_date == date } %>
+              <% lessons = @lessons.select {|lesson| lesson.date == date } %>
               <% lessons.each do |lesson| %>
                 <span>
                   <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
