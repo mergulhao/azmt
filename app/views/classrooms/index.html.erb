@@ -4,7 +4,11 @@
 <p><%= flash[:notice] %></p>
 <% end -%>
 
-<p><%= link_to_remote image_tag('icons/file_add.png') + " Adicionar", :update => "sidebar", :url => new_object_url, :method => :get %></p>
+<p><%= link_to_remote image_tag('icons/file_add.png') + " Adicionar", :update => "box_form", :url => new_object_url, :method => :get %></p>
+
+<div id="box_form" class="clearfix">
+	<%= yield :box_form %>
+</div>
 
 <table class="tbldata">
 	<thead>

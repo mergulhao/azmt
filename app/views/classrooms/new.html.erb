@@ -1,12 +1,13 @@
-<h2>Nova Sala</h2>
+<div id="box_form">
+<h3>Nova Sala</h3>
 
 <%= error_messages_for :classroom %>
 
 <% form_for(:classroom, :url => collection_url) do |f| %>
+<fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%= submit_tag "Criar" %>
-  </p>
+  <label class="x-small lblbutton"><%= submit_tag "Criar", :class => "button" %></label>
+  <label class="x-small" style="text-align: right;"><%= link_to 'Voltar', collection_url %></label>
+</fieldset>
 <% end %>
-<br/>
-<%= link_to 'Voltar', collection_url %>
+</div>
