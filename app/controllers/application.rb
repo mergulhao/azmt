@@ -4,7 +4,8 @@
 class ApplicationController < ActionController::Base
   include ExceptionNotifiable
   helper :all # include all helpers, all the time
-
+  Localization.lang = 'pt_BR'
+  
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '711bafc0d3a34870160f938fbb75efe5'

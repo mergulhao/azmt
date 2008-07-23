@@ -16,7 +16,7 @@ describe ActionView::Helpers::UrlHelper do
     html_options = {'confirm' => 'My confirmation', 'method' => :delete}
     convert_options_to_javascript!(html_options, '/my/url')
     
-    html_options["onclick"].should eql("Modalbox.show('<div>button_to&nbsp;&nbsp;&nbsp;button_to_function</div>', {title: 'Confirmation: ', width: 250}); return false;")
+    html_options["onclick"].should eql("Modalbox.show('<div>button_to&nbsp;&nbsp;&nbsp;button_to_function</div>', {title: '', width: 450}); return false;")
     html_options["confirm"].should be_nil
     html_options["method"].should be_nil
   end

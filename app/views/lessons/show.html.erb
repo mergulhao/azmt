@@ -8,7 +8,7 @@
   <strong>Date:</strong><%=h @lesson.date %>
 </p>
 <p>
-  <strong>Hour:</strong><%=h @lesson.start_time %> to <%=h @lesson.end_time %>
+  <strong>Hour:</strong><%=_ '(time)', @lesson.start_time %> to <%=_ '(time)', @lesson.end_time %>
 </p>
 
 <%= link_to 'Edit', edit_object_url %>

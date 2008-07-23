@@ -1,10 +1,10 @@
-<h2>Salas de Aula</h2>
+<h2><%=_ 'Classrooms' %></h2>
 
 <% if flash[:notice] -%>
 <p><%= flash[:notice] %></p>
 <% end -%>
 
-<p><%= link_to_remote image_tag('icons/file_add.png') + " Adicionar", :update => "box_form", :url => new_object_url, :method => :get %></p>
+<p><%= link_to_remote image_tag('icons/file_add.png') + " " + _('Add'), :update => "box_form", :url => new_object_url, :method => :get %></p>
 
 <div id="box_form" class="clearfix">
 	<%= yield :box_form %>
@@ -13,8 +13,8 @@
 <table class="tbldata">
 	<thead>
 	  <tr>
-	    <th>Nome</th>
-	    <th>Capacidade</th>
+	    <th><%=_ 'Name' %></th>
+	    <th><%=_ 'Capacity' %></th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -24,7 +24,7 @@
       <td style="text-align: center;"><%=h classroom.capacity %></td>
     
       <td><%=link_to_remote image_tag('icons/file_edit.png'), :update => "sidebar", :url => edit_object_url(classroom), :method => :get %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => 'Tem certeza que deseja remover a sala?', :method => :delete %></td>
+      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => _('You will delete it permanently. Are you sure?'), :method => :delete %></td>
     </tr>
   <% end %>
   </tbody>
