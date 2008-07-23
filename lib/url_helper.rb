@@ -9,7 +9,7 @@ module ActionView
           modal_box_js << button_to("Continuar", url, html_options)
           modal_box_js << "&nbsp;&nbsp;&nbsp;"
           modal_box_js << button_to_function("Cancelar", "Modalbox.hide()")
-          modal_box_js << "</div>', {title: 'Confirmation: #{escape_javascript(confirm)}', width: 250}); return false;"
+          modal_box_js << "</div>', {title: '#{escape_javascript(confirm)}', width: 450}); return false;"
           html_options.delete("method")
           html_options["onclick"] = modal_box_js
         else
