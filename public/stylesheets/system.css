@@ -323,6 +323,22 @@ label.x-small { /* IE 6 fix */
 	height: 24px;
 }
 
+#box_form {
+	width: 500px;
+}
+
+#box_form h3 {
+	border: 1px solid #e9e9e9;
+	background-color: #e7e7d9;
+	margin: 0 0 5px 0;
+	padding: 5px;
+}
+
+#box_form form {
+	border: 1px solid #e9e9e9;
+	margin: 0 0 10px 0;
+}
+
 /* Footer
 ---------------------------------- */
 
