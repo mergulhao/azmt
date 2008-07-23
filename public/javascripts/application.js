@@ -4,3 +4,7 @@
 function clearSidebar(){
     $('sidebar').update();
 }
+
+function clearBoxForm(){
+    $('box_form').update();
+}
