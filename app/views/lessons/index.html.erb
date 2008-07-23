@@ -96,7 +96,7 @@ end %>
               <% end %>
               <span>
                 <% #= link_to 'Nova Aula', new_object_url.merge(:lesson => {:datetime_start => @start_date}) %>
-                <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:datetime_start => date, :datetime_end => date}) %>
+                <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
               </span>
             </div>      
           <% end %>

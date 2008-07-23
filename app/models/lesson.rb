@@ -2,6 +2,9 @@ class Lesson < ActiveRecord::Base
   extend Forwardable
   belongs_to :classe
   belongs_to :classroom
+
+  validates_presence_of :classe
+  validates_presence_of :classroom
   
   def_delegators :classe, :teacher, :teacher_id, :discipline
   

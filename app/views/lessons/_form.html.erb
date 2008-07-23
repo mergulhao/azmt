@@ -5,17 +5,27 @@
 
 <% unless parent_object -%>
 <p>
-  <label for="lesson_discipline_id">Disciplina:</label>
-  <%= f.collection_select :discipline_id, Discipline.find(:all), :id, :name %>
+  <label for="lesson_classe_id">Turma:</label>
+  <%= f.collection_select :classe_id, Classe.find(:all), :id, :to_s %>
 </p>
 <% end -%>
 
 <p>
-  <label for="lesson_datetime_start">Começo:</label>
-  <%= f.datetime_select :datetime_start, :order => [:day, :month, :year], :minute_step => 30 %>
+  <label for="lesson_classroom_id">Sala:</label>
+  <%= f.collection_select :classroom_id, Classroom.find(:all), :id, :name %>
 </p>
 
 <p>
-  <label for="lesson_datetime_end">Fim:</label>
-  <%= f.datetime_select :datetime_end, :order => [:day, :month, :year], :minute_step => 30 %>
+  <label for="lesson_date">Começo:</label>
+  <%= f.date_select :date, :order => [:day, :month, :year] %>
+</p>
+
+<p>
+  <label for="lesson_start_time">Inicio:</label>
+  <%= f.time_select :start_time, :minute_step => 30 %>
+</p>
+
+<p>
+  <label for="lesson_end_time">Fim:</label>
+  <%= f.time_select :end_time, :minute_step => 30 %>
 </p>

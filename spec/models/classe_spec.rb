@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Classe do
-  fixtures :classes
+  fixtures :classes, :classrooms
   
   describe "defaults tests" do
     before(:each) do
@@ -18,8 +18,15 @@ describe Classe do
     it "should be valid for update" do
       classes(:first_semester_math).should be_valid
     end
+    
   end
-
+  
+  describe ".to_s" do
+    it "should return formatted to_s" do
+      classes(:first_semester_math).to_s.should eql('Math with Marge Bouvier Simpson, start date: 09/06/2008')
+      classes(:first_semester_sexology).to_s.should eql('Sexology with Homer J. Simpson, start date: 06/06/2008')
+    end
+  end
   describe "handling lessons on create" do
     
     describe "default cases" do
@@ -33,6 +40,7 @@ describe Classe do
           :start_time => @start_time, 
           :end_time => @end_time, 
           :repeat_on => @repeat_on, 
+          :classroom => classrooms(:amazonia),
           :lessons_number => @lessons_number)
       end
 

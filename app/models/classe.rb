@@ -21,6 +21,10 @@ class Classe < ActiveRecord::Base
     write_attribute(:repeat_on, value.to_sym)
   end
   
+  def to_s
+    "#{discipline} with #{teacher}, start date: #{start_date.to_s_br}"
+  end
+  
   def after_initialize
     return if start_date.blank? || lessons_number.blank?
     
@@ -37,7 +41,8 @@ class Classe < ActiveRecord::Base
         :date => date,
         :start_time => start_time,
         :end_time => end_time,
-        :classroom => classroom)
+        :classroom => classroom,
+        :classe => self)
     end
   end
   

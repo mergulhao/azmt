@@ -2,13 +2,13 @@
   <strong>Name:</strong><%=h @lesson.name %>
 </p>
 <p>
-  <strong>Discipline:</strong><%=h @lesson.discipline %>
+  <strong>Turma:</strong><%=h @lesson.classe %>
 </p>
 <p>
-  <strong>Datetime start:</strong><%=h @lesson.datetime_start %>
+  <strong>Date:</strong><%=h @lesson.date %>
 </p>
 <p>
-  <strong>Datetime end:</strong><%=h @lesson.datetime_end %>
+  <strong>Hour:</strong><%=h @lesson.start_time %> to <%=h @lesson.end_time %>
 </p>
 
 <%= link_to 'Edit', edit_object_url %>
