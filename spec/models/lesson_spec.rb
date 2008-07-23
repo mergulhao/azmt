@@ -7,8 +7,10 @@ describe Lesson do
     @lesson = Lesson.new
   end
 
-  it "should be valid" do
-    @lesson.should be_valid
+  it "should not be valid" do
+    @lesson.should_not be_valid
+    errors = ["Classroom can't be blank", "Classe can't be blank"]
+    @lesson.errors.full_messages.should eql(errors)
   end
   
   it "should respond to teacher" do
