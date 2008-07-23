@@ -6,18 +6,22 @@
 
 <p><%= link_to_remote image_tag('icons/file_add.png') + " Adicionar", :update => "sidebar", :url => new_object_url, :method => :get %></p>
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Capacidade</th>
-  </tr>
+<table class="tbldata">
+	<thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Capacidade</th>
+	  </tr>
+	</thead>
+	<tbody>
   <%- @classrooms.each do |classroom| %>
     <tr>
       <td><%=h classroom.name %></td>
-      <td><%=h classroom.capacity %></td>
+      <td style="text-align: center;"><%=h classroom.capacity %></td>
     
       <td><%=link_to_remote image_tag('icons/file_edit.png'), :update => "sidebar", :url => edit_object_url(classroom), :method => :get %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => 'Tem certeza?', :method => :delete %></td>
+      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => 'Tem certeza que deseja remover a sala?', :method => :delete %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
