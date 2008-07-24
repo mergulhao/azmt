@@ -6,13 +6,13 @@ class ClassroomsController < ResourceController::Base
   end
 
   update do
-    flash "Classroom successfully updated!"
+    flash _('%s successfully updated!', _('Classroom'))
     wants.js { render :template => 'common/redirect_to_collection' }
     failure.wants.js { render :action => 'edit', :layout => false }
   end
   
   create do
-    flash "Classroom successfully created!"
+    flash _('%s successfully created!', _('Classroom'))
     wants.js { render :template => 'common/redirect_to_collection' }
     failure.wants.js { render :action => 'new', :layout => false }
   end

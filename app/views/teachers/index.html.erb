@@ -1,17 +1,19 @@
-<h2>Instrutores</h2>
+<%= link_add_to_remote %>
 
-<p><%= link_to image_tag('icons/file_add.png') + " Adicionar", new_object_url %></p>
-
-<table>
-  <tr>
-    <th>Nome</th>
-  </tr>
-  <%- @teachers.each do |teacher|%>
+<table class="tbldata">
+  <thead>
     <tr>
-      <td><%=h teacher.name %></td>
-    
-      <td><%=link_to image_tag('icons/file_edit.png'), edit_object_url(teacher) %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(teacher), :confirm => 'Are you sure?', :method => :delete %></td>
+      <th><%=_ 'Name' %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <%- @teachers.each do |teacher|%>
+      <tr>
+        <td><%=h teacher.name %></td>
+      
+        <td><%= link_edit_to_remote(teacher) %></td>
+        <td><%= link_delete(teacher) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

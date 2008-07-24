@@ -1,0 +1,9 @@
+<%= title_edit :teacher %>
+<%= error_messages_for :teacher %>
+
+<% form_remote_for(:teacher, :url => object_url, :update => "box_form", :html => { :method => :put }) do |f| %>
+  <fieldset>
+    <%= render :partial => "form", :locals => { :f => f } %>
+    <%= update_button_and_cancel_link_to_clear_box_form %>
+  </fieldset>
+<% end %>

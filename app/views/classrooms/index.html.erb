@@ -1,21 +1,21 @@
-<p><%= link_to_remote image_tag('icons/file_add.png') + " " + _('Add'), :update => "box_form", :url => new_object_url, :method => :get %></p>
+<%= link_add_to_remote %>
 
 <table class="tbldata">
-	<thead>
-	  <tr>
-	    <th><%=_ 'Name' %></th>
-	    <th><%=_ 'Capacity' %></th>
-	  </tr>
-	</thead>
-	<tbody>
-  <%- @classrooms.each do |classroom| %>
+  <thead>
     <tr>
-      <td><%=h classroom.name %></td>
-      <td style="text-align: center;"><%=h classroom.capacity %></td>
-    
-      <td><%=link_to_remote image_tag('icons/file_edit.png'), :update => "box_form", :url => edit_object_url(classroom), :method => :get %></td>
-      <td><%=link_to image_tag('icons/file_delete.png'), object_url(classroom), :confirm => _('You will delete it permanently. Are you sure?'), :method => :delete %></td>
+      <th><%=_ 'Name' %></th>
+      <th><%=_ 'Capacity' %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <%- @classrooms.each do |classroom| %>
+      <tr>
+        <td><%=h classroom.name %></td>
+        <td style="text-align: center;"><%=h classroom.capacity %></td>
+      
+        <td><%= link_edit_to_remote(classroom) %></td>
+        <td><%= link_delete(classroom) %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
