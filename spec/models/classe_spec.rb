@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Classe do
-  fixtures :classes, :classrooms
+  fixtures :classes, :classrooms, :teachers, :disciplines
   
   describe "defaults tests" do
     before(:each) do
@@ -11,7 +11,7 @@ describe Classe do
     it "should be valid" do
       @classe.should_not be_valid
       
-      error_messages = ["Start date can't be blank", "Lessons number can't be blank", "Repeat on must be a day of week", "End time can't be blank", "Start time can't be blank"]
+      error_messages = ["Start date can't be blank", "Classroom can't be blank", "Lessons number can't be blank", "Teacher can't be blank", "Repeat on must be a day of week", "Discipline can't be blank", "End time can't be blank", "Start time can't be blank"]
       @classe.errors.full_messages.should eql(error_messages)
     end
     
@@ -27,6 +27,7 @@ describe Classe do
       classes(:first_semester_sexology).to_s.should eql('Sexology with Homer J. Simpson, start date: 06/06/2008')
     end
   end
+  
   describe "handling lessons on create" do
     
     describe "default cases" do
@@ -41,9 +42,17 @@ describe Classe do
           :end_time => @end_time, 
           :repeat_on => @repeat_on, 
           :classroom => classrooms(:amazonia),
+          :discipline => disciplines(:math), 
+          :teacher => teachers(:marge), 
           :lessons_number => @lessons_number)
       end
 
+      it "should be invalid if the discipline cannot be taught by the teacher" do
+        @classe.teacher = teachers(:homer)
+        @classe.should_not be_valid
+        @classe.errors.on(:teacher_id).should eql('cannot teach this discipline')
+      end
+      
       it "should generate lessons" do
         dates = [[2008,2,7], [2008,2,14], [2008,2,21], [2008,2,28]]
         @classe.lessons.size.should eql(4)
@@ -86,7 +95,7 @@ describe Classe do
       end      
     end
     
-    describe "border case"do
+    describe "border case" do
       it "should generate the first lesson on the same day" do
         classe = Classe.new(:start_date => Date.new(2008,7,3), 
           :start_time => Time.mktime(2008, 1, 1, 18, 30), 

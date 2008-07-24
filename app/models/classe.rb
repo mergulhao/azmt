@@ -14,8 +14,10 @@ class Classe < ActiveRecord::Base
   belongs_to :classroom
   has_many :lessons
 
+  validates_presence_of :discipline, :teacher, :classroom
   validates_presence_of :start_date, :start_time, :end_time, :lessons_number, :on => :create
   validates_inclusion_of :repeat_on, :in => WeekDays.keys, :on => :create, :message => 'must be a day of week'
+  validate :verify_if_discipline_can_be_teached_by_the_teacher
   
   def repeat_on=(value)
     write_attribute(:repeat_on, value.to_sym)
@@ -47,6 +49,12 @@ class Classe < ActiveRecord::Base
   end
   
   private
+  def verify_if_discipline_can_be_teached_by_the_teacher
+    if discipline && !(discipline.can_be_taught_by.include?(teacher))
+      errors.add(:teacher_id, 'cannot teach this discipline')
+    end
+  end
+  
   def weekday
     WeekDays[repeat_on.to_sym]
   end

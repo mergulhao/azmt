@@ -1,5 +1,7 @@
 homer:
   name: Homer J. Simpson
+  can_teach: sexology
 
 marge:
   name: Marge Bouvier Simpson
+  can_teach: math
