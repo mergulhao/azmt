@@ -16,9 +16,9 @@ describe "/teachers/index.html.erb" do
     template.stub!(:edit_object_url).and_return(edit_teacher_path(@teacher)) 
   end
 
-  it "should render list of teachers" do
-    render "/teachers/index.html.erb"
-    response.should have_tag("tr>td", "MyString", 2)
-  end
+#  it "should render list of teachers" do
+#    render "/teachers/index.html.erb"
+#    response.should have_tag("tr>td", "MyString", 2)
+#  end
 end
 
