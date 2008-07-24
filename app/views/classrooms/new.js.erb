@@ -3,9 +3,8 @@
 <%= error_messages_for :classroom %>
 
 <% form_remote_for(:classroom, :url => collection_url, :update => "box_form") do |f| %>
-<fieldset>
-  <%= render :partial => "form", :locals => { :f => f } %>
-  <label class="x-small lblbutton"><%= submit_tag "Criar", :class => "button" %></label>
-  <label class="x-small" style="text-align: right;"><%= link_to_function 'Cancelar', 'clearBoxForm()' %></label>
-</fieldset>
+  <fieldset>
+    <%= render :partial => "form", :locals => { :f => f } %>
+    <%= create_button_and_cancel_link_to_clear_box_form %>
+  </fieldset>
 <% end %>
