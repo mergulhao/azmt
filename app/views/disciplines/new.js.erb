@@ -1,7 +1,7 @@
-<%= title_new :classroom %>
-<%= error_messages_for :classroom %>
+<%= title_new :discipline %>
+<%= error_messages_for :discipline %>
 
-<% form_remote_for(:classroom, :url => collection_url, :update => "box_form") do |f| %>
+<% form_remote_for(:discipline, :url => collection_url, :update => "box_form") do |f| %>
   <fieldset>
     <%= render :partial => "form", :locals => { :f => f } %>
     <%= create_button_and_cancel_link_to_clear_box_form %>

@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include ExceptionNotifiable
-  helper :all # include all helpers, all the time
+#  helper :all # include all helpers, all the time
   Localization.lang = 'pt_BR'
   
   # See ActionController::RequestForgeryProtection for details

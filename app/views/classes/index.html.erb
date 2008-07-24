@@ -1,23 +1,24 @@
-<h1>Listing Classes</h1>
+<%= link_add_to_remote %>
 
-<table>
-  <tr>
-    <th>Sala</th>
-    <th>Disciplina</th>
-    <th>Professor</th>
-  </tr>
-  <%- @classes.each do |classe|%>
+<table class="tbldata">
+  <thead>
     <tr>
-      <td><%=h classe.classroom %></td>
-      <td><%=h classe.discipline %></td>
-      <td><%=h classe.teacher %></td>
-
-      <td><%=link_to 'Show', object_url(classe) %></td>
-      <td><%=link_to 'Edit', edit_object_url(classe) %></td>
-      <td><%=link_to 'Destroy', object_url(classe), :confirm => 'Are you sure?', :method => :delete %></td>
+      <th><%=_ 'Classroom' %></th>
+      <th><%=_ 'Discipline' %></th>
+      <th><%=_ 'Teacher' %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <%- @classes.each do |classe|%>
+      <tr>
+        <td><%=h classe.classroom %></td>
+        <td><%=h classe.discipline %></td>
+        <td><%=h classe.teacher %></td>
+      
+        <td><%= link_edit_to_remote(classe) %></td>
+        <td><%= link_delete(classe) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 <br/>
-
-<%= link_to 'New Classe', new_object_url %>

@@ -1,5 +1,4 @@
-<h3>Editando Sala</h3>
-
+<%= title_edit :classroom %>
 <%= error_messages_for :classroom %>
 
 <% form_remote_for(:classroom, :url => object_url, :update => "box_form", :html => { :method => :put }) do |f| %>
