@@ -1,73 +1,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
-<head>
- <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Azimut - AutoDesk Media and Entertainment</title>
-<link rel="shortcut icon" href="/favicon.ico" />
-
-<%= javascript_include_tag 'prototype', 'scriptaculous', 'jstarget', 'modalbox', 'prototip', 'timeframe', 'application', :cache => 'defaults' %>
-<%= stylesheet_link_tag 'application', 'system', 'timeframe', 'modalbox', 'prototip' , :cache => 'defaults' %>
-
-<!--[if lte IE 8]>
-<style type="text/css" media="all">
- 	@import url(stylesheets/timeframefix.css);
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Azimut - AutoDesk Media and Entertainment</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+    <%= javascript_include_tag 'prototype', 'scriptaculous', 'jstarget', 'modalbox', 'prototip', 'timeframe', 'application', :cache => 'defaults' %>
+    <%= stylesheet_link_tag 'application', 'system', 'timeframe', 'modalbox', 'prototip' , :cache => 'defaults' %>
+    
+    <!--[if lte IE 8]>
+    <style type="text/css" media="all">
+         @import url(stylesheets/timeframefix.css);
 </style>
 <![endif]-->
 
 <!--[if lte IE 7]>
 <style type="text/css" media="all">
- 	@import url(stylesheets/ie7fix.css);
+         @import url(stylesheets/ie7fix.css);
 </style>
 <![endif]-->
 
 <!--[if lte IE 6]>
 <style type="text/css" media="all">
- 	@import url(stylesheets/ie6fix.css);
+         @import url(stylesheets/ie6fix.css);
 </style>
 <![endif]-->
-
-</head>
-<body>
-<div id="wrap">
- <div id="header">
-  <!-- div id="masthead">Logado como <strong>teste</strong> | <a href="#">Preferências</a> | <a href="#">Sair</a></div -->
-  <div id="logo"><h1><a href="index.html"><img src="/images/logo-azimut.png" alt="Azimut - AutoDesk Media and Entertainment" /></a></h1></div>
-  <div id="menu">
-   <ul>
-        <li><a href="/classrooms"><span>Salas</span></a></li>
-	<li><a href="/teachers"><span>Instrutores</span></a></li>
-	<li><a href="/courses"><span>Formações</span></a></li>
-	<li><a href="/disciplines"><span>Disciplinas</span></a></li>
-	<li><a href="/classes"><span>Turmas</span></a></li>
-	<li><a href="/lessons"><span>Aulas</span></a></li>
-   </ul>
-  </div>
- </div>
- <hr />
- <div id="container" class="clearfix"> 
- <div id="content">
- <div id="sidebar">
-  <%= yield :sidebar %>
- </div>
-
-<%= yield %>
-
-  </div>
- </div>
- <hr />
- <div id="footer">
-  <div id="copy">&copy; 2008 - Todos os direitos reservados</div>
-  <div class="vcard">
-   <div class="org fn"><a class="url" href="http://www.azimut.com.br/" title="Azimut" rel="Bookmark">Azimut - AutoDesk Media and Entertainment</a></div>
- 	<div class="adr">
-  	<span class="street-address">Rua Hilário de Gouveia, 66 sala 1303. Copacabana</span> - 
-  	<span class="locality">Rio de Janeiro</span>, 
-  	<span class="region">RJ</span>
-   </div>
-  </div>
- </div>
- <div id="by">Por: <a href="http://en21.org" rel="external">En21.org</a> | <a href="http://ramonpage.com" rel="external">RamonPage.com</a></div>
-</div>
-</body>
+    
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <!-- div id="masthead">Logado como <strong>teste</strong> | <a href="#">Preferências</a> | <a href="#">Sair</a></div -->
+        <div id="logo"><h1><a href="index.html"><img src="/images/logo-azimut.png" alt="Azimut - AutoDesk Media and Entertainment" /></a></h1></div>
+        <div id="menu">
+          <ul>
+            <li><a href="/classrooms"><span>Salas</span></a></li>
+            <li><a href="/teachers"><span>Instrutores</span></a></li>
+            <li><a href="/courses"><span>Formações</span></a></li>
+            <li><a href="/disciplines"><span>Disciplinas</span></a></li>
+            <li><a href="/classes"><span>Turmas</span></a></li>
+            <li><a href="/lessons"><span>Aulas</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div id="container" class="clearfix"> 
+        <div id="content">
+          
+          <div id="sidebar">
+            <%= yield :sidebar %>
+          </div>
+          
+          <h2><%= title %></h2>
+          
+          <%= flash_notice %>
+          
+          <div id="box_form" class="clearfix">
+            <%= yield :box_form %>
+          </div>
+                   
+          <%= yield %>
+                              
+        </div>
+      </div>
+      <hr />
+      <div id="footer">
+        <div id="copy">&copy; 2008 - Todos os direitos reservados</div>
+        <div class="vcard">
+          <div class="org fn"><a class="url" href="http://www.azimut.com.br/" title="Azimut" rel="Bookmark">Azimut - AutoDesk Media and Entertainment</a></div>
+          <div class="adr">
+            <span class="street-address">Rua Hilário de Gouveia, 66 sala 1303. Copacabana</span> - 
+            <span class="locality">Rio de Janeiro</span>, 
+            <span class="region">RJ</span>
+          </div>
+        </div>
+      </div>
+      <div id="by">Por: <a href="http://en21.org" rel="external">En21.org</a> | <a href="http://ramonpage.com" rel="external">RamonPage.com</a></div>
+    </div>
+  </body>
 </html>
