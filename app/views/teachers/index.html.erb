@@ -4,12 +4,16 @@
   <thead>
     <tr>
       <th><%=_ 'Name' %></th>
+      <th><%=_ 'Autodesk code' %></th>
+      <th><%=_ 'Disciplines' %></th>
     </tr>
   </thead>
   <tbody>
     <%- @teachers.each do |teacher|%>
       <tr>
         <td><%=h teacher.name %></td>
+        <td><%=h teacher.autodesk_code %></td>
+        <td><%=h teacher.can_teach.join(', ') %></td>
       
         <td><%= link_edit_to_remote(teacher) %></td>
         <td><%= link_delete(teacher) %></td>

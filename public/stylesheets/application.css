@@ -16,3 +16,8 @@
 .calendar tr.lesson td div span {
     display: block;
 }
+
+#box_form form fieldset ul li {
+    list-style: none;
+    float: left;
+}
