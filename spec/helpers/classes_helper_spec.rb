@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ClassesHelper do
-  
-  #Delete this example and add some real ones or delete this file
-  it "should be included in the object returned by #helper" do
-    included_modules = (class << helper; self; end).send :included_modules
-    included_modules.should include(ClassesHelper)
+  describe ".title" do
+    it "should return title" do
+      string = "Classes"
+      helper.should_receive(:_).with(string).and_return(string)
+      helper.title.should eql(string)
+    end
   end
-  
 end
