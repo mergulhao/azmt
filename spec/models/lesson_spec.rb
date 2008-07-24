@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Lesson do
-  fixtures :classrooms, :teachers, :disciplines, :lessons
+  fixtures :classrooms, :teachers, :disciplines, :lessons, :classes
   
   before(:each) do
     @lesson = Lesson.new
