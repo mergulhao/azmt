@@ -10,6 +10,10 @@ class LessonsController < ResourceController::Base
     unless params[:classroom_id].blank?
       @lessons = @lessons.select { |lesson| lesson.classroom_id == params[:classroom_id].to_i }
     end
+    
+    unless params[:classe_id].blank?
+      @lessons = @lessons.select { |lesson| lesson.classe_id == params[:classe_id].to_i }
+    end
   end
   
   def collection

@@ -19,38 +19,30 @@
   </script>
 <% end %>
 
-<h2>Aulas</h2>
-
-<p>
-<%= link_to_function image_tag('icons/arrow_down.png') + 'Escolher Sala' do |page|
-  page.visual_effect :toggle_appear, 'classroom_filter'
-  page.visual_effect :toggle_appear, 'submit_filter_1'
-  #page.visual_effect :toggle_appear, 'submit_filter_2'
-end %>
-|
-<%= link_to_function image_tag('icons/arrow_down.png') + 'Escolher Professor' do |page|
-  page.visual_effect :toggle_appear, 'teacher_filter'
-  #page.visual_effect :toggle_appear, 'submit_filter_1'
-  page.visual_effect :toggle_appear, 'submit_filter_2'
-end %>
-</p>
-
   <% form_tag collection_url, :method => :get do -%>
     <fieldset>
-      <label id="classroom_filter" style="display: none;">
+      <label id="classroom_filter">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Sala' %><br/>
         <%= select_tag :classroom_id, 
-          "<option value="">Selecione</option>" +
+          "<option value=''>Todos</option>" +
           options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i) %>
       </label>
 
-      <label id="teacher_filter" style="display: none;">
+      <label id="teacher_filter">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Instrutor' %><br/>
         <%= select_tag :teacher_id, 
-          "<option value="">Selecione</option>" +
+          "<option value=''>Todos</option>" +
           options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i) %>
       </label>
 
-      <label class="x-small lblbutton" id="submit_filter_1" style="display: none;"><input type="submit" class="button" value="Filtrar" /></label>
-      <label class="x-small lblbutton" id="submit_filter_2" style="display: none;"><input type="submit" class="button" value="Filtrar" /></label>
+      <label id="classe_filter">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Turma' %><br/>
+        <%= select_tag :classe_id, 
+          "<option value=''>Todos</option>" +
+          options_from_collection_for_select(Classe.find(:all), :id, :to_s, params[:classe_id].to_i) %>
+      </label>
+
+      <label class="x-small lblbutton" id="submit_filter"><input type="submit" class="button" value="Filtrar" /></label>
     </fieldset>
   <% end %>
   
@@ -95,7 +87,6 @@ end %>
                 </span>
               <% end %>
               <span>
-                <% #= link_to 'Nova Aula', new_object_url.merge(:lesson => {:datetime_start => @start_date}) %>
                 <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
               </span>
             </div>      

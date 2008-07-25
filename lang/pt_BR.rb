@@ -7,6 +7,8 @@ Localization.define('pt_BR') do |l|
   l.store 'Classrooms', 'Salas de aula'
   l.store 'Discipline', 'Disciplina'
   l.store 'Disciplines', 'Disciplinas'
+  l.store 'Lesson', 'Aula'
+  l.store 'Lessons', 'Aulas'
   l.store 'Name', 'Nome'
   l.store 'Teacher', 'Instrutor'
   l.store 'Teachers', 'Instrutores'
