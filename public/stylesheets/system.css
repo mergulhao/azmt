@@ -197,6 +197,7 @@ a:hover {
 
 #sidebar {
 	float: right;
+        width: 200px;
 	font-size: .9em;
 	padding: 0 0 0 10px;
 	border-left: 1px dotted #b4b4a6;

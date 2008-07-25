@@ -56,9 +56,11 @@
           
           <%= flash_notice %>
           
+          <%- unless controller.class == LessonsController -%>
           <div id="box_form" class="clearfix">
             <%= yield :box_form %>
           </div>
+          <%- end -%>
                    
           <%= yield %>
                               
