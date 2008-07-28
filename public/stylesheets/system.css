@@ -233,6 +233,15 @@ table.tbldata tr td {
 	width: 100%;
 }
 
+#box_calendar {
+	position: absolute;
+	margin: 100px 0 0 400px;
+	border: 1px solid #b4b4a6;
+	width: 340px;
+	background-color: #fafafa;
+	display: none;
+}
+
 /* Forms
 ---------------------------------- */
 
