@@ -1,5 +1,4 @@
 <% content_for :sidebar do %>
-  <h2>Calendário</h2>
   	<div id="calendars"></div>
       <% form_tag((collection_url rescue ''), :method => :get) do -%>
 	   <fieldset>
@@ -21,28 +20,28 @@
 
   <% form_tag collection_url, :method => :get do -%>
     <fieldset>
-      <label id="classroom_filter">
-        <%= image_tag('icons/arrow_down.png') + 'Escolher Sala' %><br/>
+      <label id="classroom_filter" class="small">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Sala' %>
         <%= select_tag :classroom_id, 
           "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i) %>
+          options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i), :class => "select" %>
       </label>
 
       <label id="teacher_filter">
         <%= image_tag('icons/arrow_down.png') + 'Escolher Instrutor' %><br/>
         <%= select_tag :teacher_id, 
           "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i) %>
+          options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i), :class => "select" %>
       </label>
 
       <label id="classe_filter">
         <%= image_tag('icons/arrow_down.png') + 'Escolher Turma' %><br/>
         <%= select_tag :classe_id, 
           "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Classe.find(:all), :id, :to_s, params[:classe_id].to_i) %>
+          options_from_collection_for_select(Classe.find(:all), :id, :to_s, params[:classe_id].to_i), :class => "select" %>
       </label>
 
-      <label class="x-small lblbutton" id="submit_filter"><input type="submit" class="button" value="Filtrar" /></label>
+      <label class="x-small lblbutton" id="submit_filter" style="margin-top: 18px;"><input type="submit" class="button" value="Filtrar" /></label>
     </fieldset>
   <% end %>
   
