@@ -9,8 +9,8 @@
     <%= javascript_include_tag 'prototype', 'scriptaculous', 'jstarget', 'modalbox', 'prototip', 'timeframe', 'application' %>
     <%= stylesheet_link_tag 'application', 'system', 'timeframe', 'modalbox', 'prototip' , :cache => 'defaults' %>
     
-    <!--[if lte IE 8]>
-    <style type="text/css" media="all">
+<!--[if lte IE 8]>
+<style type="text/css" media="all">
          @import url(stylesheets/timeframefix.css);
 </style>
 <![endif]-->
@@ -52,6 +52,10 @@
             <%= yield :sidebar %>
           </div>
           
+		  <div id="box_calendar" style="display: none;">
+            <%= yield :box_calendar %>
+          </div>
+		  
           <h2><%= title %></h2>
           
           <%= flash_notice %>
