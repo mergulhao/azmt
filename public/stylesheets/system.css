@@ -197,10 +197,24 @@ a:hover {
 
 #sidebar {
 	float: right;
-        width: 200px;
+    width: 200px;
 	font-size: .9em;
 	padding: 0 0 0 10px;
 	border-left: 1px dotted #b4b4a6;
+}
+
+
+
+/* Calendar
+---------------------------------- */
+
+#calendars {
+	width: 220px;
+}
+
+#calendars li a,
+#calendars table {
+	display: inline;
 }
 
 /* Tables
@@ -216,12 +230,25 @@ table.tbldata tr td {
 	border-bottom:1px solid #e9e9e9;
 }
 
-/* Calendar
----------------------------------- */
+table.calendar {
+	border-collapse: collapse;
+	border: 1px solid #b4b4a6;
+	width: 100%;
+}
 
-#calendars li a,
-#calendars table {
-	display: inline;
+table.calendar th {
+	padding: 2px;
+	font-size: 1.1em;
+	text-align: center;
+	background-color: #f1f1f1;
+}
+
+table.calendar tr td {
+	border: 1px solid #b4b4a6;
+}
+
+table.calendar tr td .empty {
+	width: 100%;	
 }
 
 /* Content
@@ -237,10 +264,18 @@ table.tbldata tr td {
 	position: absolute;
 	margin: 100px 0 0 400px;
 	border: 1px solid #b4b4a6;
-	width: 340px;
+	width: 220px;
 	background-color: #fafafa;
-	display: none;
+	z-index: 9999;
 }
+
+#box_calendar #close_calendar {
+	float: right;
+	margin: 5px;
+	padding: 3px 5px;
+	border: 1px solid #696969;
+}
+
 
 /* Forms
 ---------------------------------- */
