@@ -16,9 +16,9 @@ Localization.define('pt_BR') do |l|
   l.store 'You will delete it permanently. Are you sure?', 'O registro será apagado permamentemente. Deseja continuar?'
 
   l.store 'Editing %s', 'Editando %s'
-  l.store 'New %s', 'Novo %s'
+  l.store 'New %s', 'Novo(a) %s'
 
-  l.store '%s successfully created!', '%s criada com sucesso!'
-  l.store '%s successfully updated!', '%s atualizada com sucesso!'
+  l.store '%s successfully created!', '%s criado(a) com sucesso!'
+  l.store '%s successfully updated!', '%s atualizado(a) com sucesso!'
   l.store '(time)', lambda { |t| t.strftime('%H:%M') }
 end
