@@ -1,6 +1,9 @@
-<label class="small">Nome
+<label class="small"><%=_ 'Name' %>
   <%= f.text_field :name, :class => "textfield" %>
 </label>
-<label class="x-small">Capacidade
+<label class="x-small"><%=_ 'Capacity' %>
   <%= f.text_field :capacity, :class => "textfield" %>
 </label><br />
+<label><%=_ 'External?' %></label>
+  <%= f.radio_button :external, :true %> <%=_ 'true' %>
+  <%= f.radio_button :external, :false %> <%=_ 'false' %>
