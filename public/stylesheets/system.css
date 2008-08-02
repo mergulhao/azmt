@@ -103,6 +103,33 @@ a:hover {
 	color: #231f20;
 }
 
+
+/* Classes
+---------------------------------- */
+
+.errorExplanation {
+	margin: 0 0 5px 0;
+	padding: 6px 5px 10px 25px;
+	background: #ffeee9 url(/images/icons/error.png) no-repeat 5px 5px;
+	border-top: 1px solid #ddccc7;
+	border-bottom: 1px solid #ddccc7;
+}
+
+.errorExplanation ul {
+	margin: 5px;
+	padding: 0;
+	color: #f00;
+}
+
+.infoExplanation {
+	padding: 6px 5px 10px 25px;
+	background: #f5fdff url(/images/icons/info.png) no-repeat 5px 5px;
+	border-top: 1px solid #0277ba;
+	border-bottom: 1px solid #0277ba;
+}
+
+
+
 /* Header
 ---------------------------------- */
 
@@ -368,18 +395,21 @@ label.x-small { /* IE 6 fix */
 	height: 24px;
 }
 
-#box_form {
+#box_form,
+.box_form {
 	width: 500px;
 }
 
-#box_form h3 {
+#box_form h3,
+.box_form h3 {
 	border: 1px solid #e9e9e9;
 	background-color: #e7e7d9;
 	margin: 0 0 5px 0;
 	padding: 5px;
 }
 
-#box_form form {
+#box_form form,
+.box_form form {
 	border: 1px solid #e9e9e9;
 	margin: 0 0 10px 0;
 }
