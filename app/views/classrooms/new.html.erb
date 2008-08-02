@@ -1,7 +1,5 @@
-<h2>Salas de aula</h2>
-
-<div id="box_form">
-<h3>Nova Sala</h3>
+<div class="box_form">
+<%= title_new :classroom %>
 
 <%= error_messages_for :classroom %>
 
@@ -9,7 +7,7 @@
 <fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
   <label class="x-small lblbutton"><%= submit_tag "Criar", :class => "button" %></label>
-  <label class="x-small" style="text-align: right;"><%= link_to 'Voltar', collection_url %></label>
+  <label class="x-small" style="text-align: right;"><%= link_to 'Cancelar', collection_url %></label>
 </fieldset>
 <% end %>
 </div>
