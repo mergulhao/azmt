@@ -62,6 +62,7 @@
 /* Calendar*/
 #calendars table {
 	border-collapse: collapse;
+	 display: inline;
 	display: inline-block;
 	font-size: 15px;
 	margin: 0 6px 12px;
@@ -119,11 +120,11 @@
 }
 
 #calendars tbody td.startrange {
-	background-image: url(/images/start.png);
+	background-image: url(../images/start.png);
 }
 
 #calendars tbody td.endrange {
-	background-image: url(/images/end.png);
+	background-image: url(../images/end.png);
 }
 
 #calendars tbody td.startendrange {
@@ -186,5 +187,5 @@
 }
 
 #calendars tbody td span.clear span.active {
-	background-image: url(/images/closebox_selected.png);
+	background-image: url(images/closebox_selected.png);
 }
