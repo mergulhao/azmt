@@ -1,5 +1,10 @@
 Localization.define('pt_BR') do |l|
   l.store 'Add', 'Adicionar'
+  #----
+  l.store 'Create', 'Criar'
+  l.store 'Update', 'Atualizar'
+  l.store 'Delete', 'Deletar'
+  #----
   l.store 'Capacity', 'Capacidade'
   l.store 'Classe', 'Turma'
   l.store 'Classes', 'Turmas'
@@ -12,13 +17,14 @@ Localization.define('pt_BR') do |l|
   l.store 'Name', 'Nome'
   l.store 'Teacher', 'Instrutor'
   l.store 'Teachers', 'Instrutores'
-
+  #----
   l.store 'You will delete it permanently. Are you sure?', 'O registro será apagado permamentemente. Deseja continuar?'
-
+  #----
   l.store 'Editing %s', 'Editando %s'
-  l.store 'New %s', 'Novo(a) %s'
-
-  l.store '%s successfully created!', '%s criado(a) com sucesso!'
-  l.store '%s successfully updated!', '%s atualizado(a) com sucesso!'
+  l.store 'New %s', 'Criar %s'
+  #----
+  l.store '%s successfully created!', 'Registro inserido com sucesso!'
+  l.store '%s successfully updated!', 'Registro atualizado com sucesso!'
+  l.store '%s successfully removed!', 'Registro removido com sucesso!'  
   l.store '(time)', lambda { |t| t.strftime('%H:%M') }
 end
