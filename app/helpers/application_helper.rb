@@ -12,12 +12,12 @@ module ApplicationHelper
   end
   
   def create_button_and_cancel_link_to_clear_box_form
-    submit_button(_('Create')) +
+    submit_button(_('Criar')) +
       link_to_clear_box_form
   end
   
   def update_button_and_cancel_link_to_clear_box_form
-    submit_button(_('Update')) +
+    submit_button(_('Atualizar')) +
       link_to_clear_box_form
   end
 
