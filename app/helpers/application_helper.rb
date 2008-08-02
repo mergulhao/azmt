@@ -12,12 +12,12 @@ module ApplicationHelper
   end
   
   def create_button_and_cancel_link_to_clear_box_form
-    submit_button(_('Criar')) +
+    submit_button(_('Create')) +
       link_to_clear_box_form
   end
   
   def update_button_and_cancel_link_to_clear_box_form
-    submit_button(_('Atualizar')) +
+    submit_button(_('Update')) +
       link_to_clear_box_form
   end
 
@@ -51,7 +51,24 @@ module ApplicationHelper
   
   def flash_notice
     if flash[:notice]
-      content_tag :p, flash[:notice]
+      content_tag :p, flash[:notice], "class" => "infoExplanation"
+    end
+  end
+  
+  def error_messages_for(object_name, options = {})
+    options = options.symbolize_keys
+    object = instance_variable_get("@#{object_name}")
+    if object && !object.errors.empty?
+      content_tag("div",
+      content_tag(
+      options[:header_tag] || "strong",
+      "#{object.errors.count} erro(s) encontrados"
+      ) +
+      content_tag("ul", object.errors.full_messages.collect { |msg| content_tag("li", msg) }),
+      "id" => options[:id] || "errorExplanation", "class" => options[:class] || "errorExplanation"
+      )
+    else
+      ""
     end
   end
 end
