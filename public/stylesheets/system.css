@@ -397,7 +397,7 @@ label.x-small { /* IE 6 fix */
 
 #box_form,
 .box_form {
-	width: 500px;
+	width: 510px;
 }
 
 #box_form h3,
@@ -412,6 +412,21 @@ label.x-small { /* IE 6 fix */
 .box_form form {
 	border: 1px solid #e9e9e9;
 	margin: 0 0 10px 0;
+}
+
+form ul {
+	margin: 0 0 5px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+form ul li {
+	float: left;
+}
+
+form ul li label {
+	display: inline;
+	float: none;
 }
 
 /* Footer
