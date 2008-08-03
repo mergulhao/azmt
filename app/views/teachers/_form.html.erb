@@ -1,14 +1,7 @@
-<p>
-  <label for="teacher_name"><%=_ 'Name' %>:</label>
-  <%= f.text_field :name %>
-</p>
+<label class="large"><%=_ 'Name' %> <%= f.text_field :name, :class => "textfield" %></label>
+<label class="small"><%=_ 'Autodesk code' %> <%= f.text_field :autodesk_code, :class => "textfield" %></label><br />
 
-<p>
-  <label for="teacher_autodesk_code"><%=_ 'Autodesk code' %>:</label>
-  <%= f.text_field :autodesk_code %>
-</p>
-
-<p>
-  <label for="teacher_disciplines"><%=_ 'Disciplines' %>:</label>
-  <%= collection_multiple_select('teacher', 'can_teach_ids', Discipline.find(:all), :id, :name) %>
-</p>
+<fieldset class="clearfix" style="margin: 0 0 10px 0;">
+	<legend><%=_ 'Disciplines' %></legend>
+	<%= collection_multiple_select('teacher', 'can_teach_ids', Discipline.find(:all), :id, :name) %>	
+</fieldset>
