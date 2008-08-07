@@ -1,0 +1,26 @@
+<%= link_add_to_remote %>
+
+<table class="tbldata">
+  <thead>
+    <tr>
+      <th><%=_ 'Name' %></th>
+      <th><%=_ 'CPF' %></th>
+      <th><%=_ 'Home Phone' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @students.each do |student|%>
+      <tr>
+        <td><%=h student.name %></td>
+        <td><%=h student.cpf %></td>
+        <td><%=h student.home_phone %></td>
+
+
+        <td><%= link_edit_to_remote(student) %></td>
+        <td><%= link_delete(student) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>

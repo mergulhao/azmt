@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: 
+  street: 
+  number: 
+  complement: 
+  neiborhood: 
+  zip: 
+  home_phone: 
+  comercial_phone: 
+  mobile_phone: 
+  cpf: MyString
+
+two:
+  name: 
+  street: 
+  number: 
+  complement: 
+  neiborhood: 
+  zip: 
+  home_phone: 
+  comercial_phone: 
+  mobile_phone: 
+  cpf: MyString
