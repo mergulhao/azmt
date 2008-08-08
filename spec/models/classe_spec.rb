@@ -8,17 +8,21 @@ describe Classe do
       @classe = Classe.new
     end
 
-    it "should be valid" do
+    it "should not be valid" do
       @classe.should_not be_valid
       
       error_messages = ["Start date can't be blank", "Classroom can't be blank", "Lessons number can't be blank", "Teacher can't be blank", "Repeat on must be a day of week", "Discipline can't be blank", "End time can't be blank", "Start time can't be blank"]
       @classe.errors.full_messages.should eql(error_messages)
     end
+
+    it "should validates end_time after start_time" do
+      @classe.start_time = "10:00"
+      @classe.end_time = "9:00"
+      @classe.should_not be_valid
     
-    it "should be valid for update" do
-      classes(:first_semester_math).should be_valid
+      @classe.errors.on(:start_time).should be_nil
+      @classe.errors.on(:end_time).should eql('must be after 10:00:00')
     end
-    
   end
   
   describe ".to_s" do
@@ -62,7 +66,7 @@ describe Classe do
           dia = dates[i][2]
           date = Date.new(ano, mes, dia)
 
-          lesson.date.should eql(date)
+          lesson.date.to_date.should eql(date)
         
           lesson.start_time.hour.should eql(9)
           lesson.start_time.min.should  eql(0)
@@ -87,7 +91,7 @@ describe Classe do
       end
     
       it "should know keys values to generate lessons" do
-        @classe.start_date.should eql(@start_date)
+        @classe.start_date.to_date.should eql(@start_date)
         @classe.start_time.should eql(@start_time)
         @classe.end_time.should eql(@end_time)
         @classe.repeat_on.should eql(@repeat_on)
@@ -111,7 +115,7 @@ describe Classe do
           dia = dates[i][2]
           date = Date.new(ano, mes, dia)
 
-          lesson.date.should eql(date)
+          lesson.date.to_date.should eql(date)
         
           lesson.start_time.hour.should eql(18)
           lesson.start_time.min.should  eql(30)

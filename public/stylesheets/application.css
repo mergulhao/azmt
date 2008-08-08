@@ -17,7 +17,14 @@
     display: block;
 }
 
-#box_form form fieldset ul li {
-    list-style: none;
+
+#box_form form fieldset div input {
     float: left;
+}
+
+#box_form form fieldset .inner_multiple_select {
+    display: table;
+}
+
+#box_form form fieldset .outer_multiple_select {
 }

@@ -1,5 +1,5 @@
 module StudentsHelper
   def title
-   _ 'Student'
+   _ 'Students'
   end
 end
