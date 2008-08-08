@@ -22,18 +22,18 @@ describe "/students/show.html.erb" do
     template.stub!(:collection_url).and_return(students_path) 
   end
 
-  it "should render attributes in <p>" do
-    render "/students/show.html.erb"
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyString/)
-  end
+#  it "should render attributes in <p>" do
+#    render "/students/show.html.erb"
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#    response.should have_text(/MyString/)
+#  end
 end
 

@@ -6,8 +6,12 @@ class Lesson < ActiveRecord::Base
   validates_presence_of :classe
   validates_presence_of :classroom
   
-  def_delegators :classe, :teacher, :teacher_id, :discipline
+  validates_date :date
+  validates_time :start_time
+  validates_time :end_time, :after => :start_time
   
+  def_delegators :classe, :teacher, :teacher_id, :discipline
+
   def to_s
     "#{discipline} - #{name}"
   end

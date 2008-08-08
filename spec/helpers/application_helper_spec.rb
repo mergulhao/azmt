@@ -72,6 +72,22 @@ describe ApplicationHelper do
     helper.link_delete(object).should eql('link delete')
   end
   
+  describe ".error_messages_for" do
+    it "should return nothing when no errors" do
+      no_errors = Object.new
+      no_errors.should_receive(:errors).and_return([])
+      helper.instance_variable_set(:@no_errors, no_errors)
+      helper.error_messages_for(:no_errors).should eql('')
+    end
+    
+    it "should return the errors template" do
+      with_errors = Lesson.new
+      with_errors.should_not be_valid
+      helper.instance_variable_set(:@with_errors, with_errors)
+      helper.error_messages_for(:with_errors).should_not be_empty
+    end
+  end
+  
   describe ".flash_notice" do
     it "should return nothing if flash[:notice] is blank" do
       helper.should_receive(:flash).and_return({})
@@ -80,7 +96,7 @@ describe ApplicationHelper do
     
     it "should return a p element with content of flash[:notice]" do
       helper.should_receive(:flash).twice.and_return({:notice => "My notice"})
-      helper.flash_notice.should eql("<p>My notice</p>")
+      helper.flash_notice.should eql("<p class=\"infoExplanation\">My notice</p>")
     end
   end
 end

@@ -14,9 +14,11 @@ class Classe < ActiveRecord::Base
   belongs_to :classroom
   has_many :lessons
 
-  validates_presence_of :discipline, :teacher, :classroom
-  validates_presence_of :start_date, :start_time, :end_time, :lessons_number, :on => :create
+  validates_presence_of :discipline, :teacher, :classroom, :lessons_number
   validates_inclusion_of :repeat_on, :in => WeekDays.keys, :on => :create, :message => 'must be a day of week'
+  validates_date :start_date
+  validates_time :start_time
+  validates_time :end_time, :after => :start_time
   validate :verify_if_discipline_can_be_teached_by_the_teacher
   
   def repeat_on=(value)

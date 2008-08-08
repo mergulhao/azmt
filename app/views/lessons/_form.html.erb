@@ -17,15 +17,15 @@
 
 <p>
   <label for="lesson_date">Começo:</label>
-  <%= f.date_select :date, :order => [:day, :month, :year] %>
+  <%= f.text_field :date %>
 </p>
 
 <p>
   <label for="lesson_start_time">Inicio:</label>
-  <%= f.time_select :start_time, :minute_step => 30 %>
+  <%= f.text_field :start_time %>
 </p>
 
 <p>
   <label for="lesson_end_time">Fim:</label>
-  <%= f.time_select :end_time, :minute_step => 30 %>
+  <%= f.text_field :end_time %>
 </p>
