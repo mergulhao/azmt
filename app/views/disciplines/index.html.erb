@@ -1,4 +1,104 @@
+<!-- 
+
+ ##################### início drag'n'drop
+ 
+-->
+
+<style type="text/css">
+  div#droppable_container { height:140px; width: 700px; }
+  div.draggable {cursor: move;}
+  div#draggable_demo { width:60px; height:60px; cursor:move; background:#9fcfba; border:1px solid #666; text-align:center; }
+  div#droppable_demo { width:160px; height:120px; background:#ffffff; border:5px solid #ccc; text-align:center; position:relative; top:-60px; left:140px; line-height:100px; }
+  div#droppable_demo.hover { border:5px dashed #aaa; background:#efefef; }
+</style>
+
+
+<div style="float: right; margin: 40px;">
+<div class="demo" id="droppable_container">
+  <ul>
+  	<li id="drag_mat" class="draggable">Matemática</li>
+	<li id="drag_por" class="draggable">Português</li>
+	<li id="drag_ing" class="draggable">Inglês</li>
+  </ul>
+
+  
+  <table style="border: 1px solid #e9e9e9; width: 100%; border-collapse: colapse;">
+  	<thead>
+  		<tr>
+  			<th>Dom</th>
+			<th>Seg</th>
+			<th>Ter</th>
+			<th>Qua</th>
+			<th>Qui</th>
+			<th>Sex</th>
+			<th>Sáb</th>
+  		</tr>
+  	</thead>
+	<tbody>
+		<tr>
+			<td id="drop_dom">Arraste aqui!</td>
+			<td id="drop_seg">Arraste aqui!</td>
+			<td id="drop_ter">Arraste aqui!</td>
+			<td id="drop_qua">Arraste aqui!</td>
+			<td id="drop_qui">Arraste aqui!</td>
+			<td id="drop_sex">Arraste aqui!</td>
+			<td id="drop_sab">Arraste aqui!</td>
+		</tr>		
+	</tbody>
+  </table>
+</div>
+</div>
+
+<script type="text/javascript">
+	
+  var draggables = [
+   'drag_mat',
+   'drag_por',
+   'drag_ing'
+  ];
+   
+  draggables.each(
+       function(item) {
+           new Draggable(item, { 
+    			revert: true 
+  			});
+       }
+   );
+  
+  var dropweek = [
+   'drop_dom',
+   'drop_seg',
+   'drop_ter',
+   'drop_qua',
+   'drop_qui',
+   'drop_sex',
+   'drop_sab'
+  ];
+
+  dropweek.each(
+  	function(item){
+		Droppables.add(item, {
+			accept: 'draggable',
+			hoverclass: 'hover',
+			onDrop: function(){
+				$(item).highlight();
+				$(item).innerHTML += "<br /><br />Teste!";
+			}
+		});
+	}
+  );
+  
+  
+</script>
+
+<!-- 
+
+ ##################### fim drag'n'drop
+ 
+-->
+
 <%= link_add_to_remote %>
+
 
 <table class="tbldata">
   <thead>
