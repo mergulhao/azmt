@@ -37,8 +37,8 @@ Localization.define('pt_BR') do |l|
   l.store 'Editing %s', 'Editando %s'
   l.store 'New %s', 'Criar %s'
   #----
-  l.store '%s successfully created!', 'Registro inserido com sucesso!'
-  l.store '%s successfully updated!', 'Registro atualizado com sucesso!'
-  l.store '%s successfully removed!', 'Registro removido com sucesso!'
+  l.store 'Successfully created!', 'Inserido com sucesso!'
+  l.store 'Successfully updated!', 'Atualizado com sucesso!'
+  l.store 'Successfully removed!', 'Removido com sucesso!'
   l.store '(time)', lambda { |t| t.strftime('%H:%M') }
 end

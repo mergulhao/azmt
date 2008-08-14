@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe DisciplinesController do
+  should_have_ajaxian_responses_enabled
+  
   describe "handling GET /disciplines" do
 
     before(:each) do

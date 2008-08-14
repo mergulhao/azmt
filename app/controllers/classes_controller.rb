@@ -1,19 +1,3 @@
 class ClassesController < ResourceController::Base
-  new_action.wants.js { render :layout => false }
-
-  edit do
-    wants.js { render :layout => false }
-  end
-
-  update do
-    flash _('%s successfully updated!', _('Classe'))
-    wants.js { render :template => 'common/redirect_to_collection' }
-    failure.wants.js { render :action => 'edit', :layout => false }
-  end
-  
-  create do
-    flash _('%s successfully created!', _('Classe'))
-    wants.js { render :template => 'common/redirect_to_collection' }
-    failure.wants.js { render :action => 'new', :layout => false }
-  end
+  use_ajaxian_responses
 end
