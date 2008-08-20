@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :courses
   map.resources :classrooms
   map.resources :teachers
-  map.resources :disciplines, :has_many => :classes
+  map.resources :disciplines
   
   map.resources :classes, :has_many => :lessons
   map.resources :lessons
@@ -48,4 +48,5 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action.:format'
 end

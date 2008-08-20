@@ -1,1 +1,7 @@
-<label class="large">Nome <%= f.text_field :name, :class => "textfield" %></label><br />
+<label class="large"><%=_ 'Name'%> <%= f.text_field :name, :class => "textfield" %></label><br />
+<label class="large"><%=_ 'Lessons Number'%> <%= f.text_field :lessons_number, :class => "textfield" %></label><br />
+
+<fieldset class="clearfix" style="margin: 0 0 10px 0;">
+  <legend><%=_ 'Teachers' %></legend>
+  <%= collection_multiple_select(:discipline, :can_be_taught_by_ids, Teacher.find(:all, :order => 'name'), :id, :name, :outer_class => 'outer_multiple_select', :inner_class => 'inner_multiple_select') %>	
+</fieldset>

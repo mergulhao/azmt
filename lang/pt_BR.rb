@@ -23,6 +23,7 @@ Localization.define('pt_BR') do |l|
   l.store 'Home Phone', 'Telefone Residencial'
   l.store 'Lesson', 'Aula'
   l.store 'Lessons', 'Aulas'
+  l.store 'Lessons Number', 'Número de Aulas'
   l.store 'Mobile Phone', 'Telefone Celular'
   l.store 'Name', 'Nome'
   l.store 'Neighbourhood', 'Bairro'

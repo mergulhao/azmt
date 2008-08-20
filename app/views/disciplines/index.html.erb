@@ -4,12 +4,16 @@
   <thead>
     <tr>
       <th><%=_ 'Name' %></th>
+      <th><%=_ 'Lessons Number' %></th>
+      <th><%=_ 'Teachers' %></th>
     </tr>
   </thead>
   <tbody>
     <%- @disciplines.each do |discipline|%>
       <tr>
         <td><%=h discipline.name %></td>
+        <td><%=h discipline.lessons_number %></td>
+        <td><%=h discipline.can_be_taught_by.join(', ') %></td>
       
         <td><%= link_edit_to_remote(discipline) %></td>
         <td><%= link_delete(discipline) %></td>

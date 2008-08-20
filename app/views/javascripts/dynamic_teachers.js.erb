@@ -1,0 +1,38 @@
+var teachers = new Array();
+<% @disciplines.each do |discipline| -%>
+  <% discipline.can_be_taught_by.each do |teacher| -%>
+    teachers.push(new Array(<%= discipline.id %>, '<%= teacher.name %>', <%= teacher.id %>));
+  <% end -%>
+<% end -%>
+
+var disciplines = new Hash();
+<% @disciplines.each do |discipline| -%>
+  disciplines.set(<%= discipline.id%>, <%= discipline.lessons_number%>);
+<% end -%>
+
+function disciplineSelected() {
+  discipline_id = $('discipline_id').getValue();
+  $('lessons_number').setValue(disciplines.get(discipline_id));
+  options = $('teacher_id').options;
+  options.length = 1;
+  teachers.each(function(teacher){
+    if(teacher[0] == discipline_id){
+      options[options.length] = new Option(teacher[1], teacher[2]);
+    }
+  });
+
+  if (options.length == 1){
+    $('teacher_id').hide();
+    $('teacher_select_label').hide();
+    $('lessons_number').clear();
+  } else {
+    $('teacher_id').show();
+    $('teacher_select_label').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  $('teacher_id').hide();
+  $('teacher_select_label').hide();
+  $('discipline_id').observe('change', disciplineSelected);
+});

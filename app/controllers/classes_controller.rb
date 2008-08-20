@@ -1,3 +1,6 @@
 class ClassesController < ResourceController::Base
-  use_ajaxian_responses
+  create do
+    wants.html { redirect_to classe_lessons_url(object) }
+  end
+#  use_ajaxian_responses
 end

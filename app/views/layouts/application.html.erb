@@ -6,9 +6,9 @@
     <title>Azimut - AutoDesk Media and Entertainment</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     
-    <%= javascript_include_tag 'prototype', 'scriptaculous', 'jstarget', 'modalbox', 'prototip', 'timeframe', 'colorpicker', 'application' %>
+    <%= javascript_include_tag 'prototype', 'scriptaculous', 'jstarget', 'modalbox', 'prototip', 'timeframe', 'colorpicker', 'date', 'application', 'lowpro','jsmask' %>
     <%= stylesheet_link_tag 'application', 'system', 'timeframe', 'modalbox', 'prototip', 'colorpicker' , :cache => 'defaults' %>
-    
+    <%= yield(:head) %>
 <!--[if lte IE 8]>
 <style type="text/css" media="all">
          @import url(stylesheets/timeframefix.css);

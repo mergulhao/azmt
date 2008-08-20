@@ -1,103 +1,180 @@
-<% content_for :box_calendar do %>
- <a href="javascript:Effect.toggle('box_calendar','appear');" id="close_calendar">x</a>
-  	<div id="calendars"></div>
-	
-      <% form_tag((collection_url rescue ''), :method => :get) do -%>
-	   <fieldset>
-	        <legend><img src="/images/icons/calendar.png" alt="" /> Datas selecionadas (<a href="javascript:void(0);" id="reset">limpar</a>)</legend>
-	        <label class="x-small">Início <input type="text" name="start_date" value="<%#= @start_date.to_s_br -%>" id="start" class="textfield" /></label>
-		<label class="x-small">Fim <input type="text" name="end_date" value="<%#= @end_date.to_s_br -%>" id="end" class="textfield" /></label><br />
-		<label class="small lblbutton"><input type="submit" class="button" value="Filtrar" /></label>
-	   </fieldset>
-      <% end -%>
-	  
-  <script type="text/javascript">
-      new Timeframe('calendars', {
-        startfield: 'start',
-        endfield: 'end',
-		format: '%d/%m/%Y',
-        earliest: new Date(2008,1,1),
-        resetbutton: 'reset' });
-  </script>
-<% end %>
+<% javascript 'dynamic_teachers' %>
 
-  <% form_tag collection_url, :method => :get do -%>
-    <fieldset>
-      <label id="classroom_filter" class="small">
-        <%= image_tag('icons/arrow_down.png') + 'Escolher Sala' %>
-        <%= select_tag :classroom_id, 
-          "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i), :class => "select" %>
-      </label>
+<style type="text/css">
+  div#droppable_container { height:140px; width: 700px; }
+  div.draggable {cursor: move;}
+  div#draggable_demo { width:60px; height:60px; cursor:move; background:#9fcfba; border:1px solid #666; text-align:center; }
+  div#droppable_demo { width:160px; height:120px; background:#ffffff; border:5px solid #ccc; text-align:center; position:relative; top:-60px; left:140px; line-height:100px; }
+  div#droppable_demo.hover { border:5px dashed #aaa; background:#efefef; }
+  </style>
 
-      <label id="teacher_filter" class="small">
-        <%= image_tag('icons/arrow_down.png') + 'Escolher Instrutor' %>
-        <%= select_tag :teacher_id, 
-          "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i), :class => "select" %>
-      </label>
+<form id="lessons">
 
-      <label id="classe_filter" class="small">
-        <%= image_tag('icons/arrow_down.png') + 'Escolher Turma' %>
-        <%= select_tag :classe_id, 
-          "<option value=''>Todos</option>" +
-          options_from_collection_for_select(Classe.find(:all), :id, :to_s, params[:classe_id].to_i), :class => "select" %>
-      </label>
+<div style="margin: 40px;">
+  <!-- div class="demo" id="droppable_container" -->
 
-      <label class="x-small lblbutton" id="submit_filter" style="margin-top: 18px;"><input type="submit" class="button" value="Filtrar" /></label>
-    </fieldset>
-  <% end %>
-  
-<h5>Período de <%= @start_date.to_s_br %> a <%= @end_date.to_s_br %> (<a href="javascript:Effect.toggle('box_calendar','appear');"><img src="/images/icons/calendar.png" alt="" /> calendário</a>)</h5>
+    <table style="border: 1px solid #e9e9e9; width: 25%; border-collapse: colapse; float: right;">
 
-<% unless params[:classroom_id].blank? %>
-  <h5>Sala: <%= Classroom.find params[:classroom_id] %></h5>
-<% end %>
-
-<% unless params[:teacher_id].blank? %>
-  <h5>Professor: <%= Teacher.find params[:teacher_id] %></h5>
-<% end %>
-
-<table class="calendar">
-   <thead>
-  <tr>
-    <% ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"].each do |day| -%>
-      <th><%= day %></th>
-    <% end -%>
-  </tr>
-  </thead>
-  <% ((@start_date.beginning_of_week - 1.day)..@end_date).to_a.in_groups_of(7) do |week| -%>
-  <thead>  
-   <tr>
-      <% week.each do |date| -%>
-        <th><%= date.to_s_br if date && (date >= @start_date) %></th>
-      <% end -%>
-    </tr>
- </thead>
- <tbody>
-    <tr class="lesson">
-      <% week.each do |date| -%>
+      <tr><th><%=_ 'Disciplines'%></th></tr>
+      <tr>
         <td>
-          <% if date.blank? || date && (date < @start_date) %>
-            <div class="empty">&nbsp;</div>
-          <% else %>
-            <div>
-              <% lessons = @lessons.select {|lesson| lesson.date == date } %>
-              <% lessons.each do |lesson| %>
-                <span>
-                  <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
-                  - 
-                  <%=link_to 'X', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %>
-                </span>
-              <% end %>
-              <span>
-                <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
-              </span>
-            </div>      
-          <% end %>
+        <%= select_tag :discipline_id, 
+         select_default +
+ options_from_collection_for_select(parent_object.course.disciplines.find(:all), :id, :name), :class => "select" %>
         </td>
-      <% end -%>
-    </tr>
-  </tbody>
-  <% end -%>
-</table>
+      </tr>
+      
+      <% #- parent_object.course.disciplines.each do |discipline| -%>
+        <!-- tr><td>
+          <div id="<% #= discipline.dom_id %>" class="draggable"><% #= discipline %></div>
+        </td></tr -->
+      <% #- end -%>
+      
+      <tr><th><%=_ 'Hour' %></th></tr>
+      <tr>
+        <td>
+          <label class="x-small"><%= text_field_tag_with_js_mask :start_time,'', :class => "mask_time textfield" %></label>
+          <label>..</label>
+          <label class="x-small"><%= text_field_tag_with_js_mask :end_time,'', :class => "mask_time textfield" %></label>
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Date' %></th></tr>
+      <tr>
+        <td>
+          <label class="small"><%= text_field_tag_with_js_mask :start_date,'', :class => "mask_date_br textfield" %></label>
+       
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Lessons' %></th></tr>
+      <tr>
+        <td>
+          <label class="x-small"><%= text_field_tag :lessons_number, '', :class => "textfield", :maxlength => "2" %></label>
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Classroom' %></th></tr>
+      <tr>
+        <td>
+        <%= select_tag :classroom_id, 
+          options_from_collection_for_select(Classroom.find(:all), :id, :name), :class => "select" %>
+        </td>
+      </tr>
+
+      <tr><th id="teacher_select_label"><%=_ 'Teacher' %></th></tr>
+      <tr>
+        <td>
+        <%= select_tag :teacher_id, select_default, :class => "select" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <%= button_to_function _('Go!'), "go();" %>
+        </td>
+      </tr>
+    </table>
+
+    <table style="border: 1px solid #e9e9e9; width: 70%; border-collapse: colapse;">
+      <thead>
+        <tr>
+          <th><%=_ 'Sun' %> <input type="checkbox" name="sunday" id="sunday" /></th>
+          <th><%=_ 'Mon' %> <input type="checkbox" name="monday" id="monday" /></th>
+          <th><%=_ 'Tue' %> <input type="checkbox" name="tuesday" id="tuesday" /></th>
+          <th><%=_ 'Wed' %> <input type="checkbox" name="wednesday" id="wednesday" /></th>
+          <th><%=_ 'Thu' %> <input type="checkbox" name="thursday" id="thursday" /></th>
+          <th><%=_ 'Fri' %> <input type="checkbox" name="friday" id="friday" /></th>
+          <th><%=_ 'Sat' %> <input type="checkbox" name="saturday" id="saturday" /></th>
+        </tr>
+      </thead>
+      
+      <tbody id="go_here">
+        <tr>
+          <!-- td id="drop_here" colspan="7" style="background-color: #faf; text-align: center;">Arraste aqui!</td -->
+          <td>&nbsp;</td>
+        </tr>		
+      </tbody>
+    </table>
+  <!-- /div -->
+</div>
+
+<script type="text/javascript">
+  
+  var weekdays = $H({
+    sunday: 0,
+    monday: 1,
+    tuesday: 2,
+    wednesday: 3,
+    thursday: 4,
+    friday: 5,
+    saturday: 6,
+  });
+
+  function go(){
+
+    var errors = new Array();
+
+    var errors_test = (["discipline_id", "start_time", "end_time", "start_date","lessons_number"].each(function(item){
+      if ($(item).getValue() == "" || $(item).getValue() == "select")
+      {
+         errors.push(item);
+      }
+    }));
+
+    var itens = (["sunday","monday","tuesday", "wednesday", "thursday", "friday", "saturday"].find(function(item){
+    return $(item).checked == true
+    }));
+    
+    if (!itens)
+    {
+      errors.push("Dia da semana");
+    }
+
+    if (errors.length > 0)
+    {
+      result = "<p>Erros de preenchimento nos determinados campos: </p>";
+      result += "<ul>";
+      errors.each(function(item){
+      result += "<li>" + item + "</li>";
+    });
+
+    result += "</ul>";
+
+    Modalbox.alert(result);
+    return;
+    }
+
+
+  
+
+
+
+
+    lesson_date = Date.parse($('start_date').value);
+
+
+    total_lessons = $("lessons_number").value;
+    total_lessons_partial = 0;
+    result = ""
+    while (total_lessons_partial < total_lessons) {
+      result += "<tr>"
+      weekdays.each(function(pair){
+        checkbox = $(pair.key)
+        lesson_date = eval("lesson_date.next()." + pair.key + "();");
+        if ((checkbox.checked === true) && (total_lessons_partial < total_lessons)) {
+          //result += "<td>"+ $("discipline_id").value +"</td>";
+          result += "<td>"+ lesson_date.toString("dd/MM/yyyy") +"</td>";
+          total_lessons_partial++;
+//var element = Builder.node('input', { type: 'hidden', name: 'lala', value: 'lele' });
+        } else {
+          result += "<td>&nbsp;</td>";
+        }
+      });
+      result += "</tr>";
+    }
+    $("go_here").insert(result, { position: 'top' });
+}
+  
+  </script>
+</form>

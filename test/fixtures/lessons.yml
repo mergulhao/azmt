@@ -5,6 +5,8 @@ number_theory:
   start_time: "09:00:00"
   end_time: "12:00:00"
   classroom: amazonia
+  teacher: marge
+  discipline: math
 
 penis_measurement:
   name: Penis Measurement
@@ -13,6 +15,8 @@ penis_measurement:
   start_time: "09:00:00"
   end_time: "12:00:00"
   classroom: pantanal
+  teacher: homer
+  discipline: sexology
 
 geometry:
   name: Geometry
@@ -21,6 +25,8 @@ geometry:
   start_time: "13:00:00"
   end_time: "17:00:00"
   classroom: amazonia
+  teacher: marge
+  discipline: math
 
 trigonometry:
   name: Trigonometry
@@ -29,6 +35,8 @@ trigonometry:
   start_time: "18:00:00"
   end_time: "22:00:00"
   classroom: amazonia
+  teacher: marge
+  discipline: math
 
 algebra:
   name: Algebra
@@ -37,6 +45,8 @@ algebra:
   start_time: "18:00:00"
   end_time: "22:00:00"
   classroom: amazonia
+  teacher: marge
+  discipline: math
 
 calculus:
   name: Calculus
@@ -45,3 +55,5 @@ calculus:
   start_time: "13:00:00"
   end_time: "17:00:00"
   classroom: amazonia
+  teacher: marge
+  discipline: math

@@ -11,6 +11,10 @@ module ApplicationHelper
     content_tag :h3, _('New %s', _(object.to_s.capitalize))
   end
   
+  def select_default
+    "<option>#{_('Select')}</option>"
+  end
+  
   def create_button_and_cancel_link_to_clear_box_form
     submit_button(_('Create')) +
       link_to_clear_box_form
@@ -70,5 +74,9 @@ module ApplicationHelper
     else
       ""
     end
+  end
+  
+  def javascript(*files)
+    content_for(:head) { javascript_include_tag(*files)}
   end
 end

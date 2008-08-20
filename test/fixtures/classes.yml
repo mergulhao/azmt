@@ -1,11 +1,5 @@
 first_semester_math:
-  classroom: amazonia
-  teacher: marge
-  discipline: math
-  start_date: 2008-06-09
+  course: math
 
 first_semester_sexology:
-  classroom: pantanal
-  teacher: homer
-  discipline: sexology
-  start_date: 2008-06-06
+  course: sexology

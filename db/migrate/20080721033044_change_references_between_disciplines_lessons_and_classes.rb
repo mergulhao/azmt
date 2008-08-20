@@ -15,8 +15,8 @@ class ChangeReferencesBetweenDisciplinesLessonsAndClasses < ActiveRecord::Migrat
   def self.down
     change_table :lessons do |t|
       t.references :discipline, :null => false
-      t.remove_references :classe, :null => false
-      t.remove_references :classroom, :null => false
+      t.remove_references :classe
+      t.remove_references :classroom
     end
     
     change_table :disciplines do |t|

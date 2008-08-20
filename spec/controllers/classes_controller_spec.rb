@@ -155,7 +155,7 @@ describe ClassesController do
 
       it "should redirect to the new classe" do
         do_post
-        response.should redirect_to(classe_url("1"))
+        response.should redirect_to(classe_lessons_url("1"))
       end
       
     end
@@ -174,6 +174,57 @@ describe ClassesController do
       
     end
   end
+  
+#  describe "handling POST /classes with multiple lessons" do
+#
+##    before(:each) do
+##      @classe = mock_model(Classe, :to_param => "1")
+##      Classe.stub!(:new).and_return(@classe)
+##    end
+#    
+#    fixtures :courses, :classrooms, :teachers, :disciplines, :lessons
+#    
+#    describe "with successful save" do
+#  
+#      def do_post(classe)
+#        post :create, :classe => classe
+#      end
+#  
+#      it "should create a new classe with all lessons!" do
+#        lessons = Lesson.find :all
+#        lessons.size.should eql(6)
+#        
+#        classe = {
+#          :course_id => courses(:math).id,
+#          :lessons => [
+#            Lesson.new({:name => 'A!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,4), :start_time => '8:00', :end_time => '12:00'}),
+#            Lesson.new({:name => 'B!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,7), :start_time => '8:00', :end_time => '12:00'}),
+#            Lesson.new({:name => 'C!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,9), :start_time => '8:00', :end_time => '12:00'}),
+#          ]
+#        }
+#        do_post classe
+#
+#        p assigns(:classe).lessons.first.errors.full_messages
+#        
+#        lessons = Lesson.find :all
+#        lessons.size.should eql(9)
+#      end
+#    end
+##    
+##    describe "with failed save" do
+##
+##      def do_post
+##        @classe.should_receive(:save).and_return(false)
+##        post :create, :classe => {}
+##      end
+##  
+##      it "should re-render 'new'" do
+##        do_post
+##        response.should render_template('new')
+##      end
+##      
+##    end
+#  end
 
   describe "handling PUT /classes/1" do
 
