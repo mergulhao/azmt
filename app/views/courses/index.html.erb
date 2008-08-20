@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th><%=_ 'Name' %></th>
+      <th><%=_ 'Disciplines' %></th>
       <th><%=_ 'Color' %></th>
     </tr>
   </thead>
@@ -11,6 +12,7 @@
     <%- @courses.each do |course|%>
       <tr>
         <td><%=h course.name %></td>
+        <td><%=h course.disciplines.join(', ') %></td>
         <td style="background-color: #<%=h course.color %>;"><%=h course.color %></td>
       
         <td><%= link_edit_to_remote(course) %></td>
