@@ -12,3 +12,8 @@
 // ]]>
 </script>
 <br/>
+
+<fieldset class="clearfix" style="margin: 0 0 10px 0;">
+  <legend><%=_ 'Disciplines' %></legend>
+  <%= collection_multiple_select('course', 'discipline_ids', Discipline.find(:all, :order => 'name'), :id, :name, :outer_class => 'outer_multiple_select', :inner_class => 'inner_multiple_select') %>	
+</fieldset>
