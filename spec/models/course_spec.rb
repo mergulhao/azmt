@@ -5,7 +5,10 @@ describe Course do
     @course = Course.new
   end
 
-  it "should be valid" do
-    @course.should be_valid
+  it "should not be valid" do
+    @course.should_not be_valid
+
+    error_messages = ["Name can't be blank", "Color can't be blank"]
+    @course.errors.full_messages.should eql(error_messages)
   end
 end

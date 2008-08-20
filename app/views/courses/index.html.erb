@@ -1,21 +1,21 @@
-<h1>Listing Courses</h1>
+<%= link_add_to_remote %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Color</th>
-  </tr>
-  <%- @courses.each do |course|%>
+<table class="tbldata">
+  <thead>
     <tr>
-      <td><%=h course.name %></td>
-      <td><%=h course.color %></td>
-    
-      <td><%=link_to 'Show', object_url(course) %></td>
-      <td><%=link_to 'Edit', edit_object_url(course) %></td>
-      <td><%=link_to 'Destroy', object_url(course), :confirm => 'Are you sure?', :method => :delete %></td>
+      <th><%=_ 'Name' %></th>
+      <th><%=_ 'Color' %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <%- @courses.each do |course|%>
+      <tr>
+        <td><%=h course.name %></td>
+        <td style="background-color: #<%=h course.color %>;"><%=h course.color %></td>
+      
+        <td><%= link_edit_to_remote(course) %></td>
+        <td><%= link_delete(course) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-<br/>
-
-<%= link_to 'New Course', new_object_url %>

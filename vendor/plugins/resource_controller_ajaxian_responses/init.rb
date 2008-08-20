@@ -25,3 +25,5 @@ module AjaxianResponses
     end
   end
 end
+
+ActionController::Base.send :include, AjaxianResponses
