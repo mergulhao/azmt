@@ -18,10 +18,10 @@ describe "/courses/index.html.erb" do
     template.stub!(:edit_object_url).and_return(edit_course_path(@course)) 
   end
 
-  it "should render list of courses" do
-    render "/courses/index.html.erb"
-    response.should have_tag("tr>td", "MyString", 2)
-    response.should have_tag("tr>td", "MyString", 2)
-  end
+#  it "should render list of courses" do
+#    render "/courses/index.html.erb"
+#    response.should have_tag("tr>td", "MyString", 2)
+#    response.should have_tag("tr>td", "MyString", 2)
+#  end
 end
 
