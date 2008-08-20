@@ -1,23 +1,21 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: 
+johnny_cash:
+  name: Johnny Cash
   street: 
   number: 
   complement: 
-  neiborhood: 
+  neighbourhood: 
   zip: 
   home_phone: 
   comercial_phone: 
   mobile_phone: 
   cpf: MyString
 
-two:
-  name: 
+jimmy_page:
+  name: Jimmy Page
   street: 
   number: 
   complement: 
-  neiborhood: 
+  neighbourhood: 
   zip: 
   home_phone: 
   comercial_phone: 
