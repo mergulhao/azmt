@@ -10,6 +10,11 @@ describe ApplicationHelper do
     helper.should_receive(:_).with("Editing %s", "Object").and_return("Edit Object Title")
     helper.title_edit(:object).should eql("<h3>Edit Object Title</h3>")
   end
+  
+  it "should return default select option" do
+    helper.should_receive(:_).with("Select").and_return("SelectDefault")
+    helper.select_default.should eql("<option>SelectDefault</option>")
+  end
 
   
   it "should return a h3 new title" do

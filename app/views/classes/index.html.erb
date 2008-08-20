@@ -1,21 +1,17 @@
-<%= link_add_to_remote %>
+<%= link_to image_tag('icons/file_add.png') + " " + _('Add'), new_object_url %>
 
 <table class="tbldata">
   <thead>
     <tr>
-      <th><%=_ 'Classroom' %></th>
-      <th><%=_ 'Discipline' %></th>
-      <th><%=_ 'Teacher' %></th>
+      <th><%=_ 'Course' %></th>
     </tr>
   </thead>
   <tbody>
     <%- @classes.each do |classe|%>
       <tr>
-        <td><%=h classe.classroom %></td>
-        <td><%=h classe.discipline %></td>
-        <td><%=h classe.teacher %></td>
-      
-        <td><%= link_edit_to_remote(classe) %></td>
+        <td><%=h classe.course %></td>
+        <td><%= link_to image_tag('icons/file_edit.png'), edit_object_url(classe) %></td>
+        <td><%= link_to image_tag('icons/file_edit.png'), classe_lessons_url(classe) %></td>
         <td><%= link_delete(classe) %></td>
       </tr>
     <% end %>

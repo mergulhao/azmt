@@ -1,0 +1,103 @@
+<% content_for :box_calendar do %>
+ <a href="javascript:Effect.toggle('box_calendar','appear');" id="close_calendar">x</a>
+  	<div id="calendars"></div>
+	
+      <% form_tag((collection_url rescue ''), :method => :get) do -%>
+	   <fieldset>
+	        <legend><img src="/images/icons/calendar.png" alt="" /> Datas selecionadas (<a href="javascript:void(0);" id="reset">limpar</a>)</legend>
+	        <label class="x-small">Início <input type="text" name="start_date" value="<%#= @start_date.to_s_br -%>" id="start" class="textfield" /></label>
+		<label class="x-small">Fim <input type="text" name="end_date" value="<%#= @end_date.to_s_br -%>" id="end" class="textfield" /></label><br />
+		<label class="small lblbutton"><input type="submit" class="button" value="Filtrar" /></label>
+	   </fieldset>
+      <% end -%>
+	  
+  <script type="text/javascript">
+      new Timeframe('calendars', {
+        startfield: 'start',
+        endfield: 'end',
+		format: '%d/%m/%Y',
+        earliest: new Date(2008,1,1),
+        resetbutton: 'reset' });
+  </script>
+<% end %>
+
+  <% form_tag collection_url, :method => :get do -%>
+    <fieldset>
+      <label id="classroom_filter" class="small">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Sala' %>
+        <%= select_tag :classroom_id, 
+          "<option value=''>Todos</option>" +
+          options_from_collection_for_select(Classroom.find(:all), :id, :name, params[:classroom_id].to_i), :class => "select" %>
+      </label>
+
+      <label id="teacher_filter" class="small">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Instrutor' %>
+        <%= select_tag :teacher_id, 
+          "<option value=''>Todos</option>" +
+          options_from_collection_for_select(Teacher.find(:all), :id, :name, params[:teacher_id].to_i), :class => "select" %>
+      </label>
+
+      <label id="classe_filter" class="small">
+        <%= image_tag('icons/arrow_down.png') + 'Escolher Turma' %>
+        <%= select_tag :classe_id, 
+          "<option value=''>Todos</option>" +
+          options_from_collection_for_select(Classe.find(:all), :id, :to_s, params[:classe_id].to_i), :class => "select" %>
+      </label>
+
+      <label class="x-small lblbutton" id="submit_filter" style="margin-top: 18px;"><input type="submit" class="button" value="Filtrar" /></label>
+    </fieldset>
+  <% end %>
+  
+<h5>Período de <%= @start_date.to_s_br %> a <%= @end_date.to_s_br %> (<a href="javascript:Effect.toggle('box_calendar','appear');"><img src="/images/icons/calendar.png" alt="" /> calendário</a>)</h5>
+
+<% unless params[:classroom_id].blank? %>
+  <h5>Sala: <%= Classroom.find params[:classroom_id] %></h5>
+<% end %>
+
+<% unless params[:teacher_id].blank? %>
+  <h5>Professor: <%= Teacher.find params[:teacher_id] %></h5>
+<% end %>
+
+<table class="calendar">
+   <thead>
+  <tr>
+    <% ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"].each do |day| -%>
+      <th><%= day %></th>
+    <% end -%>
+  </tr>
+  </thead>
+  <% ((@start_date.beginning_of_week - 1.day)..@end_date).to_a.in_groups_of(7) do |week| -%>
+  <thead>  
+   <tr>
+      <% week.each do |date| -%>
+        <th><%= date.to_s_br if date && (date >= @start_date) %></th>
+      <% end -%>
+    </tr>
+ </thead>
+ <tbody>
+    <tr class="lesson">
+      <% week.each do |date| -%>
+        <td>
+          <% if date.blank? || date && (date < @start_date) %>
+            <div class="empty">&nbsp;</div>
+          <% else %>
+            <div>
+              <% lessons = @lessons.select {|lesson| lesson.date == date } %>
+              <% lessons.each do |lesson| %>
+                <span>
+                  <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
+                  - 
+                  <%=link_to 'X', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %>
+                </span>
+              <% end %>
+              <span>
+                <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
+              </span>
+            </div>      
+          <% end %>
+        </td>
+      <% end -%>
+    </tr>
+  </tbody>
+  <% end -%>
+</table>
