@@ -175,56 +175,121 @@ describe ClassesController do
     end
   end
   
-#  describe "handling POST /classes with multiple lessons" do
-#
-##    before(:each) do
-##      @classe = mock_model(Classe, :to_param => "1")
-##      Classe.stub!(:new).and_return(@classe)
-##    end
-#    
-#    fixtures :courses, :classrooms, :teachers, :disciplines, :lessons
-#    
-#    describe "with successful save" do
-#  
-#      def do_post(classe)
-#        post :create, :classe => classe
-#      end
-#  
-#      it "should create a new classe with all lessons!" do
-#        lessons = Lesson.find :all
-#        lessons.size.should eql(6)
-#        
-#        classe = {
-#          :course_id => courses(:math).id,
-#          :lessons => [
-#            Lesson.new({:name => 'A!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,4), :start_time => '8:00', :end_time => '12:00'}),
-#            Lesson.new({:name => 'B!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,7), :start_time => '8:00', :end_time => '12:00'}),
-#            Lesson.new({:name => 'C!', :classroom_id => classrooms(:amazonia).id, :teacher_id => teachers(:marge).id, :discipline_id => disciplines(:math).id, :date => Date.new(2008,7,9), :start_time => '8:00', :end_time => '12:00'}),
-#          ]
+  describe "handling PUT /classes/:id with multiple lessons" do
+    fixtures :courses, :classrooms, :teachers, :disciplines, :classes, :lessons
+
+    before(:each) do
+      @classe = classes(:first_semester_math)
+    end
+    
+    def do_put(params)
+      put :update, :id => @classe.id, :classe => params
+    end
+
+#    it "should update old lessons in existing_lesson_attributes" do
+#      lesson = @classe.lessons.first
+#      lesson.date.should eql(Date.new(2008,07,05))
+#      lesson.start_time.strftime('%H:%M').should eql('09:00')
+#      lesson.end_time.strftime('%H:%M').should eql('12:00')
+#      
+#      start_time = "10:00"
+#      end_time = "13:00"
+#      date = "2008-07-30"
+##      date = "30/07/2008"
+#      
+#      params = {
+#        :course_id => courses(:sexology).id, 
+#        :existing_lesson_attributes => {
+#          "#{lesson.id}" => {
+#            "discipline_id" => lesson.discipline_id,
+#            "start_time" => start_time,
+#            "end_time" => end_time,
+#            "date" => date,
+#            "classroom_id" => lesson.classroom_id,
+#            "teacher_id" => lesson.teacher_id
+#          },
 #        }
-#        do_post classe
+#      }
+#      
+#      @classe.course.id.should eql(courses(:math).id)
+#      @classe.lessons.size.should eql(5)
+#      
+#      do_put(params)
 #
-#        p assigns(:classe).lessons.first.errors.full_messages
-#        
-#        lessons = Lesson.find :all
-#        lessons.size.should eql(9)
-#      end
+#      assigns(:classe).should_not be_nil
+#      assigns(:classe).course.id.should eql(courses(:sexology).id)
+#      assigns(:classe).lessons.size.should eql(1)
+#
+#      lesson = assigns(:classe).lessons.first
+#      
+#      p lesson.read_attribute(:date)
+#      p lesson.date
+#      p lesson.instance_variable_get(:@attributes)
+#      p lesson.instance_variable_get(:@attributes_cache)
+#      
+#      p lesson.save!
+#      lesson.reload
+#
+#      p lesson.read_attribute(:date)
+#      p lesson.date
+#      p lesson.instance_variable_get(:@attributes)
+#      p lesson.instance_variable_get(:@attributes_cache)
+#
+#      lesson.date.should eql(date.to_date)
+#      lesson.start_time.strftime('%H:%M').should eql(start_time)
+#      lesson.end_time.strftime('%H:%M').should eql(end_time)
+#
+#      a = Lesson.find(lesson.id)
+#      p a
 #    end
-##    
-##    describe "with failed save" do
-##
-##      def do_post
-##        @classe.should_receive(:save).and_return(false)
-##        post :create, :classe => {}
-##      end
-##  
-##      it "should re-render 'new'" do
-##        do_post
-##        response.should render_template('new')
-##      end
-##      
-##    end
-#  end
+    
+    it "should delete old lessons not in existing_lesson_attributes" do
+      Lesson.count.should eql(6)
+      
+      @classe.lessons.size.should eql(5)
+      do_put({})
+      @classe.lessons.size.should eql(0)
+      
+      Lesson.count.should eql(1)
+    end
+    
+    it "should create lessons of new_lesson_attributes" do
+      @classe.lessons.size.should eql(5)
+      
+      discipline_id = disciplines(:math).id
+      classroom_id = classrooms(:amazonia).id 
+      teacher_id = teachers(:marge).id
+      start_time = "10:00:00"
+      end_time = "13:00:00"
+      
+      date1 = "24/05/2008"
+      date2 = "31/05/2008"
+      
+      params = {
+        :new_lesson_attributes => [
+           {
+            "discipline_id" => discipline_id,
+            "start_time" => start_time,
+            "end_time" => end_time,
+            "date" => date1,
+            "classroom_id" => classroom_id,
+            "teacher_id" => teacher_id
+          },
+          {
+            "discipline_id" => discipline_id,
+            "start_time" => start_time,
+            "end_time" => end_time,
+            "date" => date2,
+            "classroom_id" => classroom_id,
+            "teacher_id" => teacher_id
+          },
+        ]
+      }
+      
+      do_put(params)
+      @classe.lessons.size.should eql(2)
+    end
+  end
 
   describe "handling PUT /classes/1" do
 
