@@ -1,5 +1,11 @@
 math:
   name: Math
+  lessons_number: 5
 
 sexology:
   name: Sexology
+  lessons_number: 7
+
+numerology:
+  name: Numerology
+  lessons_number: 1

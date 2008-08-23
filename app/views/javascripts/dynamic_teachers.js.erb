@@ -1,30 +1,37 @@
-var teachers = new Array();
-<% @disciplines.each do |discipline| -%>
-  <% discipline.can_be_taught_by.each do |teacher| -%>
-    teachers.push(new Array(<%= discipline.id %>, '<%= teacher.name %>', <%= teacher.id %>));
-  <% end -%>
-<% end -%>
-
 var disciplines = new Hash();
 <% @disciplines.each do |discipline| -%>
-  disciplines.set(<%= discipline.id%>, <%= discipline.lessons_number%>);
+  disciplines.set(<%= discipline.id %>, {
+    name: '<%= discipline.name %>',
+    lessons_number: <%= discipline.lessons_number %>,
+    teachers: new Array(
+      <%= discipline.can_be_taught_by.collect do |teacher|
+        "{ id: #{teacher.id}, name: '#{teacher.name}' }" 
+      end.join(',') -%>
+    ),
+  });
 <% end -%>
 
 function disciplineSelected() {
   discipline_id = $('discipline_id').getValue();
-  $('lessons_number').setValue(disciplines.get(discipline_id));
+  discipline = disciplines.get(discipline_id);
+
+  if(!discipline) {
+    $('teacher_id').hide();
+    $('teacher_select_label').hide();
+    $('lessons_number').clear();
+    return;
+  }
+
+  $('lessons_number').setValue(discipline.lessons_number);
   options = $('teacher_id').options;
   options.length = 1;
-  teachers.each(function(teacher){
-    if(teacher[0] == discipline_id){
-      options[options.length] = new Option(teacher[1], teacher[2]);
-    }
+  discipline.teachers.each(function(teacher){
+    options[options.length] = new Option(teacher.name, teacher.id);
   });
 
   if (options.length == 1){
     $('teacher_id').hide();
     $('teacher_select_label').hide();
-    $('lessons_number').clear();
   } else {
     $('teacher_id').show();
     $('teacher_select_label').show();
