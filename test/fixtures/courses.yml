@@ -1,9 +1,9 @@
 math:
   name: Math complete
   color: 12f5b9
-  disciplines: math
+  disciplines: math, numerology
 
 sexology:
   name: Sexology in details
   color: aacc66
-  disciplines: sexology
+  disciplines: sexology, numerology, math

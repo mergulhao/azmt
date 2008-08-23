@@ -1,20 +1,6 @@
 <% javascript 'dynamic_teachers' %>
 
-<style type="text/css">
-  div#droppable_container { height:140px; width: 700px; }
-  div.draggable {cursor: move;}
-  div#draggable_demo { width:60px; height:60px; cursor:move; background:#9fcfba; border:1px solid #666; text-align:center; }
-  div#droppable_demo { width:160px; height:120px; background:#ffffff; border:5px solid #ccc; text-align:center; position:relative; top:-60px; left:140px; line-height:100px; }
-  div#droppable_demo.hover { border:5px dashed #aaa; background:#efefef; }
-  </style>
-
-<form id="lessons">
-
-<div style="margin: 40px;">
-  <!-- div class="demo" id="droppable_container" -->
-
-    <table style="border: 1px solid #e9e9e9; width: 25%; border-collapse: colapse; float: right;">
-
+    <table style="border: 1px solid #e9e9e9; width: 180px; border-collapse: colapse; float: right;">
       <tr><th><%=_ 'Disciplines'%></th></tr>
       <tr>
         <td>
@@ -23,12 +9,6 @@
  options_from_collection_for_select(parent_object.course.disciplines.find(:all), :id, :name), :class => "select" %>
         </td>
       </tr>
-      
-      <% #- parent_object.course.disciplines.each do |discipline| -%>
-        <!-- tr><td>
-          <div id="<% #= discipline.dom_id %>" class="draggable"><% #= discipline %></div>
-        </td></tr -->
-      <% #- end -%>
       
       <tr><th><%=_ 'Hour' %></th></tr>
       <tr>
@@ -71,10 +51,14 @@
 
       <tr>
         <td>
-        <%= button_to_function _('Go!'), "go();" %>
+        <label class="lblbutton" style="width: 95%;">
+        <%= button_to_function _('Add Lessons'), "add_lessons();", :class => 'button' %>
+        </label>
         </td>
       </tr>
     </table>
+
+<% form_tag do |f| %>
 
     <table style="border: 1px solid #e9e9e9; width: 70%; border-collapse: colapse;">
       <thead>
@@ -89,30 +73,22 @@
         </tr>
       </thead>
       
-      <tbody id="go_here">
+      <tbody id="calendar">
         <tr>
-          <!-- td id="drop_here" colspan="7" style="background-color: #faf; text-align: center;">Arraste aqui!</td -->
           <td>&nbsp;</td>
         </tr>		
       </tbody>
     </table>
-  <!-- /div -->
-</div>
 
-<script type="text/javascript">
+  <br/>
   
-  var weekdays = $H({
-    sunday: 0,
-    monday: 1,
-    tuesday: 2,
-    wednesday: 3,
-    thursday: 4,
-    friday: 5,
-    saturday: 6,
-  });
-
-  function go(){
-
+<label class="lblbutton" style="width: 69.3%;">
+  <%= submit_tag _('Save'), :class => 'button' %>
+</label>
+<% end %>
+  
+<script type="text/javascript">
+  function add_lessons(){
     var errors = new Array();
 
     var errors_test = (["discipline_id", "start_time", "end_time", "start_date","lessons_number"].each(function(item){
@@ -145,44 +121,43 @@
     return;
     }
 
-
-  
-
-
-
-
     lesson_date = Date.parse($('start_date').value);
 
-
     total_lessons = $("lessons_number").value;
-    total_lessons_partial = 0;
-    result = ""
-    while (total_lessons_partial < total_lessons) {
-      result += "<tr>"
-      weekdays.each(function(pair){
-        checkbox = $(pair.key)
-        lesson_date = eval("lesson_date.next()." + pair.key + "();");
-        if ((checkbox.checked === true) && (total_lessons_partial < total_lessons)) {
-          //result += "<td>"+ $("discipline_id").value +"</td>";
-          result += "<td>"+ $("discipline_id").getValue() + "<br>" + lesson_date.toString("dd/MM/yyyy") +"</td>";
-          total_lessons_partial++;
+    lessons_added = 0;
+    while (lessons_added < total_lessons) {
+      var tr = Builder.node('tr');
+
+      ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].each(function(weekday){
+        discipline_id = $('discipline_id').getValue();
+        discipline = disciplines.get(discipline_id);
+
+        checkbox = $(weekday);
+        lesson_date = eval("lesson_date.next()." + weekday + "();");
+
+        if ((checkbox.checked === true) && (lessons_added < total_lessons)) {
+          lessons_added++;
           
-          var discipline = Builder.node('input', { type: 'hidden', name: 'discipline', value: $("discipline_id").value });
-          var start_time = Builder.node('input', { type: 'hidden', name: 'hour', value: $("start_time").value });
-          var end_time = Builder.node('input', { type: 'hidden', name: 'hour', value: $("end_time").value });
-          var lessons_date = Builder.node('input', { type: 'hidden', name: 'hour', value: lesson_date });
-          var lessons = Builder.node('input', { type: 'hidden', name: 'hour', value: total_lessons });
-          var classroom = Builder.node('input', { type: 'hidden', name: 'classroom', value: $("classroom_id").value });
-          var teacher = Builder.node('input', { type: 'hidden', name: 'teacher', value: $("teacher_id").value });
-          
+          var elements = new Array();
+          elements.push(Builder.node('input', { type: 'hidden', name: 'discipline', value: $("discipline_id").value }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'hour', value: $("start_time").value }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'hour', value: $("end_time").value }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'hour', value: lesson_date }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'hour', value: total_lessons }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'classroom', value: $("classroom_id").value }));
+          elements.push(Builder.node('input', { type: 'hidden', name: 'teacher', value: $("teacher_id").value }));
+          elements.push(Builder.node('div', {}, discipline.name));
+          elements.push(Builder.node('div', {}, lesson_date.toString("dd/MM/yyyy")));
+
+          var td = Builder.node('td', elements);
+          tr.appendChild(td);
         } else {
-          result += "<td>&nbsp;</td>";
+          var td = Builder.node('td', Builder.node('span'));
+          tr.appendChild(td);
         }
       });
-      result += "</tr>";
+      $('calendar').appendChild(tr);
     }
-    $("go_here").insert(result, { position: 'top' });
 }
   
   </script>
-</form>
