@@ -1,62 +1,42 @@
 class Classe < ActiveRecord::Base
-#  WeekDays = {
-#    :sunday => 0,
-#    :monday => 1, 
-#    :tuesday => 2,
-#    :wednesday => 3,
-#    :thursday => 4, 
-#    :friday => 5,
-#    :saturday => 6
-#  }
-  
   belongs_to :course
   has_many :lessons
 
   validates_presence_of :course
-#  validates_inclusion_of :repeat_on, :in => WeekDays.keys, :on => :create, :message => 'must be a day of week'
-#  validates_date :start_date
-#  validates_time :start_time
-#  validates_time :end_time, :after => :start_time
-#  validate :verify_if_discipline_can_be_teached_by_the_teacher
-  
-#  def repeat_on=(value)
-#    write_attribute(:repeat_on, value.to_sym)
-#  end
-  
+  validates_associated :lessons
+
+  def new_lesson_attributes=(lesson_attributes)
+    lesson_attributes.each do |attributes|
+      lessons.build(attributes.merge(:date => attributes[:date].to_date)) # TODO: remove this merge! Understand why 24/05/2008 not parses!
+    end
+  end
+
+  after_update :save_lessons
+  def existing_lesson_attributes=(lesson_attributes)
+    lessons.reject(&:new_record?).each do |lesson|
+      attributes = lesson_attributes[lesson.id.to_s]
+      if attributes
+#        date = attributes.delete("date")
+#        start_time = attributes.delete("start_time")
+#        end_time = attributes.delete("end_time")
+        lesson.attributes = attributes
+#        lesson.date = date
+#        lesson.start_time = start_time
+#        lesson.end_time = end_time
+      else
+        lessons.destroy(lesson)
+      end
+    end
+  end
+
+  def save_lessons
+    lessons.each do |lesson|
+      lesson.save
+    end
+  end
+
   def to_s
-#    "#{course} with #{teacher}, start date: #{start_date.to_s_br}"
+    #    "#{course} with #{teacher}, start date: #{start_date.to_s_br}"
     "#{course} bla =P"
   end
-  
-#  def after_initialize
-#    return if start_date.blank? || lessons_number.blank?
-#    
-#    if start_date.wday == weekday
-#      date = start_date - 1.week
-#    else
-#      date = start_date
-#    end
-#    
-#    while(lessons.size < lessons_number)
-#      date = date.end_of_week + weekday.days
-#      
-#      lessons << Lesson.new(
-#        :date => date,
-#        :start_time => start_time,
-#        :end_time => end_time,
-#        :classroom => classroom,
-#        :classe => self)
-#    end
-#  end
-#  
-#  private
-#  def verify_if_discipline_can_be_teached_by_the_teacher
-#    if discipline && !(discipline.can_be_taught_by.include?(teacher))
-#      errors.add(:teacher_id, 'cannot teach this discipline')
-#    end
-#  end
-#  
-#  def weekday
-#    WeekDays[repeat_on.to_sym]
-#  end
 end
