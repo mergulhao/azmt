@@ -164,9 +164,17 @@
         lesson_date = eval("lesson_date.next()." + pair.key + "();");
         if ((checkbox.checked === true) && (total_lessons_partial < total_lessons)) {
           //result += "<td>"+ $("discipline_id").value +"</td>";
-          result += "<td>"+ lesson_date.toString("dd/MM/yyyy") +"</td>";
+          result += "<td>"+ $("discipline_id").getValue() + "<br>" + lesson_date.toString("dd/MM/yyyy") +"</td>";
           total_lessons_partial++;
-//var element = Builder.node('input', { type: 'hidden', name: 'lala', value: 'lele' });
+          
+          var discipline = Builder.node('input', { type: 'hidden', name: 'discipline', value: $("discipline_id").value });
+          var start_time = Builder.node('input', { type: 'hidden', name: 'hour', value: $("start_time").value });
+          var end_time = Builder.node('input', { type: 'hidden', name: 'hour', value: $("end_time").value });
+          var lessons_date = Builder.node('input', { type: 'hidden', name: 'hour', value: lesson_date });
+          var lessons = Builder.node('input', { type: 'hidden', name: 'hour', value: total_lessons });
+          var classroom = Builder.node('input', { type: 'hidden', name: 'classroom', value: $("classroom_id").value });
+          var teacher = Builder.node('input', { type: 'hidden', name: 'teacher', value: $("teacher_id").value });
+          
         } else {
           result += "<td>&nbsp;</td>";
         }
