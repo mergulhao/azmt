@@ -1,14 +1,16 @@
-<%= link_to image_tag('icons/file_add.png') + " " + _('Add'), new_object_url %>
+<%= link_add_to_remote %>
 
 <table class="tbldata">
   <thead>
     <tr>
+      <th><%=_ 'Name' %></th>
       <th><%=_ 'Course' %></th>
     </tr>
   </thead>
   <tbody>
     <%- @classes.each do |classe|%>
       <tr>
+        <td><%=h classe.name %></td>
         <td><%=h classe.course %></td>
         <td><%= link_to image_tag('icons/file_edit.png'), edit_object_url(classe) %></td>
         <td><%= link_delete(classe) %></td>

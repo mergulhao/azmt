@@ -1,0 +1,9 @@
+<%= title_new :classe %>
+<%= error_messages_for :classe %>
+
+<% form_remote_for(:classe, :url => collection_url, :update => "box_form") do |f| %>
+  <fieldset>
+    <%= render :partial => "form", :locals => { :f => f } %>
+    <%= create_button_and_cancel_link_to_clear_box_form %>
+  </fieldset>
+<% end %>

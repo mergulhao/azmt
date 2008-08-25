@@ -1,4 +1,8 @@
-<p>
-  <label for="classe_course_id"><%=_ 'Course' %>:</label>
-  <%= f.collection_select :course_id, Course.find(:all), :id, :name %>
-</p>
+<label class="large"><%=_ 'Name' %>
+  <%= f.text_field :name, :class => "textfield" %>
+</label>
+<br/>
+<label class="large"><%=_ 'Course' %>
+  <%= f.collection_select :course_id, Course.find(:all), :id, :name, {}, :class => "select" %>
+</label>
+<br/>

@@ -1,6 +1,9 @@
 class ClassesController < ResourceController::Base
+  new_action.wants.js { render :layout => false }
+
   create do
-    wants.html { redirect_to edit_object_url(object) }
+    wants.js
+    failure.wants.js { render :action => 'new', :layout => false }
   end
   
   update do
