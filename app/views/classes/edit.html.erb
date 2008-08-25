@@ -164,10 +164,7 @@
   }
 
   function create_name_for(element) {
-    result = 'classe[lessons][';
-
-    result += $("discipline_id").value + '-' + $("start_time").value + '-' + $("end_time").value + '-' + lesson_date.toString("dd/MM/yyyy") + '-' + $("classroom_id").value
-
+    result = 'classe[new_lesson_attributes][';
     result += '][';
     result += element;
     result += ']';
