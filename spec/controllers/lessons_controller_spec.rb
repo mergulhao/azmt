@@ -7,65 +7,65 @@ describe LessonsController do
     Date.stub!(:today).and_return(Date.new(2008,07,04))
   end
   
-#  describe "handling GET /lessons with parameters" do
-#    def do_get(params = {})
-#      get :index, params
-#    end
-#
-#    it "should return only lessons on requested period" do
-#      do_get :start_date => '05/08/2008', :end_date => '25/08/2008'
-#      assigns[:lessons].should == lessons(:calculus, :algebra)
-#      assigns[:start_date].should eql(Date.new(2008,8,5))
-#      assigns[:end_date].should eql(Date.new(2008,8,25))
-#    end
-#    
-#    it "should return only lessons with selected teacher" do
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:homer).id
-#      assigns[:lessons].should == [lessons(:penis_measurement)]
-#      
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:marge).id
-#      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
-#    end
-#    
-#    it "should return only lessons with selected classroom" do
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:pantanal).id
-#      assigns[:lessons].should == [lessons(:penis_measurement)]
-#      
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:amazonia).id
-#      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
-#    end
-#    
-#    it "should return only lessons with selected classe :first_semester_math" do
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classe_id => classes(:first_semester_math).id
-#      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
-#    end
-#
-#    it "should return only lessons with selected classe :first_semester_sexology" do
-#      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classe_id => classes(:first_semester_sexology).id
-#      assigns[:lessons].should == [lessons(:penis_measurement)]
-#    end
-#    
-#    it "should ignore if end_date is not passed" do
-#      Lesson.should_receive(:find).
-#        with(:all, {:conditions => ["date >= ? and date <= ?", Date.new(2008,8,5), Date.today.end_of_month], :order => "date, start_time"}).
-#        and_return([@lesson])
-#      do_get :start_date => '05/08/2008'
-#    end
-#    
-#    it "should ignore if start_date is not passed" do
-#      Lesson.should_receive(:find).
-#        with(:all, {:conditions => ["date >= ? and date <= ?", Date.today.beginning_of_month, Date.new(2008,8,5)], :order => "date, start_time"}).
-#        and_return([@lesson])
-#      do_get :end_date => '05/08/2008'
-#    end
-#
-#    it "should not break if start_date or end_date are truncated" do
-#      Lesson.should_receive(:find).
-#        with(:all, {:conditions=>["date >= ? and date <= ?", Date.today.beginning_of_month, Date.today.end_of_month], :order => "date, start_time"}).
-#        and_return([@lesson])
-#      do_get :start_date => 'Ab/08/2008', :end_date => '05/Cd/2008'
-#    end
-#  end
+  describe "handling GET /lessons with parameters" do
+    def do_get(params = {})
+      get :index, params
+    end
+
+    it "should return only lessons on requested period" do
+      do_get :start_date => '05/08/2008', :end_date => '25/08/2008'
+      assigns[:lessons].should == lessons(:calculus, :algebra)
+      assigns[:start_date].should eql(Date.new(2008,8,5))
+      assigns[:end_date].should eql(Date.new(2008,8,25))
+    end
+    
+    it "should return only lessons with selected teacher" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:homer).id
+      assigns[:lessons].should == [lessons(:penis_measurement)]
+      
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :teacher_id => teachers(:marge).id
+      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
+    end
+    
+    it "should return only lessons with selected classroom" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:pantanal).id
+      assigns[:lessons].should == [lessons(:penis_measurement)]
+      
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classroom_id => classrooms(:amazonia).id
+      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
+    end
+    
+    it "should return only lessons with selected classe :first_semester_math" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classe_id => classes(:first_semester_math).id
+      assigns[:lessons].should == lessons(:number_theory, :geometry, :trigonometry)
+    end
+
+    it "should return only lessons with selected classe :first_semester_sexology" do
+      do_get :start_date => '04/07/2008', :end_date => '10/07/2008', :classe_id => classes(:first_semester_sexology).id
+      assigns[:lessons].should == [lessons(:penis_measurement)]
+    end
+    
+    it "should ignore if end_date is not passed" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions => ["date >= ? and date <= ?", Date.new(2008,8,5), Date.today.beginning_of_week + 2.week], :order => "date, start_time"}).
+        and_return([@lesson])
+      do_get :start_date => '05/08/2008'
+    end
+    
+    it "should ignore if start_date is not passed" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions => ["date >= ? and date <= ?", Date.today.beginning_of_week, Date.new(2008,8,5)], :order => "date, start_time"}).
+        and_return([@lesson])
+      do_get :end_date => '05/08/2008'
+    end
+
+    it "should not break if start_date or end_date are truncated" do
+      Lesson.should_receive(:find).
+        with(:all, {:conditions=>["date >= ? and date <= ?", Date.today.beginning_of_week, Date.today.beginning_of_week + 2.week], :order => "date, start_time"}).
+        and_return([@lesson])
+      do_get :start_date => 'Ab/08/2008', :end_date => '05/Cd/2008'
+    end
+  end
   
   describe "handling GET /lessons" do
 
@@ -87,7 +87,7 @@ describe LessonsController do
 
     it "should render index template" do
       do_get
-      response.should render_template('lessons/calendar')
+      response.should render_template('lessons/index')
     end
   
 #    it "should find all lessons" do

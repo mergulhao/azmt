@@ -16,27 +16,17 @@ class Classe < ActiveRecord::Base
     lessons.reject(&:new_record?).each do |lesson|
       attributes = lesson_attributes[lesson.id.to_s]
       if attributes
-#        date = attributes.delete("date")
-#        start_time = attributes.delete("start_time")
-#        end_time = attributes.delete("end_time")
         lesson.attributes = attributes
-#        lesson.date = date
-#        lesson.start_time = start_time
-#        lesson.end_time = end_time
       else
         lessons.destroy(lesson)
       end
     end
   end
 
+  private
   def save_lessons
     lessons.each do |lesson|
       lesson.save
     end
-  end
-
-  def to_s
-    #    "#{course} with #{teacher}, start date: #{start_date.to_s_br}"
-    "#{course} bla =P"
   end
 end
