@@ -322,7 +322,7 @@ describe ClassesController do
 
       it "should redirect to the classe" do
         do_put
-        response.should redirect_to(classe_url("1"))
+        response.should redirect_to(edit_classe_url("1"))
       end
 
     end
