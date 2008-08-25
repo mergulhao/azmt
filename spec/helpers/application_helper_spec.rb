@@ -77,6 +77,12 @@ describe ApplicationHelper do
     helper.link_delete(object).should eql('link delete')
   end
   
+  it "should set content_for javascripts" do
+    js = 'js_file'
+    helper.should_receive(:javascript_include_tag).with(js)
+    helper.javascript(js)
+  end
+  
   describe ".error_messages_for" do
     it "should return nothing when no errors" do
       no_errors = Object.new

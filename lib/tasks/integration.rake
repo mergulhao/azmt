@@ -4,6 +4,11 @@ ENV['SKIP_TASKS'] = %w(
                          test:units
                          test:functionals
                          test:integration
+                         spec:lib
+                         spec:models
+                         spec:helpers
+                         spec:controllers
+                         spec:views
                          test:rcov:units
                          test:rcov:units:verify
                          test:rcov:functionals
@@ -13,4 +18,4 @@ ENV['SKIP_TASKS'] = %w(
                          test:selenium:server:start
                          test_acceptance
                          test:selenium:server:stop
-                    ).join(',')
+).join(',')
