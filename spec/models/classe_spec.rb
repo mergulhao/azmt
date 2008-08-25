@@ -8,8 +8,18 @@ describe Classe do
       @classe.valid?
     end
     
-    it 'requires course' do
+    it "requires course" do
       @classe.errors.on(:course).should_not be_nil
+    end
+    
+    it "requires name" do
+      @classe.errors.on(:name).should_not be_nil
+    end
+  end
+  
+  describe ".to_s" do
+    it "should return course name and classe name" do
+      classes(:first_semester_sexology).to_s.should eql('Sexology in details - First Semester')
     end
   end
   

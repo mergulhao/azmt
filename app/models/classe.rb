@@ -2,9 +2,13 @@ class Classe < ActiveRecord::Base
   belongs_to :course
   has_many :lessons, :order => 'date'
 
-  validates_presence_of :course
+  validates_presence_of :course, :name
 #  validates_associated :lessons
 
+  def to_s
+    "#{course} - #{name}"
+  end
+  
   def new_lesson_attributes=(lesson_attributes)
     lesson_attributes.each do |attributes|
       lessons.build(attributes.merge(:date => attributes[:date].to_date)) # TODO: remove this merge! Understand why 24/05/2008 not parses!

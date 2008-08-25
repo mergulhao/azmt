@@ -1,5 +1,7 @@
 first_semester_math:
+  name: First Semester
   course: math
 
 first_semester_sexology:
+  name: First Semester
   course: sexology
