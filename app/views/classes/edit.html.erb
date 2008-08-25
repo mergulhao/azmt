@@ -1,5 +1,5 @@
-<!-- <h1>Editing Classe</h1>
-<%= error_messages_for :classe %> -->
+<%= error_messages_for :classe %>
+
 <% javascript 'dynamic_teachers', 'date', 'lowpro', 'jsmask' %>
 
 <% form_tag do %>
@@ -77,15 +77,31 @@
         </tr>
       </thead>
       
-      <tbody id="calendar">
+  <%
+  first_date = @classe.lessons.first.date
+  last_date = @classe.lessons.last.date
+  
+  first_date = first_date.beginning_of_week - 1.day
+  last_date = last_date.end_of_week - 1.day
+  %>
+        <tbody id="calendar">
+
+  <% (first_date..last_date).to_a.in_groups_of(7) do |week| -%>
+   <tr>
+      <% week.each do |date| -%>
+        <td>
+          <%= _('(date)',date) %>
+          <%= render :partial => 'lesson', :collection => @classe.lessons.select { |l| l.date == date } %>
+        </td>
+      <% end -%>
+    </tr>
+  <%- end -%>
         <tr>
-          <td><%= hidden_field_tag 'lessons[]', '', :id => 'empty_lessons' %></td>
+          <td>&nbsp;</td>
         </tr>		
       </tbody>
     </table>
-
-  <br/>
-  <%#= render :partial => "form", :locals => { :f => f } %>
+<br/>
 <label class="lblbutton" style="width: 69.3%;">
   <%= submit_tag _('Save'), :class => 'button' %>
 </label>
@@ -149,8 +165,8 @@
           elements.push(Builder.node('input', { type: 'hidden', name: create_name_for('date'), value: lesson_date.toString("dd/MM/yyyy") }));
           elements.push(Builder.node('input', { type: 'hidden', name: create_name_for('classroom_id'), value: $("classroom_id").value }));
           elements.push(Builder.node('input', { type: 'hidden', name: create_name_for('teacher_id'), value: $("teacher_id").value }));
-          elements.push(Builder.node('div', {}, discipline.name));
           elements.push(Builder.node('div', {}, lesson_date.toString("dd/MM/yyyy")));
+          elements.push(Builder.node('div', {}, discipline.name));
 
           var td = Builder.node('td', elements);
           tr.appendChild(td);
@@ -171,23 +187,3 @@
     return result;
   }
 </script>
-
-  
-  
-  
-  <!-- p>
-    <%=submit_tag "Update"%>
-  </p -->
-<% #end %>
-
-
-
-<!--
-
-<br/>
-
-<%= link_to 'Show', object_url %>
-|
-<%= link_to 'Back', collection_url %>
-
--->

@@ -1,0 +1,12 @@
+<div class="lesson">
+<% fields_for 'classe[existing_lesson_attributes][]', lesson do |lesson_form| -%>
+    <%= lesson_form.hidden_field :discipline_id %>
+    <%= lesson_form.hidden_field :start_time %>
+    <%= lesson_form.hidden_field :end_time %>
+    <%= lesson_form.hidden_field :date %>
+    <%= lesson_form.hidden_field :classroom_id %>
+    <%= lesson_form.hidden_field :teacher_id %>
+    
+    <%= lesson.discipline %> <%= link_to_function image_tag('icons/file_delete.png'), "$(this).up('.lesson').remove()" %>
+<% end -%>
+</div>
