@@ -78,8 +78,8 @@
       </thead>
       
   <%
-  first_date = @classe.lessons.first.date
-  last_date = @classe.lessons.last.date
+  first_date = @classe.lessons.first.date rescue Date.today
+  last_date = @classe.lessons.last.date rescue Date.today - 1.day
   
   first_date = first_date.beginning_of_week - 1.day
   last_date = last_date.end_of_week - 1.day

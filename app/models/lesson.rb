@@ -11,9 +11,13 @@ class Lesson < ActiveRecord::Base
   validates_date :date
   validates_time :start_time
   validates_time :end_time, :after => :start_time
+
+  def color
+    classe.course.color
+  end
   
   def to_s
-    "#{discipline} - #{name}"
+    "#{discipline}"
   end
   
   def to_calendar
