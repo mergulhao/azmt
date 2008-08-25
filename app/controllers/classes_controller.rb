@@ -1,6 +1,6 @@
 class ClassesController < ResourceController::Base
   create do
-    wants.html { redirect_to classe_lessons_url(object) }
+    wants.html { redirect_to edit_object_url(object) }
   end
 
   update.before do

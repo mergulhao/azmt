@@ -155,7 +155,7 @@ describe ClassesController do
 
       it "should redirect to the new classe" do
         do_post
-        response.should redirect_to(classe_lessons_url("1"))
+        response.should redirect_to(edit_classe_url("1"))
       end
       
     end
