@@ -44,5 +44,6 @@ Localization.define('pt_BR') do |l|
   l.store 'Successfully created!', 'Inserido com sucesso!'
   l.store 'Successfully updated!', 'Atualizado com sucesso!'
   l.store 'Successfully removed!', 'Removido com sucesso!'
+  l.store '(date)', lambda { |t| t.strftime('%d/%m/%Y') }
   l.store '(time)', lambda { |t| t.strftime('%H:%M') }
 end

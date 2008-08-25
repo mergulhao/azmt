@@ -1,9 +1,9 @@
 class Classe < ActiveRecord::Base
   belongs_to :course
-  has_many :lessons
+  has_many :lessons, :order => 'date'
 
   validates_presence_of :course
-  validates_associated :lessons
+#  validates_associated :lessons
 
   def new_lesson_attributes=(lesson_attributes)
     lesson_attributes.each do |attributes|
@@ -26,7 +26,7 @@ class Classe < ActiveRecord::Base
   private
   def save_lessons
     lessons.each do |lesson|
-      lesson.save
+      lesson.save(false)
     end
   end
 end
