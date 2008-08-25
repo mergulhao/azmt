@@ -72,7 +72,7 @@
   <thead>  
    <tr>
       <% week.each do |date| -%>
-        <th><%= date.to_s_br if date && (date >= @start_date) %></th>
+        <th style="width: 14%;"><%= _('(date)',date) if date && (date >= @start_date) %></th>
       <% end -%>
     </tr>
  </thead>
@@ -86,15 +86,13 @@
             <div>
               <% lessons = @lessons.select {|lesson| lesson.date == date } %>
               <% lessons.each do |lesson| %>
-                <span>
-                  <%=link_to lesson.to_calendar, edit_object_url(lesson) %>
-                  - 
-                  <%=link_to 'X', object_url(lesson), :confirm => 'Are you sure?', :method => :delete %>
+                <span style="background-color: #<%= lesson.color %>;">
+                  <%= link_to lesson.to_calendar, edit_object_url(lesson) %>
                 </span>
               <% end %>
-              <span>
+              <!-- span>
                 <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
-              </span>
+              </span -->
             </div>      
           <% end %>
         </td>
