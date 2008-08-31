@@ -1,14 +1,16 @@
-<h3>Editando Sala</h3>
+<div class="box_form">
+	<%= title_edit:classroom %>
 
 <%= error_messages_for :classroom %>
 
 <% form_for(:classroom, :url => object_url, :html => { :method => :put }) do |f| %>
+<fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%=submit_tag "Atualizar"%>
-  </p>
+  <label class="x-small lblbutton"><%= submit_tag "Atualizar", :class => "button" %></label>
+  <label class="x-small" style="text-align: right;"><%= link_to 'Cancelar', collection_url %></label>
+</fieldset>
 <% end %>
-
+</div>
 <br/>
 
 <%= link_to 'Voltar', collection_url %>
