@@ -65,3 +65,6 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance|
+"<span class=\"fieldWithErrors\">#{html_tag}</span>" }
