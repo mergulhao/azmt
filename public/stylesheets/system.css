@@ -440,6 +440,7 @@ form ul li label {
 }
 
 .inner_multiple_select {
+	display: block;
 	clear: left;
 }
 
