@@ -4,6 +4,8 @@
 <label class="x-small"><%=_ 'Capacity' %>
   <%= f.text_field :capacity, :class => "textfield" %>
 </label><br />
-<label><%=_ 'External?' %></label>
-  <%= f.radio_button :external, :true %> <%=_ 'true' %>
-  <%= f.radio_button :external, :false %> <%=_ 'false' %>
+<fieldset>
+	<legend><%=_ 'External?' %></legend>
+<label class="x-small"><%= f.radio_button :external, :true %> <%=_ 'true' %></label>
+<label class="x-small"><%= f.radio_button :external, :false %> <%=_ 'false' %></label>
+</fieldset>
