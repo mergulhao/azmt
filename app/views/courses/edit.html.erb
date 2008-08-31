@@ -1,14 +1,14 @@
-<h1>Editing Course</h1>
-
+<div class="box_form">
+<%= title_edit :course %>
 <%= error_messages_for :course %>
 
 <% form_for(:course, :url => object_url, :html => { :method => :put }) do |f| %>
+  <fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%=submit_tag "Update"%>
-  </p>
+  <%= update_button_and_cancel_link_to_clear_box_form %>
+  </fieldset>
 <% end %>
-
+</div>
 <br/>
 
 <%= link_to 'Show', object_url %>
