@@ -5,7 +5,8 @@
 <% form_for(:course, :url => object_url, :html => { :method => :put }) do |f| %>
   <fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <%= update_button_and_cancel_link_to_clear_box_form %>
+  <label class="x-small lblbutton"><%= submit_tag "Atualizar", :class => "button" %></label>
+  <label class="x-small" style="text-align: right;"><%= link_to 'Voltar', collection_url %></label>
   </fieldset>
 <% end %>
 </div>
