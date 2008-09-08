@@ -3,24 +3,68 @@
 <% javascript 'dynamic_teachers', 'date', 'lowpro', 'jsmask' %>
 
 <% form_tag do %>
- <fieldset>
- 	<label class="large"><%=_ 'Disciplines'%> <%= select_tag :discipline_id, 
+    <table style="border: 1px solid #e9e9e9; width: 180px; border-collapse: colapse; float: right;">
+      <tr><th><%=_ 'Disciplines'%></th></tr>
+      <tr>
+        <td>
+        <%= select_tag :discipline_id, 
          select_default +
- options_from_collection_for_select(object.course.disciplines.find(:all), :id, :name), :class => "select" %></label>
-  <label class="small"><%=_ 'Classroom' %> <%= select_tag :classroom_id, 
-          options_from_collection_for_select(Classroom.find(:all), :id, :name), :class => "select" %></label>
-	<label class="x-small"><%=_ 'Lessons' %> <%= text_field_tag :lessons_number, '', :class => "textfield", :maxlength => "2" %></label><br />
-	<label class="large" id="teacher_select_label"><%=_ 'Teacher' %> <%= select_tag :teacher_id, select_default, :class => "select" %></label>
-	<label class="small"><%=_ 'Date' %> <%= text_field_tag_with_js_mask :start_date,'', :class => "mask_date_br textfield" %></label>
-	<label class="x-small"><%=_ 'For'%> <%= text_field_tag_with_js_mask :start_time,'', :class => "mask_time textfield" %></label>
-    <label class="x-small"><%=_ 'To'%> <%= text_field_tag_with_js_mask :end_time,'', :class => "mask_time textfield" %></label><br />
-	<label class="small lblbutton"><%= button_to_function _('Add Lessons'), "add_lessons();", :class => 'button' %></label>
- </fieldset>
+ options_from_collection_for_select(object.course.disciplines.find(:all), :id, :name), :class => "select" %>
+        </td>
+      </tr>
+      
+      <tr><th><%=_ 'Hour' %></th></tr>
+      <tr>
+        <td>
+          <label class="x-small"><%= text_field_tag_with_js_mask :start_time,'', :class => "mask_time textfield" %></label>
+          <label>..</label>
+          <label class="x-small"><%= text_field_tag_with_js_mask :end_time,'', :class => "mask_time textfield" %></label>
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Date' %></th></tr>
+      <tr>
+        <td>
+          <label class="small"><%= text_field_tag_with_js_mask :start_date,'', :class => "mask_date_br textfield" %></label>
+       
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Lessons' %></th></tr>
+      <tr>
+        <td>
+          <label class="x-small"><%= text_field_tag :lessons_number, '', :class => "textfield", :maxlength => "2" %></label>
+        </td>
+      </tr>
+
+      <tr><th><%=_ 'Classroom' %></th></tr>
+      <tr>
+        <td>
+        <%= select_tag :classroom_id, 
+          options_from_collection_for_select(Classroom.find(:all), :id, :name), :class => "select" %>
+        </td>
+      </tr>
+
+      <tr><th id="teacher_select_label"><%=_ 'Teacher' %></th></tr>
+      <tr>
+        <td>
+        <%= select_tag :teacher_id, select_default, :class => "select" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <label class="lblbutton" style="width: 95%;">
+        <%= button_to_function _('Add Lessons'), "add_lessons();", :class => 'button' %>
+        </label>
+        </td>
+      </tr>
+    </table>
 <% end %>
 
 <% form_for(:classe, :url => object_url, :html => { :method => :put }) do |f| %>
 
-    <table style="border: 1px solid #e9e9e9; width: 100%; border-collapse: colapse;">
+    <table style="border: 1px solid #e9e9e9; width: 70%; border-collapse: colapse;">
       <thead>
         <tr>
           <th><%=_ 'Sun' %> <input type="checkbox" name="sunday" id="sunday" /></th>
@@ -58,7 +102,7 @@
       </tbody>
     </table>
 <br/>
-<label class="small lblbutton">
+<label class="lblbutton" style="width: 69.3%;">
   <%= submit_tag _('Save'), :class => 'button' %>
 </label>
 <% end %>
