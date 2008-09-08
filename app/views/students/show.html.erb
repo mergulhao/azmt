@@ -1,33 +1,55 @@
-<p>
-  <strong>Name:</strong><%=h @student.name %>
-</p>
-<p>
-  <strong>Street:</strong><%=h @student.street %>
-</p>
-<p>
-  <strong>Number:</strong><%=h @student.number %>
-</p>
-<p>
-  <strong>Complement:</strong><%=h @student.complement %>
-</p>
-<p>
-  <strong>Neighbourhood:</strong><%=h @student.neighbourhood %>
-</p>
-<p>
-  <strong>Zip:</strong><%=h @student.zip %>
-</p>
-<p>
-  <strong>Home phone:</strong><%=h @student.home_phone %>
-</p>
-<p>
-  <strong>Comercial phone:</strong><%=h @student.comercial_phone %>
-</p>
-<p>
-  <strong>Mobile phone:</strong><%=h @student.mobile_phone %>
-</p>
-<p>
-  <strong>Cpf:</strong><%=h @student.cpf %>
-</p>
+<table style="width: 100%; border: 1px solid #e9e9e9;">
+  <tr>
+    <td><p><strong>Name:</strong><%=h @student.name %></p></td>
+    <td><p><strong>Nascimento:</strong> ??</p></td>
+  </tr>
+  <tr>
+    <td><p><strong>Street:</strong><%=h @student.street %>, <%=h @student.number %>
+        <%=h " - #{@student.complement}" if @student.complement %>
+    </p></td>
+    <td><p><strong>Neighbourhood:</strong><%=h @student.neighbourhood %></p></td>
+  </tr>
+  <tr>
+    <td><p><strong>Zip:</strong><%=h @student.zip %></p></td>
+    <td><p><strong>Cidade:</strong> ??</p></td>
+    <td><p><strong>Estado:</strong> ??</p></td>
+  </tr>
+  <tr>
+    <td><p><strong>Home phone:</strong><%=h @student.home_phone %></p></td>
+    <td><p><strong>Comercial phone:</strong><%=h @student.comercial_phone %></p></td>
+    <td><p><strong>Mobile phone:</strong><%=h @student.mobile_phone %></p></td>
+  </tr>
+  <tr>
+    <td><p><strong>Identidade:</strong> ????</p></td>
+    <td><p><strong>Cpf: </strong><%=h @student.cpf %></p></td>
+  </tr>
+  <tr>
+    <td>Email, Profissao, Empresa, Cargo</td>
+  </tr>
+</table>
+
+<h2>Contratos</h2>
+
+<table>
+  <th>
+    <td>Curso</td>
+    <td>Matrícula</td>
+    <td>Parcela</td>
+    <td>#</td>
+    <td>Total</td>
+    <td>&nbsp;</td>
+  </th>
+<%- for contract in @student.contracts -%>
+  <tr>
+    <td><%= contract.classe %></td>
+    <td><%= contract.registration_value %></td>
+    <td><%= contract.financing_tranche %></td>
+    <td><%= contract.financing_tranche_number %></td>
+    <td><%= contract.financing_tranche_number * contract.financing_tranche %></td>
+    <td><%= link_to 'Ver', contract_url(contract) %></td>
+  </tr>
+<%- end -%>
+</table>
 
 <%= link_to 'Edit', edit_object_url %>
 |

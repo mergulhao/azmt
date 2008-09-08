@@ -1,14 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :courses
-  map.resources :classrooms
-  map.resources :teachers
-  map.resources :disciplines
-  
   map.resources :classes, :has_many => :lessons
+  map.resources :classrooms
+  map.resources :contracts
+  map.resources :courses
+  map.resources :disciplines
   map.resources :lessons
+  map.resources :students, :has_many => :contracts
+  map.resources :teachers
 
-  map.resources :students
-  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

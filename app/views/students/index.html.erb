@@ -16,6 +16,7 @@
         <td><%=h student.home_phone %></td>
 
 
+        <td><%= link_to(image_tag("icons/copy.png"), student) %></td>
         <td><%= link_edit_to_remote(student) %></td>
         <td><%= link_delete(student) %></td>
       </tr>
