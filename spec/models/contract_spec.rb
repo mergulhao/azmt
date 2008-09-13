@@ -12,6 +12,11 @@ describe Contract do
     contract.number.should == "00002"
   end
   
+  it "should return installments ordered by due_date ASC" do
+    contract = contracts(:johnny_cash_one)
+    contract.installments.should == installments(:first, :second)
+  end
+  
   it "should be valid" do
     @contract.should be_valid
   end

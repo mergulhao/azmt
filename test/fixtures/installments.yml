@@ -1,0 +1,18 @@
+second:
+  contract: johnny_cash_one
+  due_date: <%= (Date.today.end_of_week + 1.month).to_s(:db) %>
+  bank_number: 123
+  bank_branch: 456
+  bank_account: 789
+  bank_check: 159
+  value: 1890.00
+
+first:
+  contract: johnny_cash_one
+  due_date: <%= Date.today.end_of_week.to_s(:db) %>
+  bank_number: 123
+  bank_branch: 456
+  bank_account: 789
+  bank_check: 159
+  value: 1890.00
+
