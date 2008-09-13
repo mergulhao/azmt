@@ -1,0 +1,23 @@
+<h1>Listing Contracts</h1>
+
+<table>
+  <tr>
+    <th>Registration value</th>
+    <th>Financing tranche</th>
+    <th>Financing tranche number</th>
+  </tr>
+  <%- @contracts.each do |contract|%>
+    <tr>
+      <td><%=h contract.registration_value %></td>
+      <td><%=h contract.financing_tranche %></td>
+      <td><%=h contract.financing_tranche_number %></td>
+    
+      <td><%=link_to 'Show', object_url(contract) %></td>
+      <td><%=link_to 'Edit', edit_object_url(contract) %></td>
+      <td><%=link_to 'Destroy', object_url(contract), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Contract', new_object_url %>
