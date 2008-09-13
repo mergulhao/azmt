@@ -1,5 +1,6 @@
 Localization.define('pt_BR') do |l|
   l.store 'Add', 'Adicionar'
+  l.store 'Address', 'Endereço'
   l.store 'Bank Number', 'Banco'
   l.store 'Bank Branch', 'Agência'
   l.store 'Bank Account', 'Conta'
@@ -35,6 +36,8 @@ Localization.define('pt_BR') do |l|
   l.store 'Name', 'Nome'
   l.store 'Neighbourhood', 'Bairro'
   l.store 'Number', 'Número'
+  l.store 'Personal info', 'Informações pessoais'
+  l.store 'Phones', 'Telefones'
   l.store 'Street', 'Rua'
   l.store 'Student', 'Aluno'
   l.store 'Successfully created!', 'Inserido com sucesso!'

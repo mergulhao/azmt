@@ -68,12 +68,12 @@ describe ContractsController do
   describe "handling GET /contracts/new" do
 
     before(:each) do
-      @contract = mock_model(Contract)
+      @contract = Contract.new
       Contract.stub!(:new).and_return(@contract)
     end
   
     def do_get
-      get :new
+      get :new, :student_id => students(:johnny_cash).id
     end
 
     it "should be successful" do
@@ -100,6 +100,9 @@ describe ContractsController do
       do_get
       assigns[:contract].should equal(@contract)
     end
+    
+    it "should set student parameters in contract"
+    it "should redirect if no student_id is given"
   end
 
   describe "handling GET /contracts/1/edit" do

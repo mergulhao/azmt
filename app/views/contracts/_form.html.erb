@@ -1,7 +1,41 @@
+<h2><%= _('Personal info') %></h2>
+
 <p>
   <label for="contract_name"><%=_ 'Name' %>:</label>
   <%= f.text_field :name %>
 </p>
+
+<p>
+  <label for="contract_cpf"><%=_ 'CPF' %>:</label>
+  <%= f.text_field :cpf %>
+</p>
+<p>
+  <label for="contract_rg"><%=_ 'RG' %>:</label>
+  <%= f.text_field :rg %>
+</p>
+<p>
+  <label for="contract_kinship"><%=_ 'Kinship' %>:</label>
+  <%= f.text_field :kinship %>
+</p>
+
+<h2><%= _('Phones') %></h2>
+  
+<p>
+  <label for="contract_home_phone"><%=_ 'Home Phone' %>:</label>
+  <%= f.text_field :home_phone %>
+</p>
+<p>
+  <label for="contract_comercial_phone"><%=_ 'Comercial Phone' %>:</label>
+  <%= f.text_field :comercial_phone %>
+</p>
+<p>
+  <label for="contract_mobile_phone"><%=_ 'Mobile Phone' %>:</label>
+  <%= f.text_field :mobile_phone %>
+</p>
+
+
+<h2><%= _('Address') %></h2>
+
 <p>
   <label for="contract_address_street"><%=_ 'Street' %>:</label>
   <%= f.text_field :address_street %>
@@ -22,30 +56,13 @@
   <label for="contract_address_zip"><%=_ 'Zip' %>:</label>
   <%= f.text_field :address_zip %>
 </p>
-<p>
-  <label for="contract_home_phone"><%=_ 'Home Phone' %>:</label>
-  <%= f.text_field :home_phone %>
-</p>
-<p>
-  <label for="contract_comercial_phone"><%=_ 'Comercial Phone' %>:</label>
-  <%= f.text_field :comercial_phone %>
-</p>
-<p>
-  <label for="contract_mobile_phone"><%=_ 'Mobile Phone' %>:</label>
-  <%= f.text_field :mobile_phone %>
-</p>
-<p>
-  <label for="contract_cpf"><%=_ 'CPF' %>:</label>
-  <%= f.text_field :cpf %>
-</p>
-<p>
-  <label for="contract_rg"><%=_ 'RG' %>:</label>
-  <%= f.text_field :rg %>
-</p>
-<p>
-  <label for="contract_kinship"><%=_ 'Kinship' %>:</label>
-  <%= f.text_field :kinship %>
-</p>
+
+<h2><%= _('Contract') %></h2>
+
+<label class="large"><%=_ 'Classe' %>
+  <%= f.collection_select :classe_id, Course.find(:all), :id, :name, {}, :class => "select" %>
+</label>
+
 <p>
   <label for="contract_registration_value">Registration value:</label>
   <%= f.text_field :registration_value %>
@@ -58,3 +75,6 @@
   <label for="contract_installment_number">Financing tranche number:</label>
   <%= f.text_field :installment_number %>
 </p>
+
+
+<h2><%= _('Installments') %></h2>
