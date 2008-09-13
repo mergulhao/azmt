@@ -4,3 +4,10 @@ johnny_cash_one:
   registration_value: 1000.00
   installment_value: 2000.00
   installment_number: 6
+
+johnny_cash_two:
+  student: johnny_cash
+  classe: first_semester_math
+  registration_value: 866.98
+  installment_value: 1659.62
+  installment_number: 8

@@ -1,0 +1,43 @@
+  <tr>
+    <td><%= contract.number %></td>
+    <td><%= contract.classe %></td>
+    <td><%= contract.registration_value %></td>
+    <td><%= contract.installment_value %></td>
+    <td><%= contract.installment_number %></td>
+    <td><%= contract.installment_number * contract.installment_value %></td>
+    <td>
+      <%= link_to_function(_('Installments'), nil) do |page|
+        page.select("tr.#{css_class_to_contract_installments(contract)}").each(&:toggle)
+      end %>
+    </td>
+    <td><%= link_to 'Ver', contract_url(contract) %></td>
+  </tr>
+
+  <%- if contract.installments.empty? -%>
+    <tr <%= css_to_contract_installments(contract) %>>
+      <td colspan="7"><%= _('There is no installments.') %></td>
+    </tr>
+  <%- else -%>
+    <tr <%= css_to_contract_installments(contract) %>>
+      <th>&nbsp;</th>
+      <th><%= _("Due Date") %></th>
+      <th><%= _("Bank Number") %></th>
+      <th><%= _("Bank Branch") %></th>
+      <th><%= _("Bank Account") %></th>
+      <th><%= _("Bank Check") %></th>
+      <th><%= _("Value") %></th>
+      <th>&nbsp;</th>
+    </tr>
+  <%- end -%>
+  
+  <%- contract.installments.each_with_index do |installment, i| -%>
+    <tr <%= css_to_contract_installments(contract) %>>
+      <td><%= i + 1 %></td>
+      <td><%= _('(date)', installment.due_date) %></td>
+      <td><%= installment.bank_number %></td>
+      <td><%= installment.bank_branch %></td>
+      <td><%= installment.bank_account %></td>
+      <td><%= installment.bank_check %></td>
+      <td><%= installment.value %></td>
+    </tr>
+  <%- end -%>

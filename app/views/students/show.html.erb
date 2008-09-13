@@ -41,20 +41,12 @@
     <th>#</th>
     <th>Total</th>
     <th>&nbsp;</th>
+    <th>&nbsp;</th>
   </tr>
-<%- for contract in @student.contracts -%>
-  <tr>
-    <td><%= contract.number %></td>
-    <td><%= contract.classe %></td>
-    <td><%= contract.registration_value %></td>
-    <td><%= contract.installment_value %></td>
-    <td><%= contract.installment_number %></td>
-    <td><%= contract.installment_number * contract.installment_value %></td>
-    <td><%= link_to 'Ver', contract_url(contract) %></td>
-  </tr>
-<%- end -%>
+
+  <%= render :partial => 'contract', :collection => @student.contracts %>
+
   <tr>
     <td colspan="7"><%= link_to _('New %s',_('Contract')), new_student_contract_url(@student) %>
   </tr>
 </table>
-
