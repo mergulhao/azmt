@@ -43,14 +43,15 @@
   <tr>
     <td><%= contract.classe %></td>
     <td><%= contract.registration_value %></td>
-    <td><%= contract.financing_tranche %></td>
-    <td><%= contract.financing_tranche_number %></td>
-    <td><%= contract.financing_tranche_number * contract.financing_tranche %></td>
+    <td><%= contract.installment_value %></td>
+    <td><%= contract.installment_number %></td>
+    <td><%= contract.installment_number * contract.installment_value %></td>
     <td><%= link_to 'Ver', contract_url(contract) %></td>
   </tr>
 <%- end -%>
+  <tr>
+    <td><%= link_to _('New contract'), new_student_contract_url(@student) %>
+  </tr>
 </table>
 
-<%= link_to 'Edit', edit_object_url %>
-|
-<%= link_to 'Back', collection_url %>
+<%= link_to 'Edit Student', edit_object_url %>

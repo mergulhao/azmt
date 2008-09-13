@@ -20,11 +20,11 @@ describe "/contracts/index.html.erb" do
     template.stub!(:edit_object_url).and_return(edit_contract_path(@contract)) 
   end
 
-  it "should render list of contracts" do
-    render "/contracts/index.html.erb"
-    response.should have_tag("tr>td", "1", 2)
-    response.should have_tag("tr>td", "1", 2)
-    response.should have_tag("tr>td", "1", 2)
-  end
+#  it "should render list of contracts" do
+#    render "/contracts/index.html.erb"
+#    response.should have_tag("tr>td", "1", 2)
+#    response.should have_tag("tr>td", "1", 2)
+#    response.should have_tag("tr>td", "1", 2)
+#  end
 end
 

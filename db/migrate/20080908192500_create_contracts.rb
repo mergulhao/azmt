@@ -18,10 +18,9 @@ class CreateContracts < ActiveRecord::Migration
       t.references :classe, :null => false
       t.string :kinship
       
-      t.integer :registration_value
-      t.integer :financing_tranche
-      t.integer :financing_tranche_number
-
+      t.decimal :registration_value, :precision => 14, :scale => 2
+      t.decimal :installment_value, :precision => 14, :scale => 2
+      t.integer :installment_number
       t.timestamps
     end
   end

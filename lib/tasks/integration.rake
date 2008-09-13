@@ -1,4 +1,4 @@
-ENV['SCM'] = 'git_with_svn'
+ENV['SCM'] = 'git'
 
 ENV['SKIP_TASKS'] = %w( 
                          test:units

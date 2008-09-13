@@ -9,8 +9,8 @@
   <%- @contracts.each do |contract|%>
     <tr>
       <td><%=h contract.registration_value %></td>
-      <td><%=h contract.financing_tranche %></td>
-      <td><%=h contract.financing_tranche_number %></td>
+      <td><%=h contract.installment_value %></td>
+      <td><%=h contract.installment_number %></td>
     
       <td><%=link_to 'Show', object_url(contract) %></td>
       <td><%=link_to 'Edit', edit_object_url(contract) %></td>

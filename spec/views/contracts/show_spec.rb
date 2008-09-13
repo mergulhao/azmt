@@ -15,11 +15,11 @@ describe "/contracts/show.html.erb" do
     template.stub!(:collection_url).and_return(contracts_path) 
   end
 
-  it "should render attributes in <p>" do
-    render "/contracts/show.html.erb"
-    response.should have_text(/1/)
-    response.should have_text(/1/)
-    response.should have_text(/1/)
-  end
+#  it "should render attributes in <p>" do
+#    render "/contracts/show.html.erb"
+#    response.should have_text(/1/)
+#    response.should have_text(/1/)
+#    response.should have_text(/1/)
+#  end
 end
 
