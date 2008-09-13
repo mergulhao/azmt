@@ -1,0 +1,10 @@
+one:
+  id: 1
+  registration_value: 1
+  financing_tranche: 1
+  financing_tranche_number: 1
+two:
+  id: 2
+  registration_value: 1
+  financing_tranche: 1
+  financing_tranche_number: 1
