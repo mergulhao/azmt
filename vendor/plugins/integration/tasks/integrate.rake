@@ -110,7 +110,6 @@ namespace :scm do
   task :commit do
     Rake::Task["svn:commit"].invoke if SCM == 'svn' 
     if SCM == 'git' 
-      Rake::Task["git:commit"].invoke 
       Rake::Task["git:push"].invoke 
     end
     Rake::Task["git_with_svn:dcommit"].invoke if SCM == 'git_with_svn'
@@ -146,13 +145,19 @@ namespace :svn do
 end
 
 namespace :git do
+  
+  def has_files_to_commit?
+    return false if (`git status`).include?('nothing to commit')
+    true  
+  end
+  
   namespace :status do
     desc 'Check if project can be committed to the repository.'
     task :check do
       result = `git status`
-      if result.include?('Untracked files:')
+      if result.include?('Untracked files:') || result.include?('unmerged:')
         puts "Files out of sync:"
-        puts result.split("Untracked files:\n").last
+        puts result
         exit
       end
     end
@@ -166,12 +171,13 @@ namespace :git do
   desc 'Commit project.'
   task :commit do
     message = ''
-    message = "-m ''" if ENV['SKIP_COMMIT_MESSAGES']
+    message = "-m 'Committed by integration plugin.'" if ENV['SKIP_COMMIT_MESSAGES']
     sh "git commit -a -v #{message}"
   end
   
   desc 'Push project.'
   task :push do
+    Rake::Task['git:commit'].invoke if has_files_to_commit? 
     sh "git push"
   end
 end

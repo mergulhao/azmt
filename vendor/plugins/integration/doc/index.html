@@ -17,7 +17,7 @@
 
 <h2>Installing</h2>
 
-<pre><code>ruby script/plugin install -x svn://rubyforge.org/var/svn/integration
+<pre><code>ruby script/plugin install git://github.com/tapajos/integration.git
 </code></pre>
 
 <p>After installing the plugin is ready to be used and you will need to execute only one task in order to integrate your code safely:</p>
@@ -335,7 +335,7 @@ projects/backup-amazing/amazing-20080304-104812.tar.gz
 <p>The fact that you can get away with this doesn't mean you should. Don't you think it's already time to grow up and become more professional about software development? I know you believe you have a great excuse to avoid writing those tests or specs. Still it's just an excuse. Write tests or write specs and make a better world!</p></li>
 <li><p>Test conscious programmer</p>
 
-<p>You haven't jumped on the <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a> bandwagon yet. Instead, you write tests, which is good, but they don't cover all of your code yet, which is bad. We believe you will <a href="http://www.improveit.com.br">improve it</a> and make sure your tests cover 100% of your code. In the meantime you might need to skip coverage checkings. Oh, you also don't use <a href="http://selenium-on-rails.openqa.org">Selenium</a>. Shame on you! Try this:</p>
+<p>You haven't jumped on the <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a> bandwagon yet. Instead, you write tests, which is good, but they don't cover all of your code yet, which is bad. We believe you will <a href="http://www.improveit.com.br/en">improve it</a> and make sure your tests cover 100% of your code. In the meantime you might need to skip coverage checkings. Oh, you also don't use <a href="http://selenium-on-rails.openqa.org">Selenium</a>. Shame on you! Try this:</p>
 
 <pre><code>ENV['SKIP_TASKS'] = %w( 
                         spec:lib
@@ -382,12 +382,12 @@ projects/backup-amazing/amazing-20080304-104812.tar.gz
 
 <h2>Version</h2>
 
-<p>Integration version 0.2.2</p>
+<p>Integration version 0.2.4</p>
 
 <h2>Release Notes</h2>
 
 <ul>
-<li>Version 0.2.4 - Added support for git and git-svn</li>
+<li>Version 0.2.4 - Added support for git and git-svn. Thanks to <a href="http://mergulhao.info/">Sylvestre Mergulhão</a> and <a href="http://tudoquequerosaber.com/">Eduardo Fiorezi</a>.</li>
 <li>Version 0.2.3 - BUG FIX: Rake db:migrate fails when default ENV['RAILS_ENV'] is used. Thanks to Celestino Gomes for fix this bug.</li>
 <li>Version 0.2.2 - Removed vendor/plugins/* commit. This commit is necessary when use plugins with externals but it isn`t a good practice. <a href="http://piston.rubyforge.org/">Piston</a> is the correct way to use externals plugins. If you want to use externals commit in your integration process you can create a svn:commit:after task.</li>
 <li>Version 0.2.1 - BUG FIX: Setting ENV['RAILS_ENV'] wasn't affecting migrations. This bug fix changes this behavior and makes sure that ENV['RAILS_ENV'] set by the user will always be respected, for all tasks. Thanks to Sylvestre Mergulhão for point this out.</li>
@@ -400,18 +400,18 @@ projects/backup-amazing/amazing-20080304-104812.tar.gz
 
 <h2>Contact</h2>
 
-<p>Comments are welcome. Send your feedback through the <a href="http://rubyforge.org/forum/?group_id=4662">forum</a> or to <a href="http://www.improveit.com.br/contato">this page</a> (yes, it's in Portuguese, but you'll probably figure out what to do).</p>
+<p>Comments are welcome. Send your feedback through the <a href="http://rubyforge.org/forum/?group_id=4662">forum</a> or to <a href="http://www.improveit.com.br/en/contact">this page</a></p>
 
 <h2>Authors</h2>
 
-<p><a href="http://www.improveit.com.br/tapajos">Marcos Tapajós</a><br/>
+<p><a href="http://www.improveit.com.br/en/company/tapajos">Marcos Tapajós</a><br/>
 <a href="http://www.improveit.com.br/vinicius">Vinícius Teles</a></p>
 
 <h2>Shameless advertisement</h2>
 
-<p>This plugin is brought to you by <a href="http://www.improveit.com.br">Improve It</a>.</p>
+<p>This plugin is brought to you by <a href="http://www.improveit.com.br/en">Improve It</a>.</p>
 
-<p><a href="http://www.improveit.com.br"><img src="images/improveit.gif" alt="Improve It" title="Improve It"/></a></p>
+<p><a href="http://www.improveit.com.br/en"><img src="http://www.improveit.com.br/images/logo/logo_improve_it_screen.gif" alt="Improve It" title="Improve It"/></a></p>
   
       <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
