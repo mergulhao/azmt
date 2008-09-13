@@ -28,19 +28,23 @@
   </tr>
 </table>
 
+<%= link_to _('Edit %s', _('Student')), edit_object_url %>
+
 <h2>Contratos</h2>
 
-<table>
-  <th>
-    <td>Curso</td>
-    <td>Matrícula</td>
-    <td>Parcela</td>
-    <td>#</td>
-    <td>Total</td>
-    <td>&nbsp;</td>
-  </th>
+<table style="width: 100%;">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Curso</th>
+    <th>Matrícula</th>
+    <th>Parcela</th>
+    <th>#</th>
+    <th>Total</th>
+    <th>&nbsp;</th>
+  </tr>
 <%- for contract in @student.contracts -%>
   <tr>
+    <td><%= contract.number %></td>
     <td><%= contract.classe %></td>
     <td><%= contract.registration_value %></td>
     <td><%= contract.installment_value %></td>
@@ -50,8 +54,7 @@
   </tr>
 <%- end -%>
   <tr>
-    <td><%= link_to _('New contract'), new_student_contract_url(@student) %>
+    <td colspan="7"><%= link_to _('New %s',_('Contract')), new_student_contract_url(@student) %>
   </tr>
 </table>
 
-<%= link_to 'Edit Student', edit_object_url %>

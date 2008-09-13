@@ -2,11 +2,13 @@ class CreateContracts < ActiveRecord::Migration
   def self.up
     create_table :contracts, :force => true do |t|
       t.string :name, :null => false
-      t.string :street
-      t.string :number
-      t.string :complement
-      t.string :neighbourhood
-      t.string :zip
+      
+      t.string :address_street
+      t.string :address_number
+      t.string :address_complement
+      t.string :address_neighbourhood
+      t.string :address_zip
+      
       t.string :home_phone
       t.string :comercial_phone
       t.string :mobile_phone
