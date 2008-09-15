@@ -52,9 +52,9 @@ describe Classe do
       
       lesson = classe.lessons.first
       lesson.discipline.should eql(disciplines(:math))
-#      lesson.date.should eql(Date.new(2008,7,5))
-#      lesson.start_time.strftime('%H:%M').should eql('10:00')
-#      lesson.end_time.strftime('%H:%M').should eql('13:00')
+      lesson.date.should eql(Date.new(2008,7,5))
+      lesson.start_time.strftime('%H:%M').should eql('10:00')
+      lesson.end_time.strftime('%H:%M').should eql('13:00')
     end
     
     it "should handle new_lesson_attributes=" do
