@@ -2,7 +2,7 @@
 
 <%= error_messages_for :contract %>
 
-<% form_for(:contract, :url => collection_url) do |f| %>
+<% form_for(:contract, :url => student_contracts_url) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= submit_tag "Create" %>

@@ -140,17 +140,21 @@ describe ContractsController do
   describe "handling POST /contracts" do
 
     before(:each) do
+      @student = students(:johnny_cash)
       @contract = mock_model(Contract, :to_param => "1")
+      @contract.should_receive(:student=).with(@student)
       Contract.stub!(:new).and_return(@contract)
     end
+    
+    it "should redirect if no student_id is given"
     
     describe "with successful save" do
   
       def do_post
         @contract.should_receive(:save).and_return(true)
-        post :create, :contract => {}
+        post :create, :contract => {}, :student_id => @student.id
       end
-  
+      
       it "should create a new contract" do
         Contract.should_receive(:new).with({}).and_return(@contract)
         do_post
@@ -164,17 +168,15 @@ describe ContractsController do
     end
     
     describe "with failed save" do
-
       def do_post
         @contract.should_receive(:save).and_return(false)
-        post :create, :contract => {}
+        post :create, :contract => {}, :student_id => @student.id
       end
   
       it "should re-render 'new'" do
         do_post
         response.should render_template('new')
       end
-      
     end
   end
 
