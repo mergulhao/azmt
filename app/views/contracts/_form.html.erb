@@ -75,7 +75,75 @@
   <label for="contract_installment_number">Financing tranche number:</label>
   <%= f.text_field :installment_number %>
 </p>
+<p>
+  <label for="first_due_date">First due date:</label>
+  <%= text_field_tag :first_due_date %>
+</p>
+<p>
+  <label for="bank_number">Bank Number:</label>
+  <%= text_field_tag :bank_number %>
+</p>
+<p>
+  <label for="bank_branch">Bank Branch:</label>
+  <%= text_field_tag :bank_branch %>
+</p>
+<p>
+  <label for="bank_account">Bank Account:</label>
+  <%= text_field_tag :bank_account %>
+</p>
+<p>
+  <label for="bank_first_check">Bank First Check:</label>
+  <%= text_field_tag :bank_first_check %>
+</p>
 
+<script type="text/javascript">
+  function select_last_installment_input_for(input_name){
+    return $$('div.installment').last().down('input#contract_new_installment_attributes__' + input_name);
+  }
+
+  function insert_installment_partial(){
+    <%= update_page do |page|
+      page.insert_html :bottom, :installments, :partial => 'installment', :object => Installment.new
+    end %>
+  }
+
+  function set_default_installment_values(){
+    select_last_installment_input_for('bank_number').value = $('bank_number').value;
+    select_last_installment_input_for('bank_branch').value = $('bank_branch').value;
+    select_last_installment_input_for('bank_account').value = $('bank_account').value;
+  }
+
+  function create_registration_installment(){
+    insert_installment_partial();
+    select_last_installment_input_for('value').value = $('contract_registration_value').value;
+    select_last_installment_input_for('due_date').value = $('first_due_date').value;
+    select_last_installment_input_for('bank_check').value = $('bank_first_check').value;
+
+    set_default_installment_values();
+  }
+
+  function create_installment(n){
+    insert_installment_partial();
+    select_last_installment_input_for('value').value = $('contract_installment_value').value;
+    select_last_installment_input_for('due_date').value = $('first_due_date').value;
+    select_last_installment_input_for('bank_check').value = Number($('bank_first_check').value) + n;
+
+    set_default_installment_values();
+  }
+
+  function create_installments(){
+    create_registration_installment();
+
+    Number($('contract_installment_number').value).times(function(n){
+      create_installment(n + 1);
+    });
+  }
+</script>
+
+<%= button_to_function _('Add %s', _('Installments')) do |page|
+  page['installments'].update
+  page << "create_installments();"
+end %>
 
 <h2><%= _('Installments') %></h2>
 
@@ -83,6 +151,4 @@
   <%= render :partial => 'installment', :collection => @contract.installments %>
 </div>
 
-<%= link_to_function _('Add %s', _('Installment')) do |page|
-      page.insert_html :bottom, :installments, :partial => 'installment', :object => Installment.new
-end %>
+<%= link_to_function _('Add %s', _('Installment')), 'insert_installment_partial()' %>

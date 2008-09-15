@@ -70,6 +70,6 @@ Localization.define('pt_BR') do |l|
   l.store 'Add %s', 'Adicionar %s'
   
   #---- localization
-  l.store '(date)', lambda { |t| t.strftime('%d/%m/%Y') }
-  l.store '(time)', lambda { |t| t.strftime('%H:%M') }
+  l.store '(date)', lambda { |t| t.strftime('%d/%m/%Y') rescue '' }
+  l.store '(time)', lambda { |t| t.strftime('%H:%M') rescue '' }
 end
