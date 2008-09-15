@@ -28,6 +28,7 @@ Localization.define('pt_BR') do |l|
   l.store 'First Semester', 'Primeiro Semestre' 
   l.store 'From', 'De'
   l.store 'Home Phone', 'Telefone Residencial'
+  l.store 'Installment', 'Parcela'
   l.store 'Installments', 'Parcelas'
   l.store 'Lesson', 'Aula'
   l.store 'Lessons', 'Aulas'
