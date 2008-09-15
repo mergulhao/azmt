@@ -1,0 +1,16 @@
+<div class="installment">
+<% new_or_existing = installment.new_record? ? 'new' : 'existing' %>
+<% prefix = "contract[#{new_or_existing}_installment_attributes][]" %>
+
+<% fields_for prefix, installment do |installment_form| -%>
+  <p>
+    <%= _('Due Date') %>: <%= installment_form.text_field :due_date %>
+    <%= _('Bank Number') %>: <%= installment_form.text_field :bank_number %>
+    <%= _('Bank Branch') %>: <%= installment_form.text_field :bank_branch %>
+    <%= _('Bank Account') %>: <%= installment_form.text_field :bank_account %>
+    <%= _('Bank Check') %>: <%= installment_form.text_field :bank_check %>
+    <%= _('Value') %>: <%= installment_form.text_field :value %>
+    <%= link_to_function "remove", "$(this).up('.installment').remove()" %>
+  </p>
+<% end -%>
+</div>

@@ -17,4 +17,9 @@ class ContractsController < ResourceController::Base
     
     object.student = @student
   end
+
+  update.before do
+    params[:contract] ||= {}
+    params[:contract][:existing_installment_attributes] ||= {}
+  end
 end

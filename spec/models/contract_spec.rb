@@ -36,11 +36,11 @@ describe Contract do
       @contract.installments.count.should == 3
     end
     
-    it "should handle existing_installments_attributes=" do
+    it "should handle existing_installment_attributes=" do
       @contract.installments.count.should == 2
       installment = installments(:second)
       
-      @contract.existing_installments_attributes = {
+      @contract.existing_installment_attributes = {
           "#{installment.id}" => {
             :due_date => '24/05/2008',
             :bank_number => '753',

@@ -10,12 +10,13 @@
         page.select("tr.#{css_class_to_contract_installments(contract)}").each(&:toggle)
       end %>
     </td>
-    <td><%= link_to 'Ver', contract_url(contract) %></td>
+    <td><%= link_to image_tag('icons/file_edit.png'), edit_contract_url(contract) %></td>
+    <td><%= link_to image_tag('icons/file.png'), contract_url(contract) %></td>
   </tr>
 
   <%- if contract.installments.empty? -%>
     <tr <%= css_to_contract_installments(contract) %>>
-      <td colspan="7"><%= _('There is no installments.') %></td>
+      <td colspan="9"><%= _('There is no installments.') %></td>
     </tr>
   <%- else -%>
     <tr <%= css_to_contract_installments(contract) %>>
@@ -26,6 +27,7 @@
       <th><%= _("Bank Account") %></th>
       <th><%= _("Bank Check") %></th>
       <th><%= _("Value") %></th>
+      <th>&nbsp;</th>
       <th>&nbsp;</th>
     </tr>
   <%- end -%>
@@ -39,5 +41,7 @@
       <td><%= installment.bank_account %></td>
       <td><%= installment.bank_check %></td>
       <td><%= installment.value %></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
   <%- end -%>

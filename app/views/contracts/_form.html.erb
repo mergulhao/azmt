@@ -60,7 +60,7 @@
 <h2><%= _('Contract') %></h2>
 
 <label class="large"><%=_ 'Classe' %>
-  <%= f.collection_select :classe_id, Course.find(:all), :id, :name, {}, :class => "select" %>
+  <%= f.collection_select :classe_id, Classe.find(:all), :id, :name, {}, :class => "select" %>
 </label>
 
 <p>
@@ -78,3 +78,9 @@
 
 
 <h2><%= _('Installments') %></h2>
+
+<div id="installments">
+  <%= render :partial => 'installment', :collection => @contract.installments %>
+</div>
+
+<%= add_installment_link %>

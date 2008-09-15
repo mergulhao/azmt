@@ -42,11 +42,12 @@
     <th>Total</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
+    <th>&nbsp;</th>
   </tr>
 
   <%= render :partial => 'contract', :collection => @student.contracts %>
 
   <tr>
-    <td colspan="7"><%= link_to _('New %s',_('Contract')), new_student_contract_url(@student) %>
+    <td colspan="9"><%= link_to _('New %s',_('Contract')), new_student_contract_url(@student) %>
   </tr>
 </table>

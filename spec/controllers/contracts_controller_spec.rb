@@ -178,12 +178,30 @@ describe ContractsController do
     end
   end
 
+  describe "handling PUT /contracts/1 with no existing_installment_attributes" do
+    before(:each) do
+      @contract = contracts(:johnny_cash_one)
+      @contract.installments.count.should == 2
+    end
+
+    it "should delete all installments with no :contract param" do
+      put :update, :id => @contract.id
+      @contract.installments.count.should == 0
+    end
+    
+    it "should delete all installments with :contract param and no :existing_installment_attributes param" do
+      put :update, :id => @contract.id, :contract => { :name => 'Bla' }
+      @contract.installments.count.should == 0
+    end
+  end
+    
   describe "handling PUT /contracts/1" do
 
     before(:each) do
       @contract = mock_model(Contract, :to_param => "1")
       Contract.stub!(:find).and_return(@contract)
     end
+    
     
     describe "with successful update" do
 

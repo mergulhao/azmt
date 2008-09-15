@@ -18,7 +18,7 @@ class Contract < ActiveRecord::Base
     end
   end
 
-  def existing_installments_attributes=(installment_attributes)
+  def existing_installment_attributes=(installment_attributes)
     installments.reject(&:new_record?).each do |installment|
       attributes = installment_attributes[installment.id.to_s]
       if attributes

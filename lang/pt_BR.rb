@@ -66,6 +66,7 @@ Localization.define('pt_BR') do |l|
   l.store 'Edit %s', 'Editar %s'
   l.store 'Editing %s', 'Editando %s'
   l.store 'New %s', 'Criar %s'
+  l.store 'Add %s', 'Adicionar %s'
   
   #---- localization
   l.store '(date)', lambda { |t| t.strftime('%d/%m/%Y') }
