@@ -372,7 +372,9 @@ label.x-small { /* IE 6 fix */
 .textfield,
 .select,
 .text,
-.file {
+.file,
+#lesson_classe_id,
+#lesson_classroom_id {
 	padding: 2px;
 	border: 1px solid #929284;
 	background-color: #fff;
