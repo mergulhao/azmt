@@ -1,10 +1,14 @@
 development:
   adapter: mysql
   database: azmt_development
+  username: root
+  password: admmysql
 
 test:
   adapter: mysql
   database: azmt_test
+  username: root
+  password: admmysql
 
 production:
   adapter: mysql
