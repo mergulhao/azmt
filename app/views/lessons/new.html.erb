@@ -1,12 +1,14 @@
-<h2> <%=_ 'New Lesson' %> </h2>
-
+<div class="box_form">
+<%= title_new :lesson %>
 <%= error_messages_for :lesson %>
 
 <% form_for(:lesson, :url => collection_url) do |f| %>
+  <fieldset>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%= submit_tag "Criar" %>
-  </p>
+  <label class="x-small lblbutton"><%= submit_tag "Criar", :class => "button" %></label>
+  <label class="x-small" style="text-align: right;"><%= link_to 'Cancelar', collection_url %></label>
+ </fieldset>
 <% end %>
+</div>
 <br/>
 <%= link_to 'Voltar', collection_url %>
