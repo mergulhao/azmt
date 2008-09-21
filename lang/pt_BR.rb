@@ -41,6 +41,7 @@ Localization.define('pt_BR') do |l|
   l.store 'Phones', 'Telefones'
   l.store 'Street', 'Rua'
   l.store 'Student', 'Aluno'
+  l.store 'Students', 'Alunos'
   l.store 'Successfully created!', 'Inserido com sucesso!'
   l.store 'Successfully removed!', 'Removido com sucesso!'
   l.store 'Successfully updated!', 'Atualizado com sucesso!'
