@@ -1,31 +1,8 @@
-<p>
-  <label for="lesson_name">Nome:</label>
-  <%= f.text_field :name %>
-</p>
-
+<label class="large">Nome <%= f.text_field :name, :class => "textfield" %></label><br />
 <% unless parent_object -%>
-<p>
-  <label for="lesson_classe_id">Turma:</label>
-  <%= f.collection_select :classe_id, Classe.find(:all), :id, :to_s %>
-</p>
+<label class="large">Turma <%= f.collection_select :classe_id, Classe.find(:all), :id, :to_s %></label><br />
 <% end -%>
-
-<p>
-  <label for="lesson_classroom_id">Sala:</label>
-  <%= f.collection_select :classroom_id, Classroom.find(:all), :id, :name %>
-</p>
-
-<p>
-  <label for="lesson_date">Começo:</label>
-  <%= f.text_field :date %>
-</p>
-
-<p>
-  <label for="lesson_start_time">Inicio:</label>
-  <%= f.text_field :start_time %>
-</p>
-
-<p>
-  <label for="lesson_end_time">Fim:</label>
-  <%= f.text_field :end_time %>
-</p>
+<label class="large">Sala <%= f.collection_select :classroom_id, Classroom.find(:all), :id, :name %></label><br />
+<label class="small">Começo <%= f.text_field :date, :class => "textfield" %></label>
+<label class="x-small">Inicio <%= f.text_field :start_time, :class => "textfield" %></label>
+<label class="x-small">Fim <%= f.text_field :end_time, :class => "textfield" %></label><br />
