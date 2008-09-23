@@ -57,6 +57,12 @@ def should_have_ajaxian_responses_enabled
 
     before(:each) do
       @record = mock_model(model_class)
+      
+      if controller.model_name == 'student'
+        @record.should_receive(:address_state=).with("Rio de Janeiro")
+        @record.should_receive(:address_city=).with("Rio de Janeiro")
+      end
+      
       model_class.stub!(:new).and_return(@record)
     end
   

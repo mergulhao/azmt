@@ -1,10 +1,12 @@
 johnny_cash:
   name: Johnny Cash
-  street: 
-  number: 
-  complement: 
-  neighbourhood: 
-  zip: 
+  address_street: 
+  address_number: 
+  address_complement: 
+  address_neighbourhood: 
+  address_zip: 
+  address_state: 
+  address_city: 
   home_phone: 
   comercial_phone: 
   mobile_phone: 
@@ -12,11 +14,13 @@ johnny_cash:
 
 jimmy_page:
   name: Jimmy Page
-  street: 
-  number: 
-  complement: 
-  neighbourhood: 
-  zip: 
+  address_street: 
+  address_number: 
+  address_complement: 
+  address_neighbourhood: 
+  address_zip: 
+  address_state: 
+  address_city: 
   home_phone: 
   comercial_phone: 
   mobile_phone: 

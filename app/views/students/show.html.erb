@@ -1,30 +1,35 @@
 <table style="width: 100%; border: 1px solid #e9e9e9;">
   <tr>
-    <td><p><strong>Name:</strong><%=h @student.name %></p></td>
-    <td><p><strong>Nascimento:</strong> ??</p></td>
+    <td><p><strong><%= _('Name') %>:</strong><%=h @student.name %></p></td>
+    <td><p><strong><%= _('Birth') %>:</strong><%= _('(date)', @student.birth) %></p></td>
   </tr>
   <tr>
-    <td><p><strong>Street:</strong><%=h @student.street %>, <%=h @student.number %>
-        <%=h " - #{@student.complement}" if @student.complement %>
+    <td><p><strong><%= _('Street') %>:</strong><%=h @student.address_street %>, <%=h @student.address_number %>
+        <%=h " - #{@student.address_complement}" if @student.address_complement %>
     </p></td>
-    <td><p><strong>Neighbourhood:</strong><%=h @student.neighbourhood %></p></td>
+    <td><p><strong><%= _('Neighbourhood') %>:</strong><%=h @student.address_neighbourhood %></p></td>
   </tr>
   <tr>
-    <td><p><strong>Zip:</strong><%=h @student.zip %></p></td>
-    <td><p><strong>Cidade:</strong> ??</p></td>
-    <td><p><strong>Estado:</strong> ??</p></td>
+    <td><p><strong><%= _('Zip') %>:</strong><%=h @student.address_zip %></p></td>
+    <td><p><strong><%= _('City') %>:</strong><%=h @student.address_city %></p></td>
+    <td><p><strong><%= _('State') %>:</strong><%=h @student.address_state %></p></td>
   </tr>
   <tr>
-    <td><p><strong>Home phone:</strong><%=h @student.home_phone %></p></td>
-    <td><p><strong>Comercial phone:</strong><%=h @student.comercial_phone %></p></td>
-    <td><p><strong>Mobile phone:</strong><%=h @student.mobile_phone %></p></td>
+    <td><p><strong><%= _('Home phone') %>:</strong><%=h @student.home_phone %></p></td>
+    <td><p><strong><%= _('Comercial phone') %>:</strong><%=h @student.comercial_phone %></p></td>
+    <td><p><strong><%= _('Mobile phone') %>:</strong><%=h @student.mobile_phone %></p></td>
   </tr>
   <tr>
-    <td><p><strong>Identidade:</strong> ????</p></td>
-    <td><p><strong>Cpf: </strong><%=h @student.cpf %></p></td>
+    <td><p><strong><%= _('RG') %>:</strong><%=h @student.rg %></p></td>
+    <td><p><strong><%= _('CPF') %>:</strong><%=h @student.cpf %></p></td>
   </tr>
   <tr>
-    <td>Email, Profissao, Empresa, Cargo</td>
+    <td><p><strong><%= _('E-mail') %>:</strong><%=h @student.email %></p></td>
+  </tr>
+  <tr>
+    <td><p><strong><%= _('Profession') %>:</strong><%=h @student.work_profession %></p></td>
+    <td><p><strong><%= _('Company') %>:</strong><%=h @student.work_company %></p></td>
+    <td><p><strong><%= _('Position') %>:</strong><%=h @student.work_position %></p></td>
   </tr>
 </table>
 

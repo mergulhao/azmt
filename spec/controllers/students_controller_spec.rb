@@ -71,6 +71,8 @@ describe StudentsController do
 
     before(:each) do
       @student = mock_model(Student)
+      @student.should_receive(:address_state=).with("Rio de Janeiro")
+      @student.should_receive(:address_city=).with("Rio de Janeiro")
       Student.stub!(:new).and_return(@student)
     end
   
@@ -78,6 +80,10 @@ describe StudentsController do
       get :new
     end
 
+    it "should set address_state and address_city" do
+      do_get
+    end
+    
     it "should be successful" do
       do_get
       response.should be_success
