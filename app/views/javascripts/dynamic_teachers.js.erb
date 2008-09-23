@@ -7,7 +7,7 @@ var disciplines = new Hash();
       <%= discipline.can_be_taught_by.collect do |teacher|
         "{ id: #{teacher.id}, name: '#{teacher.name}' }" 
       end.join(',') -%>
-    ),
+    )
   });
 <% end -%>
 

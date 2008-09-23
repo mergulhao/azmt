@@ -7,11 +7,11 @@ describe Lesson do
     @lesson = Lesson.new
   end
 
-#  it "should not be valid" do
-#    @lesson.should_not be_valid
-#    errors = ["Classroom can't be blank", "Classe can't be blank", "Date can't be blank", "End time can't be blank", "Start time can't be blank"]
-#    @lesson.errors.full_messages.should eql(errors)
-#  end
+  it "should not be valid" do
+    @lesson.should_not be_valid
+    errors = ["Classroom can't be blank", "Classe can't be blank", "Date can't be blank", "Discipline can't be blank", "End time can't be blank", "Start time can't be blank"]
+    @lesson.errors.full_messages.should eql(errors)
+  end
 
   it "should validates end_time after start_time" do
     @lesson.start_time = "10:00"

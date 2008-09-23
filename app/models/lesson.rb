@@ -6,7 +6,7 @@ class Lesson < ActiveRecord::Base
   belongs_to :discipline
   belongs_to :teacher
   
-  validates_presence_of :classe, :classroom, :discipline, :teacher
+  validates_presence_of :classe, :classroom, :discipline
   
   validates_date :date
   validates_time :start_time
