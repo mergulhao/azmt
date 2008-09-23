@@ -5,6 +5,7 @@ class AddDateTimeAndWeekdaysToClasses < ActiveRecord::Migration
       t.time :start_time
       t.time :end_time
       t.string :weekdays
+      t.references :classroom
     end
   end
 
@@ -14,6 +15,7 @@ class AddDateTimeAndWeekdaysToClasses < ActiveRecord::Migration
       t.remove :start_time
       t.remove :end_time
       t.remove :weekdays
+      t.remove :classroom_id
     end
   end
 end

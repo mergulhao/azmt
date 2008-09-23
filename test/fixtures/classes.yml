@@ -5,6 +5,7 @@ first_semester_math:
   start_time: <%= DateTime.new(2008,01,01,9,30,0).to_s(:db) %>
   end_time: <%= DateTime.new(2008,01,01,12,30,0).to_s(:db) %>
   weekdays: "--- \n- monday\n- friday\n"
+  classroom: amazonia
 
 first_semester_sexology:
   name: First Semester
@@ -13,3 +14,4 @@ first_semester_sexology:
   start_time: <%= DateTime.new(2008,01,01,14,30,0).to_s(:db) %>
   end_time: <%= DateTime.new(2008,01,01,19,30,0).to_s(:db) %>
   weekdays: "--- \n- wednesday\n- saturday\n"
+  classroom: pantanal

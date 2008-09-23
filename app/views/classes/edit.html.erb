@@ -41,7 +41,7 @@
       <tr>
         <td>
         <%= select_tag :classroom_id, 
-          options_from_collection_for_select(Classroom.find(:all), :id, :name), :class => "select" %>
+          options_from_collection_for_select(Classroom.find(:all), :id, :name, @classe.classroom_id), :class => "select" %>
         </td>
       </tr>
 

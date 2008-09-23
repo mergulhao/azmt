@@ -2,15 +2,27 @@
   <%= f.text_field :name, :class => "textfield" %>
 </label>
 <br/>
+
 <label class="large"><%=_ 'Course' %>
   <%= f.collection_select :course_id, Course.find(:all), :id, :name, {}, :class => "select" %>
 </label>
 <br/>
-<label class="small"><%=_ 'Start Date' %>
-  <%= f.text_field :start_date, :class => "textfield" %>
+
+<label class="large"><%=_ 'Classroom' %>
+  <%= f.collection_select :classroom_id, Classroom.find(:all), :id, :name, {}, :class => "select" %>
 </label>
+<br/>
+
+<label class="small"><%=_ 'Start Date' %>
+  <%= text_field_with_js_mask :classe, :start_date, :class => "mask_date_br textfield" %>
+</label>
+
 <label class="small"><%=_ 'Start Time' %>
-  <%= f.text_field :start_time, :class => "textfield" %>
+  <%= text_field_with_js_mask :classe, :start_time, :class => "mask_time textfield" %>
+</label>
+
+<label class="small"><%=_ 'End Time' %>
+  <%= text_field_with_js_mask :classe, :end_time, :class => "mask_time textfield" %>
 </label>
 <br/>
 

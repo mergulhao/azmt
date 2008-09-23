@@ -1,8 +1,11 @@
 class Classe < ActiveRecord::Base
   belongs_to :course
+  belongs_to :classroom
   has_many :lessons, :order => 'date'
 
   validates_presence_of :course, :name
+  validates_date :start_date, :allow_blank => true
+  validates_time :start_time, :end_time, :allow_blank => true
 #  validates_associated :lessons
 
   def to_s
