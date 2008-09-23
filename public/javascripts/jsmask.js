@@ -14,7 +14,7 @@ JSMask = {};
 JSMask.Version = '0.1';
 JSMask.CompatibleWithPrototype = '1.6.0.2';
 
-if (Prototype.Version.indexOf(JSMask.CompatibleWithPrototype) == 0 && console && console.warn)
+if (Prototype.Version.indexOf(JSMask.CompatibleWithPrototype) != 0 && console && console.warn)
   console.warn("This version of JS Mask is tested with Prototype " + JSMask.CompatibleWithPrototype + 
                   " it may not work as expected with this version (" + Prototype.Version + ")");
 JSMask.Base = {
@@ -28,7 +28,7 @@ JSMask.Base = {
          regex:  /\d/
       },
       time: {
-         format: '  :  :  ',
+         format: '  :  ',
          regex:  /\d/
       },
       phone: {
