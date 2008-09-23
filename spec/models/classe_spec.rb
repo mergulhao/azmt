@@ -23,6 +23,38 @@ describe Classe do
     end
   end
   
+  describe "weekdays assignment" do
+    before(:each) do
+      @classe = classes(:first_semester_sexology)
+    end
+    
+    it "should return an empty array when there is no weekdays" do
+      @classe = Classe.new
+      @classe.weekdays.should == []
+    end
+    
+    it "should accept an weekdays array with strings and symbols" do
+      @classe.weekdays = [:wednesday, 'friday', 'saturday']
+      @classe.save!
+      @classe.reload
+      assert_equal ['wednesday', 'friday', 'saturday'], @classe.weekdays
+    end
+    
+    it "should not deplicate entries" do
+      @classe.weekdays = [:wednesday, 'wednesday', :wednesday, :monday]
+      @classe.save!
+      @classe.reload
+      assert_equal ['wednesday', 'monday'], @classe.weekdays
+    end
+    
+    it "should not accept not weekdays" do
+      @classe.weekdays = [:wednesday, :bla_day, 'j-day']
+      @classe.save!
+      @classe.reload
+      assert_equal ['wednesday'], @classe.weekdays
+    end
+  end
+  
   describe "lessons assignment" do
     def classe
       @classe ||= classes(:first_semester_sexology)

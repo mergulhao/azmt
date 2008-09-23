@@ -9,6 +9,18 @@ class Classe < ActiveRecord::Base
     "#{course} - #{name}"
   end
   
+  Weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ]
+  
+  def weekdays=(weekdays_array)
+    write_attribute(:weekdays, weekdays_array.map(&:to_s).reject{|w| !Weekdays.include?(w) }.uniq)
+  end
+  
+  def weekdays
+    YAML.load(read_attribute(:weekdays))
+  rescue TypeError
+    []
+  end
+  
   def new_lesson_attributes=(lesson_attributes)
     lesson_attributes.each do |attributes|
       lessons.build(attributes.merge(:date => attributes[:date].to_date)) # TODO: remove this merge! Understand why 24/05/2008 not parses!

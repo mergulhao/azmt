@@ -6,3 +6,18 @@
   <%= f.collection_select :course_id, Course.find(:all), :id, :name, {}, :class => "select" %>
 </label>
 <br/>
+<label class="small"><%=_ 'Start Date' %>
+  <%= f.text_field :start_date, :class => "textfield" %>
+</label>
+<label class="small"><%=_ 'Start Time' %>
+  <%= f.text_field :start_time, :class => "textfield" %>
+</label>
+<br/>
+
+<fieldset class="clearfix" style="margin: 0 0 10px 0;">
+  <legend><%=_ 'Weekdays' %></legend>
+  <% Classe::Weekdays.each do |w| %>
+    <%= check_box_tag 'classe[weekdays][]', w, @classe.weekdays.include?(w) %><%= _(w.capitalize) %>
+  <% end %>
+</fieldset>
+<br/>

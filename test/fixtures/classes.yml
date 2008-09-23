@@ -1,7 +1,15 @@
 first_semester_math:
   name: First Semester
   course: math
+  start_date: 2008-06-06
+  start_time: <%= DateTime.new(2008,01,01,9,30,0).to_s(:db) %>
+  end_time: <%= DateTime.new(2008,01,01,12,30,0).to_s(:db) %>
+  weekdays: "--- \n- monday\n- friday\n"
 
 first_semester_sexology:
   name: First Semester
   course: sexology
+  start_date: 2008-06-12
+  start_time: <%= DateTime.new(2008,01,01,14,30,0).to_s(:db) %>
+  end_time: <%= DateTime.new(2008,01,01,19,30,0).to_s(:db) %>
+  weekdays: "--- \n- wednesday\n- saturday\n"
