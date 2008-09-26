@@ -251,9 +251,16 @@ a:hover {
 /* Tables
 ---------------------------------- */
 
-table.tbldata {
+table.tbldata, table.edit_classe {
 	border: 1px solid #e9e9e9;
 	padding: 2px;
+}
+
+table.edit_classe tr td, table.edit_classe tr th {
+        text-align: center;
+	padding: 2px;
+	border-bottom: 1px solid #e9e9e9;
+	border-right: 1px solid #e9e9e9;
 }
 
 table.tbldata tr td {

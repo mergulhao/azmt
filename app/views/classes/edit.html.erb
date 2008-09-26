@@ -3,56 +3,46 @@
 <% javascript 'dynamic_teachers', 'date', 'lowpro', 'jsmask' %>
 
 <% form_tag do %>
-    <table style="border: 1px solid #e9e9e9; width: 180px; border-collapse: colapse; float: right;">
-      <tr><th><%=_ 'Disciplines'%></th></tr>
+    <table class="edit_classe" style="border: 1px solid #e9e9e9; width: 100%; border-collapse: colapse;">
+      <tr>
+        <th><%=_ 'Disciplines'%></th>
+        <th><%=_ 'Hour' %></th>
+        <th><%=_ 'Date' %></th>
+        <th><%=_ 'Lessons' %></th>
+        <th><%=_ 'Classroom' %></th>
+        <th id="teacher_select_label"><%=_ 'Teacher' %></th>
+        <th>&nbsp;</th>
+      </tr>
       <tr>
         <td>
         <%= select_tag :discipline_id, 
          select_default +
  options_from_collection_for_select(object.course.disciplines.find(:all), :id, :name), :class => "select" %>
         </td>
-      </tr>
-      
-      <tr><th><%=_ 'Hour' %></th></tr>
-      <tr>
-        <td>
-          <label class="x-small"><%= text_field_tag_with_js_mask :start_time, _('(time)',@classe.start_time), :class => "mask_time textfield" %></label>
-          <label>..</label>
-          <label class="x-small"><%= text_field_tag_with_js_mask :end_time, _('(time)',@classe.end_time), :class => "mask_time textfield" %></label>
-        </td>
-      </tr>
 
-      <tr><th><%=_ 'Date' %></th></tr>
-      <tr>
         <td>
-          <label class="small"><%= text_field_tag_with_js_mask :start_date, _('(date)', @classe.start_date), :class => "mask_date_br textfield" %></label>
-       
+          <%= text_field_tag_with_js_mask :start_time, _('(time)',@classe.start_time), :class => "mask_time textfield", :style => 'width: 50px; display: inline;' %>
+          &nbsp; .. &nbsp;
+          <%= text_field_tag_with_js_mask :end_time, _('(time)',@classe.end_time), :class => "mask_time textfield", :style => 'width: 50px; display: inline;' %>
         </td>
-      </tr>
 
-      <tr><th><%=_ 'Lessons' %></th></tr>
-      <tr>
         <td>
-          <label class="x-small"><%= text_field_tag :lessons_number, '', :class => "textfield", :maxlength => "2" %></label>
+          <%= text_field_tag_with_js_mask :start_date, _('(date)', @classe.start_date), :class => "mask_date_br textfield", :style => 'width: 80px; display: inline;' %>
         </td>
-      </tr>
 
-      <tr><th><%=_ 'Classroom' %></th></tr>
-      <tr>
+        <td>
+          <%= text_field_tag :lessons_number, '', :class => "textfield", :maxlength => "2", :style => 'width: 20px; display: inline;' %>
+        </td>
+
         <td>
         <%= select_tag :classroom_id, 
           options_from_collection_for_select(Classroom.find(:all), :id, :name, @classe.classroom_id), :class => "select" %>
         </td>
-      </tr>
 
-      <tr><th id="teacher_select_label"><%=_ 'Teacher' %></th></tr>
-      <tr>
         <td>
         <%= select_tag :teacher_id, select_default, :class => "select" %>
         </td>
-      </tr>
 
-      <tr>
         <td>
         <label class="lblbutton" style="width: 95%;">
         <%= button_to_function _('Add Lessons'), "add_lessons();", :class => 'button' %>
@@ -62,13 +52,15 @@
     </table>
 <% end %>
 
+<br/>
+
 <% form_for(:classe, :url => object_url, :html => { :method => :put }) do |f| %>
 
-    <table style="border: 1px solid #e9e9e9; width: 70%; border-collapse: colapse;">
+    <table class="edit_classe" style="width: 100%;">
       <thead>
         <tr>
           <% Classe::Weekdays.each do |w| %>
-            <th><%=_(w[0,3].capitalize) %> <input type="checkbox" name="<%= w %>" id="<%= w %>" <%= "checked=\"checked\"" if @classe.weekdays.include?(w) %> /></th>
+            <th colspan="2"><%=_(w[0,3].capitalize) %> <input type="checkbox" name="<%= w %>" id="<%= w %>" <%= "checked=\"checked\"" if @classe.weekdays.include?(w) %> /></th>
           <% end %>
         </tr>
       </thead>
@@ -85,8 +77,10 @@
   <% (first_date..last_date).to_a.in_groups_of(7) do |week| -%>
    <tr>
       <% week.each do |date| -%>
-        <td>
-          <%= _('(date)',date) %>
+        <td style="width: 20px;">
+          <%= _('(day)',date) %>
+        </td>
+        <td style="width: 70px;">
           <%= render :partial => 'lesson', :collection => @classe.lessons.select { |l| l.date == date } %>
         </td>
       <% end -%>
@@ -98,7 +92,7 @@
       </tbody>
     </table>
 <br/>
-<label class="lblbutton" style="width: 69.3%;">
+<label class="lblbutton" style="width: 99.5%;">
   <%= submit_tag _('Save'), :class => 'button' %>
 </label>
 <% end %>
