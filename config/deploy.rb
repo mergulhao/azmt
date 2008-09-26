@@ -23,7 +23,7 @@ set :user, "railsapp"
 
 set :repository, "git@github.com:mergulhao/azmt.git"
 set :scm, "git"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :branch, "RB-#{next_release}"
 
 set :use_sudo, false
