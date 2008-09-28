@@ -1,100 +1,40 @@
-<h2><%= _('Personal info') %></h2>
+<h4><%= _('Personal info') %></h4>
 
-<p>
-  <label for="contract_name"><%=_ 'Name' %>:</label>
-  <%= f.text_field :name %>
-</p>
+<label class="x-large"><%=_ 'Name' %> <%= f.text_field :name, :class => "textfield" %></label><br />
+<label class="small"><%=_ 'CPF' %> <%= f.text_field :cpf, :class => "textfield" %></label>
+<label class="small"><%=_ 'RG' %> <%= f.text_field :rg, :class => "textfield" %></label>
+<label class="small"><%=_ 'Kinship' %> <%= f.text_field :kinship, :class => "textfield" %></label><br />
 
-<p>
-  <label for="contract_cpf"><%=_ 'CPF' %>:</label>
-  <%= f.text_field :cpf %>
-</p>
-<p>
-  <label for="contract_rg"><%=_ 'RG' %>:</label>
-  <%= f.text_field :rg %>
-</p>
-<p>
-  <label for="contract_kinship"><%=_ 'Kinship' %>:</label>
-  <%= f.text_field :kinship %>
-</p>
 
-<h2><%= _('Phones') %></h2>
+<h4><%= _('Phones') %></h4>
   
-<p>
-  <label for="contract_home_phone"><%=_ 'Home Phone' %>:</label>
-  <%= f.text_field :home_phone %>
-</p>
-<p>
-  <label for="contract_comercial_phone"><%=_ 'Comercial Phone' %>:</label>
-  <%= f.text_field :comercial_phone %>
-</p>
-<p>
-  <label for="contract_mobile_phone"><%=_ 'Mobile Phone' %>:</label>
-  <%= f.text_field :mobile_phone %>
-</p>
+<label class="small"><%=_ 'Home Phone' %> <%= f.text_field :home_phone, :class => "textfield" %></label>
+<label class="small"><%=_ 'Comercial Phone' %> <%= f.text_field :comercial_phone, :class => "textfield" %></label>
+<label class="small"><%=_ 'Mobile Phone' %> <%= f.text_field :mobile_phone, :class => "textfield" %></label><br />
 
+<h4><%= _('Address') %></h4>
 
-<h2><%= _('Address') %></h2>
+<label class="large"><%=_ 'Street' %> <%= f.text_field :address_street, :class => "textfield" %></label>
+<label class="small"><%=_ 'Number' %> <%= f.text_field :address_number, :class => "textfield" %></label><br />
+<label class="large"><%=_ 'Complement' %> <%= f.text_field :address_complement, :class => "textfield" %></label><br />
+<label class="large"><%=_ 'Neighbourhood' %> <%= f.text_field :address_neighbourhood, :class => "textfield" %></label>
+<label class="small"><%=_ 'Zip' %> <%= f.text_field :address_zip, :class => "textfield" %></label><br />
 
-<p>
-  <label for="contract_address_street"><%=_ 'Street' %>:</label>
-  <%= f.text_field :address_street %>
-</p>
-<p>
-  <label for="contract_address_number"><%=_ 'Number' %>:</label>
-  <%= f.text_field :address_number %>
-</p>
-<p>
-  <label for="contract_address_complement"><%=_ 'Complement' %>:</label>
-  <%= f.text_field :address_complement %>
-</p>
-<p>
-  <label for="contract_address_neibourhood"><%=_ 'Neighbourhood' %>:</label>
-  <%= f.text_field :address_neighbourhood %>
-</p>
-<p>
-  <label for="contract_address_zip"><%=_ 'Zip' %>:</label>
-  <%= f.text_field :address_zip %>
-</p>
-
-<h2><%= _('Contract') %></h2>
+<h4><%= _('Contract') %></h4>
 
 <label class="large"><%=_ 'Classe' %>
   <%= f.collection_select :classe_id, Classe.find(:all), :id, :name, {}, :class => "select" %>
 </label>
+<label class="small"><%=_ 'Registration value' %> <%= f.text_field :registration_value, :class => "textfield" %></label><br />
+<label class="small"><%=_ 'Financing tranche' %> <%= f.text_field :installment_value, :class => "textfield" %></label>
+<label class="small"><%=_ 'Tranche number' %> <%= f.text_field :installment_number, :class => "textfield" %></label>
+<label class="small"><%=_ 'First due date' %> <%= text_field_tag(:first_due_date, "", {:class => "textfield"})%></label><br />
 
-<p>
-  <label for="contract_registration_value">Registration value:</label>
-  <%= f.text_field :registration_value %>
-</p>
-<p>
-  <label for="contract_installment_value">Financing tranche:</label>
-  <%= f.text_field :installment_value %>
-</p>
-<p>
-  <label for="contract_installment_number">Financing tranche number:</label>
-  <%= f.text_field :installment_number %>
-</p>
-<p>
-  <label for="first_due_date">First due date:</label>
-  <%= text_field_tag :first_due_date %>
-</p>
-<p>
-  <label for="bank_number">Bank Number:</label>
-  <%= text_field_tag :bank_number %>
-</p>
-<p>
-  <label for="bank_branch">Bank Branch:</label>
-  <%= text_field_tag :bank_branch %>
-</p>
-<p>
-  <label for="bank_account">Bank Account:</label>
-  <%= text_field_tag :bank_account %>
-</p>
-<p>
-  <label for="bank_first_check">Bank First Check:</label>
-  <%= text_field_tag :bank_first_check %>
-</p>
+<label class="small"><%=_ 'Bank Number' %> <%= text_field_tag(:bank_number, "", {:class => "textfield"})%></label>
+<label class="small"><%=_ 'Bank Branch' %> <%= text_field_tag(:bank_branch, "", {:class => "textfield"})%></label>
+<label class="small"><%=_ 'Bank Account' %> <%= text_field_tag(:bank_account, "", {:class => "textfield"})%></label><br />
+
+<label class="small"><%=_ 'Bank First Check' %> <%= text_field_tag(:bank_first_check, "", {:class => "textfield"})%></label><br />
 
 <script type="text/javascript">
   function select_last_installment_input_for(input_name){
@@ -140,15 +80,14 @@
   }
 </script>
 
-<%= button_to_function _('Add %s', _('Installments')) do |page|
+<label class="small"><%= button_to_function _('Add %s', _('Installments')) do |page|
   page['installments'].update
   page << "create_installments();"
-end %>
+end %></label><br />
 
-<h2><%= _('Installments') %></h2>
+<h4><%= _('Installments') %></h4>
 
 <div id="installments">
-  <%= render :partial => 'installment', :collection => @contract.installments %>
+  <p><%= render :partial => 'installment', :collection => @contract.installments %></p>
 </div>
-
 <%= link_to_function _('Add %s', _('Installment')), 'insert_installment_partial()' %>
