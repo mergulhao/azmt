@@ -305,6 +305,7 @@ table.calendar tr td .empty {
 	width: 220px;
 	background-color: #fafafa;
 	z-index: 9999;
+	cursor: move;
 }
 
 #box_calendar #close_calendar {
@@ -312,6 +313,16 @@ table.calendar tr td .empty {
 	margin: 5px;
 	padding: 3px 5px;
 	border: 1px solid #696969;
+}
+
+#box_calendar #calendars {
+	cursor: move;
+}
+
+.installment {
+	margin: 0;
+	padding: 5px 0 0 0;
+	border-bottom: 1px solid #e9e9e9;
 }
 
 

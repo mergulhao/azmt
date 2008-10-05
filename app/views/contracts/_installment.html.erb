@@ -3,14 +3,14 @@
 <% prefix = "contract[#{new_or_existing}_installment_attributes][]" %>
 
 <% fields_for prefix, installment do |installment_form| -%>
-  <p>
-    <%= _('Due Date') %>: <%= installment_form.text_field :due_date %>
-    <%= _('Bank Number') %>: <%= installment_form.text_field :bank_number %>
-    <%= _('Bank Branch') %>: <%= installment_form.text_field :bank_branch %>
-    <%= _('Bank Account') %>: <%= installment_form.text_field :bank_account %>
-    <%= _('Bank Check') %>: <%= installment_form.text_field :bank_check %>
-    <%= _('Value') %>: <%= installment_form.text_field :value %>
-    <%= link_to_function "remove", "$(this).up('.installment').remove()" %>
-  </p>
+  <fieldset>
+    <label class="small"><%= _('Due Date') %> <%= installment_form.text_field :due_date, :class => "textfield" %></label><br />
+    <label class="small"><%= _('Bank Number') %> <%= installment_form.text_field :bank_number, :class => "textfield" %></label>
+    <label class="x-small"><%= _('Bank Branch') %> <%= installment_form.text_field :bank_branch, :class => "textfield" %></label>
+    <label class="x-small"><%= _('Bank Account') %> <%= installment_form.text_field :bank_account, :class => "textfield" %></label>
+    <label class="small"><%= _('Bank Check') %> <%= installment_form.text_field :bank_check, :class => "textfield" %></label>
+    <label class="small"><%= _('Value') %> <%= installment_form.text_field :value, :class => "textfield" %></label>
+    <label class="x-small" style="margin: 20px 0 0 0; text-align: center;"><%= link_to_function 'Remove', "$(this).up('.installment').remove()" %></label>
+  </fieldset>
 <% end -%>
 </div>

@@ -34,7 +34,7 @@
 <label class="small"><%=_ 'Bank Branch' %> <%= text_field_tag(:bank_branch, "", {:class => "textfield"})%></label>
 <label class="small"><%=_ 'Bank Account' %> <%= text_field_tag(:bank_account, "", {:class => "textfield"})%></label><br />
 
-<label class="small"><%=_ 'Bank First Check' %> <%= text_field_tag(:bank_first_check, "", {:class => "textfield"})%></label><br />
+<label class="small"><%=_ 'Bank First Check' %> <%= text_field_tag(:bank_first_check, "", {:class => "textfield"})%></label>
 
 <script type="text/javascript">
   function select_last_installment_input_for(input_name){
@@ -80,7 +80,7 @@
   }
 </script>
 
-<label class="small"><%= button_to_function _('Add %s', _('Installments')) do |page|
+<label class="small" style="margin: 20px 0 0 0; text-align: center;"><%= link_to_function _('Add %s', _('Installments')) do |page|
   page['installments'].update
   page << "create_installments();"
 end %></label><br />
@@ -90,4 +90,4 @@ end %></label><br />
 <div id="installments">
   <p><%= render :partial => 'installment', :collection => @contract.installments %></p>
 </div>
-<%= link_to_function _('Add %s', _('Installment')), 'insert_installment_partial()' %>
+<p><%= link_to_function _('Add %s', _('Installment')), 'insert_installment_partial()' %></p>

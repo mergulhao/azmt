@@ -2,13 +2,13 @@ development:
   adapter: mysql
   database: azmt_development
   username: root
-  password:
+  password: 
 
 test:
   adapter: mysql
   database: azmt_test
   username: root
-  password:
+  password: 
 
 production:
   adapter: mysql

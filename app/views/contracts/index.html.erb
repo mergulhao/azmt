@@ -1,6 +1,6 @@
-<h1>Listing Contracts</h1>
+<%= link_to 'New Contract', new_object_url %>
 
-<table>
+<table class="tbldata">
   <tr>
     <th>Registration value</th>
     <th>Financing tranche</th>
@@ -12,12 +12,11 @@
       <td><%=h contract.installment_value %></td>
       <td><%=h contract.installment_number %></td>
     
-      <td><%=link_to 'Show', object_url(contract) %></td>
-      <td><%=link_to 'Edit', edit_object_url(contract) %></td>
-      <td><%=link_to 'Destroy', object_url(contract), :confirm => 'Are you sure?', :method => :delete %></td>
+	  <td><%= link_to(image_tag("icons/copy.png"), contract) %></td>
+      <td><%= link_edit_to_remote(contract) %></td>
+      <td><%= link_delete(contract) %></td>
+		
     </tr>
   <% end %>
 </table>
 <br/>
-
-<%= link_to 'New Contract', new_object_url %>

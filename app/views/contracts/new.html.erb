@@ -1,6 +1,5 @@
 <div class="box_form">
 <%= title_new :contract %>
-
 <%= error_messages_for :contract %>
 
 <% form_for(:contract, :url => student_contracts_url) do |f| %>
@@ -10,6 +9,6 @@
   <label class="x-small" style="text-align: right;"><%= link_to 'Cancelar', collection_url %></label>
   </fieldset>
 <% end %>
+</div>
 <br/>
 <%= link_to 'Back', collection_url %>
-</div>

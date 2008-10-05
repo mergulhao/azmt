@@ -26,10 +26,10 @@
 </label>
 <br/>
 
-<fieldset class="clearfix" style="margin: 0 0 10px 0;">
+<fieldset class="clearfix">
   <legend><%=_ 'Weekdays' %></legend>
   <% Classe::Weekdays.each do |w| %>
-    <%= check_box_tag 'classe[weekdays][]', w, @classe.weekdays.include?(w) %><%= _(w.capitalize) %>
+    <label class="small"><%= check_box_tag 'classe[weekdays][]', w, @classe.weekdays.include?(w) %><%= _(w.capitalize) %></label>
   <% end %>
 </fieldset>
 <br/>
