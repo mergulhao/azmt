@@ -44,7 +44,7 @@ Localization.define('pt_BR') do |l|
   l.store 'Personal info', 'Informações pessoais'
   l.store 'Phones', 'Telefones'
   l.store 'Remove', 'Remover'
-  l,store 'Save', 'Salvar'
+  l.store 'Save', 'Salvar'
   l.store 'State', 'Estado'
   l.store 'Start Date', 'Dia início'
   l.store 'Start Time', 'Hora início'
