@@ -83,17 +83,21 @@
           <% if date.blank? || date && (date < @start_date) %>
             <div class="empty">&nbsp;</div>
           <% else %>
-            <div>
               <% lessons = @lessons.select {|lesson| lesson.date == date } %>
               <% lessons.each do |lesson| %>
-                <span style="background-color: #<%= lesson.color %>;">
+                <div style="background-color: #<%= lesson.color %>;">
                   <%= link_to lesson.to_calendar, edit_object_url(lesson) %>
-                </span>
+				  <a href="#" onclick="Effect.toggle('lesson<%= lesson.id %>', 'appear'); return false;">[expandir]</a>
+				  <div id="lesson<%= lesson.id %>" style="display: none;">
+				  	<p>Sala: ?<br />
+					Instrutor: ?<br />
+					Turma: ?<br />					
+					</p></div>
+                </div>
               <% end %>
               <!-- span>
                 <%= link_to 'Nova Aula', new_lesson_url(:lesson => {:date => date}) %>
-              </span -->
-            </div>      
+              </span -->    
           <% end %>
         </td>
       <% end -%>

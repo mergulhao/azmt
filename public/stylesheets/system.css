@@ -289,6 +289,27 @@ table.calendar tr td .empty {
 	width: 100%;	
 }
 
+tr.lesson td {
+	vertical-align: top;
+}
+
+tr.lesson td div {
+	padding: 2px;
+	color: #fff;
+}
+
+tr.lesson td a,
+tr.lesson td a:link,
+tr.lesson td a:active,
+tr.lesson td a:visited {
+	color: #fff;
+}
+
+tr.lesson td div.empty {
+	height: auto;
+	padding: 2px 0;
+}
+
 /* Content
 ---------------------------------- */
 
@@ -324,6 +345,7 @@ table.calendar tr td .empty {
 	padding: 5px 0 0 0;
 	border-bottom: 1px solid #e9e9e9;
 }
+
 
 
 /* Forms
