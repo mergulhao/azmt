@@ -1,6 +1,11 @@
 <% javascript 'timeframe' %>
 
+<script type="text/javascript">
+      new Draggable('box_calendar', { handle: 'dragcal' });
+
+</script>
 <% content_for :box_calendar do %>
+ <div style="font-style: italic; padding: 2px; float: left; cursor: move;" id="dragcal">Segure aqui para arrastar</div>
  <a href="javascript:Effect.toggle('box_calendar','appear');" id="close_calendar">x</a>
 	<div id="calendars"></div>
 	

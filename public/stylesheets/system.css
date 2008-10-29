@@ -326,7 +326,6 @@ tr.lesson td div.empty {
 	width: 220px;
 	background-color: #fafafa;
 	z-index: 9999;
-	cursor: move;
 }
 
 #box_calendar #close_calendar {
